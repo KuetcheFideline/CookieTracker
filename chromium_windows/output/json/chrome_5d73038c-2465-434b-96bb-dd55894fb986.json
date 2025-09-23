@@ -1,0 +1,29 @@
+{
+    "accounts.google.com": [
+        {
+            "decrypted_value": "Chromium :("
+        },
+        {
+            "decrypted_value": "Chromium :("
+        }
+    ],
+    "www.google.com": [
+        {
+            "decrypted_value": "Chromium :("
+        },
+        {
+            "decrypted_value": "Chromium :("
+        }
+    ],
+    ".google.com": [
+        {
+            "decrypted_value": "Chromium :("
+        },
+        {
+            "decrypted_value": "Chromium :("
+        },
+        {
+            "decrypted_value": "Chromium :("
+        }
+    ]
+}

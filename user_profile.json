@@ -1,0 +1,69 @@
+{
+    "name": "Fideline kuetche ",
+    "birthday": "2001-05-15",
+    "gender": "female",
+    "geolocation": "",
+    "pobox": "po box 15",
+    "browsers": [
+        "Chrome",
+        "Firefox"
+    ],
+    "ip_info": {
+        "ip_public": "195.220.84.49",
+        "ip_local": "127.0.1.1",
+        "mac_address": "c5:46:a5:dc:14:da",
+        "os": "Linux",
+        "os_version": "6.8.0-83-generic",
+        "processor": "x86_64"
+    },
+    "nationality": "Cameroon",
+    "marital_status": "",
+    "profession": "Data Scientist / Developpeur",
+    "bank": {
+        "account_number": "",
+        "bank_name": ""
+    },
+    "email": [
+        "fidoknn@gmail.com",
+        "fidelinekuetche@gmail.com",
+        "fideline.kuetche@facsciences-uy1.cm"
+    ],
+    "isp": [
+        "Orange Cameroun",
+        "MTN Cameroun",
+        "free"
+    ],
+    "username": [
+        "fidoknn",
+        "fidelinekuetche",
+        "fideline.kuetche",
+        "fido",
+        "fido15",
+        "kuetchef",
+        "lunak"
+    ],
+    "phone_number": [],
+    "city": [],
+    "country": [
+        "Cameroon"
+    ],
+    "code_country": [],
+    "language": [
+        "French",
+        "English"
+    ],
+    "education": [
+        "Licence en Informatique",
+        "Master en Sciences des Donnees (en cours)"
+    ],
+    "device": {
+        "os": [
+            "Linux",
+            "Windows"
+        ],
+        "brand": []
+    },
+    "relatives": {
+        "siblings": []
+    }
+}

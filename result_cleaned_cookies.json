@@ -1,0 +1,1903 @@
+{
+    "firefox": {},
+    "chrome": {
+        ".google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 16,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 16,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2516291673878226,
+                        "length": 6,
+                        "cookie": "APISID",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "HSID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2359263506290326,
+                        "length": 7,
+                        "cookie": "SAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 3,
+                        "view": "& \ufffd\"\u001d\ufffd5(\u000e"
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "SID",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.5,
+                        "length": 4,
+                        "cookie": "SSID",
+                        "risk_score": 5,
+                        "cookie_index": 5,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-1PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 6,
+                        "view": "& \ufffd\"\u001d\ufffd5(\u000e"
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-1PSID",
+                        "risk_score": 5,
+                        "cookie_index": 7,
+                        "view": "\ufffd\u0005\ufffdw8\u0002\ufffd\u0011,\ufffd\ufffd\u0000\ufffdr\u07c7X0B\u0011\u0013"
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-3PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 8,
+                        "view": "& \ufffd\"\u001d\ufffd5(\u000e"
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-3PSID",
+                        "risk_score": 5,
+                        "cookie_index": 9,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "SNID",
+                        "risk_score": 5,
+                        "cookie_index": 11,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "NID",
+                        "risk_score": 5,
+                        "cookie_index": 13,
+                        "view": "\ufffdM\ufffd\ufffdH\ufffd\u0016\ufffd\ufffd]\ufffd\t\u06bd.\ufffd\u0012\ufffd)\ufffd#\ufffd\u001ds{@\ufffdJ\ufffd\u0017\ufffdQXz]/sy;\ufffd\ufffd\u000b\u001c\n\ufffdBm*\ufffdu\ufffd..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.452819531114783,
+                        "length": 16,
+                        "cookie": "__Secure-1PSIDTS",
+                        "risk_score": 5,
+                        "cookie_index": 14,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.452819531114783,
+                        "length": 16,
+                        "cookie": "__Secure-3PSIDTS",
+                        "risk_score": 5,
+                        "cookie_index": 15,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.9219280948873623,
+                        "length": 5,
+                        "cookie": "SIDCC",
+                        "risk_score": 5,
+                        "cookie_index": 16,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.5,
+                        "length": 16,
+                        "cookie": "__Secure-1PSIDCC",
+                        "risk_score": 5,
+                        "cookie_index": 17,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.5,
+                        "length": 16,
+                        "cookie": "__Secure-3PSIDCC",
+                        "risk_score": 5,
+                        "cookie_index": 18,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        "accounts.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 4,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 4,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "account",
+                        "entropy": 3.2729055953200556,
+                        "length": 15,
+                        "cookie": "ACCOUNT_CHOOSER",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "LSID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": "\ufffd\u001b\ufffd\u000e\ufffd>\ufffd\ufffds#\ufffdU\ufffd_t\u001e\u001c\ufffd\ufffd.\ufffd<\ufffd\u0000\u06c0\ufffd\ufffd\t\ufffdih \ufffdZ\ufffd\u0011m1\u0013\ufffd\"\ufffdJxy\ufffd\u0013\ufffd\ufffdW..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.5465935642949384,
+                        "length": 13,
+                        "cookie": "__Host-1PLSID",
+                        "risk_score": 5,
+                        "cookie_index": 3,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.5465935642949384,
+                        "length": 13,
+                        "cookie": "__Host-3PLSID",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        ".google.cm": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 10,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 10,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2516291673878226,
+                        "length": 6,
+                        "cookie": "APISID",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "HSID",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "NID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": ";z\ufffd\ufffd^\ufffd\ufffd\u0017\u0016E\ufffd\ufffdBJ\ufffd4s\ufffd\u0016vQ\b\ufffd8\\YIA\ufffd\u0012\ufffd\u0588\ufffd>\ufffd\u0012s\ufffd\ufffd\\\u0018\ufffd\ufffd\u015ax:\u0016\ufffd8\ufffd..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2359263506290326,
+                        "length": 7,
+                        "cookie": "SAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 3,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "SID",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.5,
+                        "length": 4,
+                        "cookie": "SSID",
+                        "risk_score": 5,
+                        "cookie_index": 5,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-1PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 6,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-1PSID",
+                        "risk_score": 5,
+                        "cookie_index": 7,
+                        "view": "\ufffd\u001c\u0353y\ufffd\ufffd\ufffd\u0016\ufffd\u0017L7E8\u06b2}\ufffd6\ufffd\u007f_\ufffd:\u000bM\ufffd\ufffd\u03a7\ufffd\ufffd\ufffdV{Y\ufffd\u0007\f\ufffdk\u0006\ufffd\ufffd\ufffd^\u001blQ<Tr..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-3PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 8,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-3PSID",
+                        "risk_score": 5,
+                        "cookie_index": 9,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        ".google.fr": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 10,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 10,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2516291673878226,
+                        "length": 6,
+                        "cookie": "APISID",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "HSID",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "NID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": "$\fk\u018bt@\t'w\ufffd\u06ca(u\ufffd;\ufffd\u0006\ufffd\ufffd\ufffdAJ5u\u049f\ufffdq\ufffd%\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd#\ufffdpX\u0013\u074f\ufffdMm\ufffd\ufffdt\ufffd\ufffd\ufffd..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2359263506290326,
+                        "length": 7,
+                        "cookie": "SAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 3,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "SID",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": "\ufffd\f\ufffd\u0014\ufffd\ufffd\u0010\u001a\ufffd\ufffd\ufffd\u000e\ufffd3\"Ko\ufffd\u0004\ufffd\ufffd\ufffd\ufffd}\u000f\ufffd\ufffd\ufffd\u0006\u04e6\u007fcq1 \ufffd\u0006\ufffd\ufffd\ufffd\u0004\bc:\\\ufffdub\ufffd\ufffd..."
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.5,
+                        "length": 4,
+                        "cookie": "SSID",
+                        "risk_score": 5,
+                        "cookie_index": 5,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-1PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 6,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-1PSID",
+                        "risk_score": 5,
+                        "cookie_index": 7,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-3PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 8,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-3PSID",
+                        "risk_score": 5,
+                        "cookie_index": 9,
+                        "view": "\ufffd\f\ufffd\u0014"
+                    }
+                ]
+            }
+        },
+        ".youtube.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 11,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 11,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2516291673878226,
+                        "length": 6,
+                        "cookie": "APISID",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "HSID",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.2359263506290326,
+                        "length": 7,
+                        "cookie": "SAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.584962500721156,
+                        "length": 3,
+                        "cookie": "SID",
+                        "risk_score": 5,
+                        "cookie_index": 3,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 1.5,
+                        "length": 4,
+                        "cookie": "SSID",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-1PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 5,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-1PSID",
+                        "risk_score": 5,
+                        "cookie_index": 6,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.452819531114783,
+                        "length": 16,
+                        "cookie": "__Secure-1PSIDTS",
+                        "risk_score": 5,
+                        "cookie_index": 7,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.4992275471326932,
+                        "length": 17,
+                        "cookie": "__Secure-3PAPISID",
+                        "risk_score": 5,
+                        "cookie_index": 8,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.3787834934861767,
+                        "length": 14,
+                        "cookie": "__Secure-3PSID",
+                        "risk_score": 5,
+                        "cookie_index": 9,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.452819531114783,
+                        "length": 16,
+                        "cookie": "__Secure-3PSIDTS",
+                        "risk_score": 5,
+                        "cookie_index": 10,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        "www.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        "accounts.spotify.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 1,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 1,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.327819531114783,
+                        "length": 16,
+                        "cookie": "__Host-device_id",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": "Ra\ufffd`O\u0019\u001c\ufffd\u00191\ufffd@\ufffd\ufffd\u0010\ufffd\u0003\ufffdx\u000b\ufffd|\ufffd\ufffd[\ufffd u\ufffd\b\u0007\u001c\"<m\ufffd\ufffd\ufffd%\ufffdL\u0007\ufffd;\ufffd\ufffdA\ufffd\ufffd\ufffd..."
+                    }
+                ]
+            }
+        },
+        ".spotify.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 1,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 1,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "key",
+                        "entropy": 2.584962500721156,
+                        "length": 6,
+                        "cookie": "sp_key",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        ".github.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        "ogs.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        ".googleadservices.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        "login.microsoftonline.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 3,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 3,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 4.145972171840238,
+                        "length": 38,
+                        "cookie": "MicrosoftApplicationsTelemetryDeviceId",
+                        "risk_score": 5,
+                        "cookie_index": 0,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "buid",
+                        "risk_score": 5,
+                        "cookie_index": 1,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "session",
+                        "entropy": 2.6464393446710157,
+                        "length": 10,
+                        "cookie": "ai_session",
+                        "risk_score": 5,
+                        "cookie_index": 4,
+                        "view": ""
+                    }
+                ]
+            }
+        },
+        ".login.microsoftonline.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        ".microsoft.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        "mail.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 2,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 2,
+                "items": [
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 2.0,
+                        "length": 4,
+                        "cookie": "OSID",
+                        "risk_score": 5,
+                        "cookie_index": 2,
+                        "view": ""
+                    },
+                    {
+                        "type": "suspicious_key",
+                        "subtype": "id",
+                        "entropy": 3.238901256602631,
+                        "length": 13,
+                        "cookie": "__Secure-OSID",
+                        "risk_score": 5,
+                        "cookie_index": 6,
+                        "view": "\ufffd$\ufffdZ\ufffd\ufffd)^E\ufffd\u0004\ufffdC\ufffd\u0014M\ufffd\u001a\ufffd\u0342\ufffd_\u001c\u0225\u00b3@u\ufffd\u01f6\ufffdH\ufffd*e\ufffd/\ufffd\ufffdp\"\ufffd/n\ufffd\u0211\ufffd\ufffd\u0017Ju..."
+                    }
+                ]
+            }
+        },
+        ".workspace.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        },
+        "contacts.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 0,
+                "high_risk": 0,
+                "medium_risk": 0,
+                "low_risk": 0,
+                "items": []
+            }
+        }
+    }
+}
