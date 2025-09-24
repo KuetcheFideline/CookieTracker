@@ -16,36 +16,67 @@ from chromium_windows.main import main_chromium
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 
+import os
+import winreg
 
+def get_browser_path_from_registry(browser_exe):
+    """
+    Recherche le chemin d'un exécutable de navigateur dans le registre Windows.
+    """
+    possible_keys = [
+        fr"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{browser_exe}",
+        fr"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\{browser_exe}",
+    ]
+    for key_path in possible_keys:
+        try:
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path) as key:
+                path, _ = winreg.QueryValueEx(key, None)
+                if os.path.exists(path):
+                    return path
+        except FileNotFoundError:
+            continue
+    return None
 
 def check_browser_installed(browser_name):
     """Vérifie si un navigateur est installé sur Windows"""
     
-    # Dictionnaire des chemins d'installation possibles pour chaque navigateur sous Windows
     browser_paths = {
-        'firefox': [r"C:\Program Files\Mozilla Firefox\firefox.exe", r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"],
-        'chrome': [r"C:\Program Files\Google\Chrome\Application\chrome.exe", r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"],
-        'edge': [r"C:\Program Files\Microsoft\Edge\Application\msedge.exe", r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"],
-        'opera': [r"C:\Program Files\Opera\Opera\opera.exe", r"C:\Program Files (x86)\Opera\Opera\opera.exe"],
-        'brave': [r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe", r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe"]
+        'firefox': [
+            r"C:\Program Files\Mozilla Firefox\firefox.exe",
+            r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+        ],
+        'chrome': [
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+        ],
     }
 
-    # Convertir le nom du navigateur en minuscule pour normalisation
+    exe_names = {
+        'firefox': 'firefox.exe',
+        'chrome': 'chrome.exe',
+    }
+
     browser_key = browser_name.lower()
 
-    # Si le navigateur n'est pas reconnu, retour False
     if browser_key not in browser_paths:
         print(f"✗ Navigateur {browser_name} non reconnu.")
         return False
 
-    # Vérifier chaque chemin d'installation possible
+    # Vérifie chemins classiques
     for path in browser_paths[browser_key]:
         if os.path.exists(path):
-            print(f"✓ {browser_name} trouvé à: {path}")
+            print(f"✓ {browser_name} trouvé à (standard): {path}")
             return True
+
+    # Vérifie dans le registre
+    reg_path = get_browser_path_from_registry(exe_names[browser_key])
+    if reg_path:
+        print(f"✓ {browser_name} trouvé via registre: {reg_path}")
+        return True
 
     print(f"✗ {browser_name} non installé.")
     return False
+
 
 
 def remove_matches_field(data):
