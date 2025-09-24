@@ -1,14 +1,6 @@
 {
     "chrome": {
         ".google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -17,15 +9,15 @@
                 "exact": 0,
                 "variants": 0
             },
-            "bank": {
+            "nationality": {
                 "exact": 0,
                 "variants": 0
             },
-            "device": {
+            "marital_status": {
                 "exact": 0,
                 "variants": 0
             },
-            "relatives": {
+            "username": {
                 "exact": 0,
                 "variants": 0
             },
@@ -246,14 +238,6 @@
             }
         },
         "accounts.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -262,15 +246,15 @@
                 "exact": 0,
                 "variants": 0
             },
-            "bank": {
+            "nationality": {
                 "exact": 0,
                 "variants": 0
             },
-            "device": {
+            "marital_status": {
                 "exact": 0,
                 "variants": 0
             },
-            "relatives": {
+            "username": {
                 "exact": 0,
                 "variants": 0
             },
@@ -311,14 +295,6 @@
             }
         },
         ".datacamp.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -327,15 +303,15 @@
                 "exact": 0,
                 "variants": 0
             },
-            "bank": {
+            "nationality": {
                 "exact": 0,
                 "variants": 0
             },
-            "device": {
+            "marital_status": {
                 "exact": 0,
                 "variants": 0
             },
-            "relatives": {
+            "username": {
                 "exact": 0,
                 "variants": 0
             },
@@ -448,14 +424,6 @@
             }
         },
         ".amazon.fr": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -464,15 +432,15 @@
                 "exact": 0,
                 "variants": 0
             },
-            "bank": {
+            "nationality": {
                 "exact": 0,
                 "variants": 0
             },
-            "device": {
+            "marital_status": {
                 "exact": 0,
                 "variants": 0
             },
-            "relatives": {
+            "username": {
                 "exact": 0,
                 "variants": 0
             },

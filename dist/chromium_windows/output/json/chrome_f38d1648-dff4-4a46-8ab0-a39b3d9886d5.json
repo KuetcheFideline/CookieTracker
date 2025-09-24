@@ -1,0 +1,58 @@
+{
+    ".google.com": [
+        {
+            "key": "AEC",
+            "value": "AaJma5tFSY-a0EDQk6EEO7_yXIvDDut0PuPRdelBb9PO50sEeU5aBCO1QXU"
+        },
+        {
+            "key": "SOCS",
+            "value": "CAISHAgCEhJnd3NfMjAyNTA5MTgtMF9SQzEaAmZyIAEaBgiAxsfGBg"
+        },
+        {
+            "key": "SNID",
+            "value": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_tPUvbuq2oEyHKJ1N2vdzj9qbMNI1-sWOlciqe33jLGwmJb3x6A"
+        },
+        {
+            "key": "NID",
+            "value": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmhMQyYLkUM49kgx_zWxHAEwiu_dHq4W7lVD8uYaaMR0QYuf9g6pYbZsgxWbw9iaL0RzzBn51lVCaDWTWV26PiPTESwCiUTG2ZHBXM19fN8KerzlxHR2lB2dVyW9l7uli1hexB7HzfNCMWIciT_aKeGBRZtW_AYrW4oCV7zdMQLOK4J1jdKkBi_TJxi2HDl6_hEnZbgIQZlotFIih7i9RQun2qeb0Q5g7CEFJ0FAowGqyNawwDv8kxk9oGQoymaVI"
+        }
+    ],
+    "accounts.google.com": [
+        {
+            "key": "OTZ",
+            "value": "8272295_48_52_123900_48_436380"
+        },
+        {
+            "key": "__Host-GAPS",
+            "value": "1:XnjgcmjakOjhxugYN8JdWDNZ9cR6DA:jMopW4IAeBt2-9Ps"
+        }
+    ],
+    ".datacamp.com": [
+        {
+            "key": "dc_anonid",
+            "value": "d6769466-aa00-4472-8802-8d2791a5ee83"
+        },
+        {
+            "key": "__cf_bm",
+            "value": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-1758716626-1.0.1.1-HEmxtyXXb43_Boygg.qXyppYWYej6mQBn31AXuiDVK11.4gIO89YylERuWAPJxVjIHCOYbBbREL7G5OBFgM.HVi7sTCSQ6ZLIE2695HNcu4"
+        }
+    ],
+    ".amazon.fr": [
+        {
+            "key": "ubid-acbfr",
+            "value": "257-7222522-3047830"
+        },
+        {
+            "key": "session-id",
+            "value": "259-1336768-0511653"
+        },
+        {
+            "key": "session-id-time",
+            "value": "2082787201l"
+        },
+        {
+            "key": "session-token",
+            "value": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6aHGzZwaQzLp3PGy93nJID0/aLyvAFV+DjMy32B2UxYzjfwR8V2BzdB7UGIcNnX2Z7TCNBJhxy3GAgZUxDggecx/WkdNSAaaOf3sKOaj8F3kCYDr8Y/Mmom7URlpDX4rvVKUSixsr4R9FKiTeEDwiAii1FhMaMwjN9xgrjS0y1lH4tqbsp2L+r029eb8siJBtOMu29HO9dZxNWkYWiJJ+LpnP4GCrGSL2fgCxP3jjIhc57hzeq3+F7qlIs5WlK3TKG2/Esr5eoIFNxuglOVEVcvRvP0HK3l2m5mSwWd2JC/w/iO"
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 {
-    "name": "kuetche",
-    "birthday": "16/08/09",
+    "name": "",
+    "birthday": "",
     "gender": "",
-    "geolocation": "",
+    "adresse": "",
     "pobox": "",
     "browsers": [
         "Chrome",
@@ -16,8 +16,8 @@
         "os_version": "10",
         "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel"
     },
-    "nationality": "",
-    "marital_status": "",
+    "nationality": "camerounaise",
+    "marital_status": "celibataire",
     "profession": "",
     "bank": {
         "account_number": "",
@@ -25,18 +25,15 @@
     },
     "email": [],
     "isp": [],
-    "username": [],
+    "username": [
+        "fideo"
+    ],
     "phone_number": [],
     "city": [],
     "country": [],
     "code_country": [],
     "language": [],
     "education": [],
-    "device": {
-        "os": [],
-        "brand": []
-    },
-    "relatives": {
-        "siblings": []
-    }
+    "brand": [],
+    "siblings": []
 }

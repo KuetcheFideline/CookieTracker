@@ -2,7 +2,7 @@
     "name": "Fideline kuetche ",
     "birthday": "2001-05-15",
     "gender": "female",
-    "geolocation": "",
+    "adresse": "",
     "pobox": " 15",
     "browsers": [
         "Chrome",
@@ -56,14 +56,6 @@
         "Licence en Informatique",
         "Master en Sciences des Donnees (en cours)"
     ],
-    "device": {
-        "os": [
-            "Linux",
-            "Windows"
-        ],
-        "brand": []
-    },
-    "relatives": {
-        "siblings": []
-    }
+    "brand": [],
+    "siblings": []
 }

@@ -1,26 +1,6 @@
 {
     "chrome": {
         "META:https://luna.amazon.fr": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -30,62 +10,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -98,26 +30,6 @@
             }
         },
         "META:https://www.datacamp.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -127,62 +39,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -195,26 +59,6 @@
             }
         },
         "META:https://www.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 10,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 10,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 10,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -224,62 +68,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 10,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 10,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 10,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -292,26 +88,6 @@
             }
         },
         "METAACCESS:https://luna.amazon.fr": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -321,62 +97,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -389,26 +117,6 @@
             }
         },
         "METAACCESS:https://www.datacamp.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -418,62 +126,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -486,26 +146,6 @@
             }
         },
         "METAACCESS:https://www.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -515,62 +155,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -583,26 +175,6 @@
             }
         },
         "VERSION": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 4,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 4,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 4,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -612,62 +184,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 4,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 4,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 4,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -680,26 +204,6 @@
             }
         },
         "": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 12,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 12,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 12,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -709,62 +213,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 12,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 12,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 12,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -789,26 +245,6 @@
     },
     "firefox": {
         "https+++accounts.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 4,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 4,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 4,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -818,62 +254,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 4,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 4,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 4,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -886,26 +274,6 @@
             }
         },
         "https+++aistudio.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 102,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 102,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 102,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -915,62 +283,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 102,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 102,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 102,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -1101,26 +421,6 @@
             }
         },
         "https+++auth.openai.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 7376,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 7376,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 7376,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 1,
                 "variants": 0
@@ -1130,62 +430,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 7376,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 7376,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 7376,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -5006,26 +4258,6 @@
             }
         },
         "https+++chatgpt.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 296,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 296,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 296,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -5035,62 +4267,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 296,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 296,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 296,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -5395,24 +4579,24 @@
                         "length": 31,
                         "cookie": "oai/apps/noAuthUserMessageCount",
                         "risk_score": 5,
-                        "cookie_index": 18
+                        "cookie_index": 17
                     },
                     {
                         "type": "token_pattern",
                         "subtype": "session_id",
-                        "entropy": 3.655221528859512,
+                        "entropy": 3.7635585991342375,
                         "length": 36,
                         "cookie": "statsig.session_id.1792610830",
-                        "risk_score": 7.255221528859511,
+                        "risk_score": 7.363558599134238,
                         "cookie_index": 19
                     },
                     {
                         "type": "token_pattern",
                         "subtype": "uuid",
-                        "entropy": 3.655221528859512,
+                        "entropy": 3.7635585991342375,
                         "length": 36,
                         "cookie": "statsig.session_id.1792610830",
-                        "risk_score": 7.255221528859511,
+                        "risk_score": 7.363558599134238,
                         "cookie_index": 19
                     },
                     {
@@ -5427,7 +4611,7 @@
                     {
                         "type": "json_data",
                         "subtype": "direct_json",
-                        "entropy": 4.788254928717852,
+                        "entropy": 4.7689007388018485,
                         "length": 105,
                         "cookie": "statsig.session_id.1792610830",
                         "risk_score": 6,
@@ -5437,26 +4621,6 @@
             }
         },
         "https+++gist.github.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 584,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 584,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 584,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -5466,62 +4630,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 584,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 584,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 584,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -5634,26 +4750,6 @@
             }
         },
         "https+++github.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 2320,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 2320,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 2320,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 2,
                 "variants": 0
@@ -5663,62 +4759,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 2320,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 2320,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 2320,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -6047,26 +5095,6 @@
             }
         },
         "https+++learn.microsoft.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 2394,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 2394,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 2394,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -6076,62 +5104,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 2394,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 2394,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 2394,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -6352,26 +5332,6 @@
             }
         },
         "https+++stackoverflow.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 52,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 52,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 52,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -6381,62 +5341,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 52,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 52,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 52,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -6513,26 +5425,6 @@
             }
         },
         "https+++visualstudio.microsoft.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 14,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 14,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 14,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -6542,62 +5434,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 14,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 14,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 14,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -6620,26 +5464,6 @@
             }
         },
         "https+++web.whatsapp.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 116,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 116,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 116,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -6649,26 +5473,10 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 116,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 116,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 116,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
@@ -6676,42 +5484,10 @@
                 "exact": 0,
                 "variants": 0
             },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
-                "exact": 0,
-                "variants": 0
-            },
             "suspicious_tokens": {
-                "count": 46,
-                "high_risk": 21,
-                "medium_risk": 20,
+                "count": 47,
+                "high_risk": 23,
+                "medium_risk": 19,
                 "low_risk": 5,
                 "items": [
                     {
@@ -7094,29 +5870,38 @@
                     },
                     {
                         "type": "token_pattern",
-                        "subtype": "session_id",
-                        "entropy": 4.282484261342601,
-                        "length": 27,
+                        "subtype": "api_key",
+                        "entropy": 4.547789463752856,
+                        "length": 43,
                         "cookie": "WaADVSecretKey",
-                        "risk_score": 6.982484261342601,
+                        "risk_score": 8.847789463752857,
+                        "cookie_index": 9
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.547789463752856,
+                        "length": 43,
+                        "cookie": "WaADVSecretKey",
+                        "risk_score": 8.847789463752857,
                         "cookie_index": 9
                     },
                     {
                         "type": "token_pattern",
                         "subtype": "base64_data",
-                        "entropy": 4.879664004902593,
+                        "entropy": 4.600921675209629,
                         "length": 44,
                         "cookie": "WaADVSecretKey",
-                        "risk_score": 9.279664004902592,
+                        "risk_score": 9.000921675209629,
                         "cookie_index": 9
                     },
                     {
                         "type": "high_entropy",
                         "subtype": "random_string",
-                        "entropy": 4.879664004902593,
+                        "entropy": 4.600921675209629,
                         "length": 44,
                         "cookie": "WaADVSecretKey",
-                        "risk_score": 7.319496007353889,
+                        "risk_score": 6.901382512814443,
                         "cookie_index": 9
                     },
                     {
@@ -7132,26 +5917,6 @@
             }
         },
         "https+++www.google.com": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 304,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 304,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 304,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 1,
                 "variants": 0
@@ -7161,62 +5926,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 304,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 304,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 304,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
@@ -7581,26 +6298,6 @@
             }
         },
         "https+++www.youtube.com^partitionKey=%28https%2Cgoogle.dev%29": {
-            "name": {
-                "exact": 0,
-                "variants": 0
-            },
-            "birthday": {
-                "exact": 0,
-                "variants": 0
-            },
-            "gender": {
-                "exact": 104,
-                "variants": 0
-            },
-            "geolocation": {
-                "exact": 104,
-                "variants": 0
-            },
-            "pobox": {
-                "exact": 104,
-                "variants": 0
-            },
             "browsers": {
                 "exact": 0,
                 "variants": 0
@@ -7610,62 +6307,14 @@
                 "variants": 0
             },
             "nationality": {
-                "exact": 104,
+                "exact": 0,
                 "variants": 0
             },
             "marital_status": {
-                "exact": 104,
-                "variants": 0
-            },
-            "profession": {
-                "exact": 104,
-                "variants": 0
-            },
-            "bank": {
-                "exact": 0,
-                "variants": 0
-            },
-            "email": {
-                "exact": 0,
-                "variants": 0
-            },
-            "isp": {
                 "exact": 0,
                 "variants": 0
             },
             "username": {
-                "exact": 0,
-                "variants": 0
-            },
-            "phone_number": {
-                "exact": 0,
-                "variants": 0
-            },
-            "city": {
-                "exact": 0,
-                "variants": 0
-            },
-            "country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "code_country": {
-                "exact": 0,
-                "variants": 0
-            },
-            "language": {
-                "exact": 0,
-                "variants": 0
-            },
-            "education": {
-                "exact": 0,
-                "variants": 0
-            },
-            "device": {
-                "exact": 0,
-                "variants": 0
-            },
-            "relatives": {
                 "exact": 0,
                 "variants": 0
             },
