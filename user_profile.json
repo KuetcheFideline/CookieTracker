@@ -2,7 +2,7 @@
     "name": "Fideline kuetche ",
     "birthday": "2001-05-15",
     "gender": "female",
-    "geolocation": "",
+    "adresse": "1 rue rene fernandat",
     "pobox": " 15",
     "browsers": [
         "Chrome",
@@ -10,19 +10,14 @@
     ],
     "ip_info": {
         "ip_public": "78.112.62.219",
-        "ip_local": "192.168.122.19",
-        "mac_address": "52:54:00:f3:de:7d",
-        "os": "Windows",
-        "os_version": "10",
-        "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel"
+        "ip_local": "127.0.1.1",
+        "mac_address": "dd:71:92:7d:de:76",
+        "os": "Linux",
+        "os_version": "6.8.0-83-generic",
+        "processor": "x86_64"
     },
     "nationality": "Cameroon",
-    "marital_status": "",
     "profession": "Data Scientist / Developpeur",
-    "bank": {
-        "account_number": "",
-        "bank_name": ""
-    },
     "email": [
         "fidoknn@gmail.com",
         "fidelinekuetche@gmail.com",
@@ -42,12 +37,9 @@
         "kuetchef",
         "lunak"
     ],
-    "phone_number": [],
-    "city": [],
     "country": [
         "Cameroon"
     ],
-    "code_country": [],
     "language": [
         "French",
         "English"
@@ -55,15 +47,5 @@
     "education": [
         "Licence en Informatique",
         "Master en Sciences des Donnees (en cours)"
-    ],
-    "device": {
-        "os": [
-            "Linux",
-            "Windows"
-        ],
-        "brand": []
-    },
-    "relatives": {
-        "siblings": []
-    }
+    ]
 }

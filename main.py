@@ -11,53 +11,10 @@ import shutil
 import subprocess
 from colorama import Fore, Style, init
 import psutil
-from chrome.chrome_linux import main_linux
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 
-
-import os
-import os
-
-def check_browser_installed(browser_name):
-    """Vérifie si un navigateur est installé sur Linux"""
-
-    # Alias pour corriger les noms reçus
-    aliases = {
-        "google chrome": "chrome",
-        "chrome": "chrome",
-        "firefox": "firefox",
-        "mozilla": "firefox",
-    }
-
-    browser_paths = {
-        'firefox': [
-            "/usr/bin/firefox",
-            "/usr/local/bin/firefox"
-        ],
-        'chrome': [
-            "/usr/bin/google-chrome",
-            "/usr/bin/google-chrome-stable",
-            "/usr/local/bin/google-chrome",
-            "/opt/google/chrome/google-chrome"
-        ]
-    }
-
-    # Normalisation avec alias
-    browser_key = aliases.get(browser_name.lower().strip())
-    if not browser_key:
-        print(f"✗ Navigateur {browser_name} non reconnu.")
-        return False
-
-    # Vérifier chaque chemin possible
-    for path in browser_paths.get(browser_key, []):
-        if os.path.exists(path):
-            print(f"✓ {browser_name} trouvé à: {path}")
-            return True
-
-    print(f"✗ {browser_name} non installé.")
-    return False
 
 
 def remove_matches_field(data):
@@ -66,6 +23,24 @@ def remove_matches_field(data):
         return {k: remove_matches_field(v) for k, v in data.items() if k != "matches"}
     elif isinstance(data, list):
         return [remove_matches_field(item) for item in data]
+    else:
+        return data
+
+
+def clean_empty_values(data):
+    """Supprime les valeurs vides (chaînes vides, listes vides, dictionnaires vides) du profil."""
+    if isinstance(data, dict):
+        cleaned = {}
+        for k, v in data.items():
+            cleaned_value = clean_empty_values(v)
+            # Garde seulement les valeurs non vides
+            if cleaned_value or cleaned_value == 0 or cleaned_value is False:  # Garde 0 et False
+                if not (isinstance(cleaned_value, (str, list, dict)) and len(cleaned_value) == 0):
+                    cleaned[k] = cleaned_value
+        return cleaned
+    elif isinstance(data, list):
+        # Filtre les éléments vides et nettoie récursivement
+        return [clean_empty_values(item) for item in data if item and str(item).strip()]
     else:
         return data
 
@@ -160,27 +135,6 @@ def get_system_info():
 PROFILE_FILE = "user_profile.json"
 
 
-
-def is_browser_running(browser_name: str) -> bool:
-    for proc in psutil.process_iter(attrs=['name', 'exe', 'cmdline']):
-        try:
-            name = proc.info['name'] or ''
-            exe = proc.info['exe'] or ''
-            cmdline = ' '.join(proc.info['cmdline'] or [])
-
-            if browser_name.lower() == "chrome":
-                if "google-chrome" in name.lower() or "google-chrome" in exe.lower():
-                    return True
-
-            elif browser_name.lower() in name.lower() or browser_name.lower() in exe.lower():
-                return True
-
-        except (psutil.NoSuchProcess, psutil.AccessDenied):
-            continue
-    return False
-
-
-
 def load_existing_profile():
     if os.path.exists(PROFILE_FILE):
         with open(PROFILE_FILE, "r") as f:
@@ -223,7 +177,7 @@ def load_profile_from_terminal():
         "name": prompt_field("Nom complet", old_data.get("name", "")),
         "birthday": prompt_field("Date de naissance (JJ/MM/AAAA)", old_data.get("birthday", "")),
         "gender": prompt_field("Genre (male/female/others)", old_data.get("gender", "")),
-        "geolocation": prompt_field("Geolocation (optionnel)", old_data.get("geolocation", "")),
+        "adresse": prompt_field("Adresse ", old_data.get("adresse", "")),
         "pobox": prompt_field("PO Box (optionnel)", old_data.get("pobox", "")),
         "browsers": old_data.get("browsers", ["Chrome", "Firefox"]),
         "ip_info": get_system_info(),
@@ -231,7 +185,7 @@ def load_profile_from_terminal():
         "marital_status": prompt_field("Statut marital", old_data.get("marital_status", "")),
         "profession": prompt_field("Profession", old_data.get("profession", "")),
         "bank": {
-            "account_number": prompt_field("N° compte bancaire (optionnel)", old_data.get("bank", {}).get("account_number", "")),
+            "account_number": prompt_field("N° compte bancaire (", old_data.get("bank", {}).get("account_number", "")),
             "bank_name": prompt_field("Nom banque", old_data.get("bank", {}).get("bank_name", ""))
         },
     }
@@ -246,46 +200,39 @@ def load_profile_from_terminal():
     user_data["language"] = multi_input("Langues", old_data.get("language", []))
     user_data["education"] = multi_input("Éducation", old_data.get("education", []))
     
-    user_data.setdefault("device", {})
-    user_data["device"]["os"] = multi_input("Systèmes d'exploitation", old_data.get("device", {}).get("os", []))
-    user_data["device"]["brand"] = multi_input("Marques d'appareils", old_data.get("device", {}).get("brand", []))
+    user_data["brand"] = multi_input("Marques d'appareils", old_data.get("device", {}).get("brand", []))
     
-    user_data.setdefault("relatives", {})
-    user_data["relatives"]["siblings"] = multi_input("Nom de vos contact les plus recents ", old_data.get("relatives", {}).get("siblings", []))
+    user_data["siblings"] = multi_input("Nom de vos contact les plus recents ", old_data.get("relatives", {}).get("siblings", []))
 
-    save_profile(user_data)
-    return user_data
+    # Nettoie les valeurs vides avant de sauvegarder
+    cleaned_user_data = clean_empty_values(user_data)
+    save_profile(cleaned_user_data)
+    return cleaned_user_data
 
 
 def search_profile():
-
     """
     Analyse des données stockées par les navigateurs dans le DOM et les cookies.
 
     Cette fonction :
     - Récupère le profil utilisateur via un formulaire en ligne de commande.
-    - Vérifie quels navigateurs sont installés sur la machine et ignore ceux qui ne le sont pas.
     - Exécute le traitement des navigateurs supportés (Firefox, Chrome, etc.).
     - Sauvegarde les résultats en JSON (cookies et DOM).
     - Met à jour le fichier `runtime.txt` pour suivre les exécutions.
 
      Utilisation :
     1. Lancer le script et remplir le formulaire affiché.
-    2. Fermer tous vos navigateurs AVANT le traitement.
-    3. Lors d’une nouvelle exécution, supprimer le fichier `runtime.txt` pour réinitialiser le compteur.
-    4. Quatre fichiers JSON sont générés :
+    2. Lors d'une nouvelle exécution, supprimer le fichier `runtime.txt` pour réinitialiser le compteur.
+    3. Quatre fichiers JSON sont générés :
        - `result_cookies.json` et `result_dom.json` (bruts, avec la colonne `matches`
          qui montre où les données ont été trouvées).
        - `result_cookies_clean.json` et `result_dom_clean.json` (nettoyés, sans la colonne `matches`,
          ceux-ci sont à transmettre pour analyse).
 
      Remarques :
-    - Si aucun navigateur installé n’est détecté, le script s’arrête.
-    - En cas d’erreur sur un navigateur, l’exécution continue avec les autres.
-    - Les statistiques brutes permettent de vérifier l’exactitude avant nettoyage.
+    - En cas d'erreur sur un navigateur, l'exécution continue avec les autres.
+    - Les statistiques brutes permettent de vérifier l'exactitude avant nettoyage.
     """
-
-
 
     profile = load_profile_from_terminal()
     os_type = get_os_info().lower()
@@ -293,31 +240,14 @@ def search_profile():
     results = []
     browsers = [b.lower() for b in profile.get("browsers", [])]
 
-    print(Fore.YELLOW + "\n=== VÉRIFICATION DES NAVIGATEURS INSTALLÉS ===" + Style.RESET_ALL)
-    installed_browsers = []
-    
-    for browser in browsers:
-        if check_browser_installed(browser):
-            installed_browsers.append(browser)
-        else:
-            print(f"⚠️  {browser} n'est pas installé, ignoré")
+    print(f"📋 Navigateurs à traiter: {', '.join(browsers)}")
 
-    if not installed_browsers:
-        print(Fore.RED + "⚠️  Aucun navigateur installé trouvé, arrêt du processus" + Style.RESET_ALL)
-        return
-    
+    print("profile to search : ",json.dumps(profile, indent=4))
 
-
-    for browser in installed_browsers:
-        if is_browser_running(browser):
-            print(Fore.RED + f"⚠️  Le navigateur {browser} est encore ouvert. "
-                             f"Veuillez le fermer avant de continuer." + Style.RESET_ALL)
-            return 
-
-    print(f"📋 Navigateurs à traiter: {', '.join(installed_browsers)}")
-
+    if os_type == "linux/ubuntu":
+        from chrome.chrome_linux import main_linux
         
-    for browser in installed_browsers:
+        for browser in browsers:
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
                 try:
@@ -326,12 +256,12 @@ def search_profile():
                 except Exception as e:
                     print(f"❌ Erreur lors du traitement de {browser}: {e}")
         
-            try:
-                linux_result = main_linux(user=profile, browser=installed_browsers, date=date)
-                print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
-                results.extend(linux_result)
-            except Exception as e:
-                print(f"❌ Erreur lors du traitement Linux: {e}")
+        try:
+            linux_result = main_linux(user=profile, browser=browsers, date=date)
+            print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
+            results.extend(linux_result)
+        except Exception as e:
+            print(f"❌ Erreur lors du traitement Linux: {e}")
 
     count += 1
     current = int(time.time() * 1e6)
