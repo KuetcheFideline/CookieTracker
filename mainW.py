@@ -17,25 +17,8 @@ from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 
 import os
-import winreg
 
-def get_browser_path_from_registry(browser_exe):
-    """
-    Recherche le chemin d'un exécutable de navigateur dans le registre Windows.
-    """
-    possible_keys = [
-        fr"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{browser_exe}",
-        fr"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\{browser_exe}",
-    ]
-    for key_path in possible_keys:
-        try:
-            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path) as key:
-                path, _ = winreg.QueryValueEx(key, None)
-                if os.path.exists(path):
-                    return path
-        except FileNotFoundError:
-            continue
-    return None
+
 
 def check_browser_installed(browser_name):
     """Vérifie si un navigateur est installé sur Windows"""
@@ -65,15 +48,11 @@ def check_browser_installed(browser_name):
 
     # Vérifie chemins classiques
     for path in browser_paths[browser_key]:
+        print(path)
         if os.path.exists(path):
             print(f"✓ {browser_name} trouvé: {path}")
             return True
 
-    # Vérifie dans le registre (HKCU + HKLM)
-    reg_path = get_browser_path_from_registry(exe_names[browser_key])
-    if reg_path:
-        print(f"✓ {browser_name} trouvé via registre: {reg_path}")
-        return True
 
     print(f"✗ {browser_name} non installé.")
     return False
@@ -282,7 +261,7 @@ def load_profile_from_terminal():
         "gender": prompt_field("Genre (male/female/others)", old_data.get("gender", "")),
         "geolocation": prompt_field("Geolocation (optionnel)", old_data.get("geolocation", "")),
         "pobox": prompt_field("PO Box (optionnel)", old_data.get("pobox", "")),
-        "browsers": old_data.get("browsers", [" google Chrome", "Firefox"]),
+        "browsers": old_data.get("browsers", ["Chrome", "Firefox"]),
         "ip_info": get_system_info(),
         "nationality": prompt_field("Nationalité", old_data.get("nationality", "")),
         "marital_status": prompt_field("Statut marital", old_data.get("marital_status", "")),
