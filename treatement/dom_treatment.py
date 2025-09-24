@@ -88,7 +88,6 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                     matches_name = list(pattern.finditer(cookie_name_str))
                     
                     for match in matches_val + matches_name:
-                        # Vérifier que ce n’est pas déjà un match exact
                         is_exact = any(exact_p.search(match.group()) for exact_p in patterns['exact'])
                         if not is_exact:
                             host_info[key]['variants'] += 1

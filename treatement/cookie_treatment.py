@@ -114,7 +114,6 @@ def search_personal_info_robust(cookies_by_host, personal_info):
                 for pattern in patterns['variants']:
                     matches = pattern.finditer(val_clean)
                     for match in matches:
-                        # Vérifier que ce n'est pas déjà un match exact
                         is_exact = any(
                             exact_p.search(match.group()) for exact_p in patterns['exact']
                         )
