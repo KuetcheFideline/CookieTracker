@@ -59,6 +59,8 @@ def check_browser_installed(browser_name):
 
     browser_key = browser_name.lower()
 
+    print
+
     if browser_key not in browser_paths:
         print(f"✗ Navigateur {browser_name} non reconnu.")
         return False
