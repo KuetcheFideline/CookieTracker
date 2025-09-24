@@ -483,6 +483,7 @@ def search_profile():
     if os_type == "windows":
         from chromium_windows.main import main_chromium
         
+        
         for browser in browsers:
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
