@@ -28,6 +28,28 @@ def remove_matches_field(data):
         return data
 
 
+def remove_empty_values(data):
+    """Supprime les valeurs vides (chaînes vides, listes vides, None) du dictionnaire."""
+    if isinstance(data, dict):
+        cleaned = {}
+        for k, v in data.items():
+            cleaned_v = remove_empty_values(v)
+            # Garde seulement les valeurs non vides
+            if cleaned_v is not None and cleaned_v != "" and cleaned_v != [] and cleaned_v != {}:
+                cleaned[k] = cleaned_v
+        return cleaned
+    elif isinstance(data, list):
+        # Filtre les éléments vides de la liste et nettoie récursivement
+        cleaned_list = []
+        for item in data:
+            cleaned_item = remove_empty_values(item)
+            if cleaned_item is not None and cleaned_item != "" and cleaned_item != [] and cleaned_item != {}:
+                cleaned_list.append(cleaned_item)
+        return cleaned_list
+    else:
+        return data
+
+
 def resource_path(relative_path):
     """ Trouve le bon chemin même avec PyInstaller """
     if hasattr(sys, "_MEIPASS"):
@@ -414,7 +436,7 @@ def load_profile_from_terminal():
         "name": prompt_field("Nom complet", old_data.get("name", "")),
         "birthday": prompt_field("Date de naissance (JJ/MM/AAAA)", old_data.get("birthday", "")),
         "gender": prompt_field("Genre (male/female/others)", old_data.get("gender", "")),
-        "geolocation": prompt_field("Geolocation (optionnel)", old_data.get("geolocation", "")),
+        "adresse": prompt_field("Adresse ", old_data.get("adresse", "")),
         "pobox": prompt_field("PO Box (optionnel)", old_data.get("pobox", "")),
         "browsers": old_data.get("browsers", ["Chrome", "Firefox"]),
         "ip_info": get_system_info(),
@@ -422,7 +444,7 @@ def load_profile_from_terminal():
         "marital_status": prompt_field("Statut marital", old_data.get("marital_status", "")),
         "profession": prompt_field("Profession", old_data.get("profession", "")),
         "bank": {
-            "account_number": prompt_field("N° compte bancaire (optionnel)", old_data.get("bank", {}).get("account_number", "")),
+            "account_number": prompt_field("N° compte bancaire (", old_data.get("bank", {}).get("account_number", "")),
             "bank_name": prompt_field("Nom banque", old_data.get("bank", {}).get("bank_name", ""))
         },
     }
@@ -437,12 +459,9 @@ def load_profile_from_terminal():
     user_data["language"] = multi_input("Langues", old_data.get("language", []))
     user_data["education"] = multi_input("Éducation", old_data.get("education", []))
     
-    user_data.setdefault("device", {})
-    user_data["device"]["os"] = multi_input("Systèmes d'exploitation", old_data.get("device", {}).get("os", []))
-    user_data["device"]["brand"] = multi_input("Marques d'appareils", old_data.get("device", {}).get("brand", []))
+    user_data["brand"] = multi_input("Marques d'appareils", old_data.get("device", {}).get("brand", []))
     
-    user_data.setdefault("relatives", {})
-    user_data["relatives"]["siblings"] = multi_input("Nom de vos contact les plus recents ", old_data.get("relatives", {}).get("siblings", []))
+    user_data["siblings"] = multi_input("Nom de vos contact les plus recents ", old_data.get("relatives", {}).get("siblings", []))
 
     save_profile(user_data)
     return user_data
@@ -454,6 +473,10 @@ def search_profile():
 
     Cette fonction :
     - Récupère le profil utilisateur via un formulaire en ligne de commande.
+<<<<<<< HEAD
+=======
+    - Nettoie le profil en supprimant les valeurs vides.
+>>>>>>> dd2fe96 (linux)
     - Exécute le traitement des navigateurs supportés (Firefox, Chrome, etc.).
     - Sauvegarde les résultats en JSON (cookies et DOM).
     - Met à jour le fichier `runtime.txt` pour suivre les exécutions.
@@ -470,9 +493,20 @@ def search_profile():
      Remarques :
     - En cas d'erreur sur un navigateur, l'exécution continue avec les autres.
     - Les statistiques brutes permettent de vérifier l'exactitude avant nettoyage.
+<<<<<<< HEAD
+=======
+    - Les valeurs vides sont automatiquement supprimées du profil avant traitement.
+>>>>>>> dd2fe96 (linux)
     """
 
     profile = load_profile_from_terminal()
+    
+    # Nettoyage du profil : supprime les valeurs vides
+    print(Fore.CYAN + "🧹 Nettoyage du profil (suppression des valeurs vides)..." + Style.RESET_ALL)
+    profile = remove_empty_values(profile)
+    print(Fore.GREEN + "✓ Profil nettoyé" + Style.RESET_ALL)
+    print("Donnes a chercher :",json.dumps(profile, indent=4))
+    
     os_type = get_os_info().lower()
     count, date = init_runtime_file("runtime.txt")
     results = []
