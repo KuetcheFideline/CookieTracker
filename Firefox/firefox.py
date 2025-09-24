@@ -75,7 +75,6 @@ class Firefox:
                 if profile.startswith("Profiles/"):
                     profile = profile.split("/", 1)[1]
 
-                # if self.os_name == 'Windows':
                 profile_dir = profile_dir / "Profiles"
                 self.cookies_path = profile_dir / profile / "cookies.sqlite"
             else:
@@ -130,11 +129,11 @@ class Firefox:
                         raise Exception("No profiles found at {}".format(profile_dir))
 
             # Ajustement pour Windows
-            if self.os_name == "Windows" and profile.startswith("Profiles/"):
-                profile = profile.split("/", 1)[1]
+            if self.os_name == "Windows":
+                 profile = Path("Profiles") / Path(profile.split("/", 1)[1])
+            profile_path = profile_dir /profile
 
-            profile_path = profile_dir / profile
-
+              
             # 📌 Dossier du DOM Storage moderne
             domstorage_dir = profile_path / "storage" / "default"
 
