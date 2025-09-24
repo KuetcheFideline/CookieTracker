@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 from chromium_windows.cookies_decrypter import get_cookies
 from chromium_windows.dom_storage import get_dom_storage_data
 from chromium_windows.personal_info_finder import search_personal_info
@@ -7,6 +8,26 @@ import uuid
 
 from treatement.dom_treatment import search_personal_info_in_dict
 from treatement.cookie_treatment import search_personal_info_robust
+
+
+
+def transform_dom_data(dom_data):
+    result = {}
+    for host, items in dom_data.items():
+        result[host] = {}
+        for item in items:
+            result[host][item["key"]] = item["value"]
+    return result
+
+def delete_output_json_dir():
+    directory = "chromium_windows/output/json"
+    if os.path.exists(directory):
+        shutil.rmtree(directory)
+        print(f"[INFO] Dossier supprimé : {directory}")
+    else:
+        print(f"[INFO] Dossier déjà inexistant : {directory}")
+
+
 
 # Function to build paths based on browser
 def get_paths(browser, username):
@@ -64,7 +85,7 @@ def main_chromium(user_info, date, browser):
         return  
     
 
-    local_storage_data = get_dom_storage_data(path_dom_storage)
+    local_storage_data = get_dom_storage_data(session_id, browser,path_dom_storage)
 
 
 
@@ -76,17 +97,19 @@ def main_chromium(user_info, date, browser):
         path_cookies_db=path_cookies,
     )
 
+
     # The cookies_data should be the result of your previously generated cookies.json
     with open(json_filepath, "r") as f:
         cookies_data = json.load(f)
     
     with open(local_storage_data, "r") as f:
         dom_data = json.load(f) 
-
-    # Search for personal info in the cookies
+   
     cookies_stats= search_personal_info_robust(cookies_data, user_info)
-    dom_stats = search_personal_info_in_dict(dom_data, user_info)
-
+    dom_data_transformed = transform_dom_data(dom_data)
+    dom_stats = search_personal_info_in_dict(dom_data_transformed, user_info)
+    # delete_output_json_dir()            
     return {browser: {"cookies": cookies_stats, "dom": dom_stats}}
+ 
 
 

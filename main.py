@@ -11,7 +11,7 @@ import shutil
 import subprocess
 from colorama import Fore, Style, init
 import psutil
-
+from chrome.chrome_linux import main_linux  
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info

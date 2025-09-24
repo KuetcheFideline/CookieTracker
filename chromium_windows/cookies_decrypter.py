@@ -51,7 +51,6 @@ def get_cookies(session_id, browser_name, path_local_state, path_cookies_db):
    # détecter si on doit utiliser la v20
     try:
         master_key = derive_v20_master_key_from_local_state(path_local_state)
-        print(f"[INFO] Master key (v20) trouvée : {master_key}")
     except Exception as e:
         print(f"[WARN] Echec v20, fallback vers master_key classique : {e}")
         from chromium_windows.master_key import find_master_key
