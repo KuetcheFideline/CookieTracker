@@ -66,12 +66,14 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
             
             # 1. Recherche données personnelles
             for key, patterns in data_patterns.items():
+                is_exact = False
                 # Recherche exacte dans valeur ET nom du cookie
                 for pattern in patterns['exact']:
                     matches_val = list(pattern.finditer(val))
                     matches_name = list(pattern.finditer(cookie_name_str))
                     
                     for match in matches_val + matches_name:
+                        is_exact = True
                         host_info[key]['exact'] += 1
                         host_info[key]['matches'].append({
                             'type': 'exact',
@@ -81,22 +83,22 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                             'match_position': {'start': match.start(), 'end': match.end()},
                         })
                 
-                # Recherche variants
-                for pattern in patterns['variants']:
-                    matches_val = list(pattern.finditer(val_clean))
-                    matches_name = list(pattern.finditer(cookie_name_str))
-                    
-                    for match in matches_val + matches_name:
-                        is_exact = any(exact_p.search(match.group()) for exact_p in patterns['exact'])
-                        if not is_exact:
-                            host_info[key]['variants'] += 1
-                            host_info[key]['matches'].append({
-                                'type': 'variant',
-                                'matched_text': match.group(),
-                                'cookie_name': cookie_name_str,
-                                'cookie_index': cookie_idx,
-                                'match_position': {'start': match.start(), 'end': match.end()},
-                            })
+                if not is_exact:
+
+                    # Recherche variants
+                    for pattern in patterns['variants']:
+                        matches_val = list(pattern.finditer(val_clean))
+                        matches_name = list(pattern.finditer(cookie_name_str))
+                        
+                        for match in matches_val + matches_name:
+                                host_info[key]['variants'] += 1
+                                host_info[key]['matches'].append({
+                                    'type': 'variant',
+                                    'matched_text': match.group(),
+                                    'cookie_name': cookie_name_str,
+                                    'cookie_index': cookie_idx,
+                                    'match_position': {'start': match.start(), 'end': match.end()},
+                                })
             
             # 2. Détection tokens suspects
             suspicious_items = detect_suspicious_tokens(val, cookie_name_str)
