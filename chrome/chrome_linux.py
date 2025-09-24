@@ -17,12 +17,10 @@ def main_linux(user,browser,date):
 
 
 
-             if(cookies ==0):
-                 print(f"Le navigateur {b} n'est pas pris en compte sur Linux/Ubuntu .")
-             else:
-                 stats= search_personal_info_robust(cookies,user)
-                 dom =search_personal_info_in_dict(DomStorage,user)
-                 statistiques.append({b:{"cookies":stats,"dom":dom}})                          
+            
+             stats= search_personal_info_robust(cookies,user)
+             dom =search_personal_info_in_dict(DomStorage,user)
+             statistiques.append({b:{"cookies":stats,"dom":dom}})                          
                      
     return statistiques
 

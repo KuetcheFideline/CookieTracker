@@ -1,0 +1,42 @@
+{
+    "name": "",
+    "birthday": "",
+    "gender": "",
+    "geolocation": "",
+    "pobox": "",
+    "browsers": [
+        "Chrome",
+        "Firefox"
+    ],
+    "ip_info": {
+        "ip_public": "195.220.84.49",
+        "ip_local": "127.0.1.1",
+        "mac_address": "dd:71:92:7d:de:76",
+        "os": "Linux",
+        "os_version": "6.8.0-83-generic",
+        "processor": "x86_64"
+    },
+    "nationality": "",
+    "marital_status": "",
+    "profession": "",
+    "bank": {
+        "account_number": "",
+        "bank_name": ""
+    },
+    "email": [],
+    "isp": [],
+    "username": [],
+    "phone_number": [],
+    "city": [],
+    "country": [],
+    "code_country": [],
+    "language": [],
+    "education": [],
+    "device": {
+        "os": [],
+        "brand": []
+    },
+    "relatives": {
+        "siblings": []
+    }
+}

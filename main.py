@@ -11,34 +11,52 @@ import shutil
 import subprocess
 from colorama import Fore, Style, init
 import psutil
-from chrome.chrome_linux import main_linux  
+from chrome.chrome_linux import main_linux
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 
 
+import os
+import os
+
 def check_browser_installed(browser_name):
-    """Vérifie si un navigateur est installé sur le système"""
-    browser_commands = {
-        'firefox': ['firefox', 'firefox-bin'],
-        'mozilla': ['firefox', 'firefox-bin'],
-        'chrome': ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser'],
-        'chromium': ['chromium', 'chromium-browser'],
-        'edge': ['microsoft-edge', 'microsoft-edge-stable'],
-        'opera': ['opera', 'opera-stable'],
-        'brave': ['brave-browser', 'brave']
+    """Vérifie si un navigateur est installé sur Linux"""
+
+    # Alias pour corriger les noms reçus
+    aliases = {
+        "google chrome": "chrome",
+        "chrome": "chrome",
+        "firefox": "firefox",
+        "mozilla": "firefox",
     }
-    
-    browser_key = browser_name.lower()
-    if browser_key not in browser_commands:
+
+    browser_paths = {
+        'firefox': [
+            "/usr/bin/firefox",
+            "/usr/local/bin/firefox"
+        ],
+        'chrome': [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/local/bin/google-chrome",
+            "/opt/google/chrome/google-chrome"
+        ]
+    }
+
+    # Normalisation avec alias
+    browser_key = aliases.get(browser_name.lower().strip())
+    if not browser_key:
+        print(f"✗ Navigateur {browser_name} non reconnu.")
         return False
-    
-    for cmd in browser_commands[browser_key]:
-        if shutil.which(cmd):
-            print(f"✓ {browser_name} trouvé: {cmd}")
+
+    # Vérifier chaque chemin possible
+    for path in browser_paths.get(browser_key, []):
+        if os.path.exists(path):
+            print(f"✓ {browser_name} trouvé à: {path}")
             return True
-    
-    print(f"✗ {browser_name} non installé")
+
+    print(f"✗ {browser_name} non installé.")
     return False
 
 
@@ -207,7 +225,7 @@ def load_profile_from_terminal():
         "gender": prompt_field("Genre (male/female/others)", old_data.get("gender", "")),
         "geolocation": prompt_field("Geolocation (optionnel)", old_data.get("geolocation", "")),
         "pobox": prompt_field("PO Box (optionnel)", old_data.get("pobox", "")),
-        "browsers": old_data.get("browsers", [" google Chrome", "Firefox"]),
+        "browsers": old_data.get("browsers", ["Chrome", "Firefox"]),
         "ip_info": get_system_info(),
         "nationality": prompt_field("Nationalité", old_data.get("nationality", "")),
         "marital_status": prompt_field("Statut marital", old_data.get("marital_status", "")),
@@ -298,10 +316,8 @@ def search_profile():
 
     print(f"📋 Navigateurs à traiter: {', '.join(installed_browsers)}")
 
-    if os_type == "linux/ubuntu":
-        from chrome.chrome_linux import main_linux
         
-        for browser in installed_browsers:
+    for browser in installed_browsers:
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
                 try:
@@ -310,12 +326,12 @@ def search_profile():
                 except Exception as e:
                     print(f"❌ Erreur lors du traitement de {browser}: {e}")
         
-        try:
-            linux_result = main_linux(user=profile, browser=installed_browsers, date=date)
-            print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
-            results.extend(linux_result)
-        except Exception as e:
-            print(f"❌ Erreur lors du traitement Linux: {e}")
+            try:
+                linux_result = main_linux(user=profile, browser=installed_browsers, date=date)
+                print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
+                results.extend(linux_result)
+            except Exception as e:
+                print(f"❌ Erreur lors du traitement Linux: {e}")
 
     count += 1
     current = int(time.time() * 1e6)

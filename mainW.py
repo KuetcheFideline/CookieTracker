@@ -16,29 +16,31 @@ from chromium_windows.main import main_chromium
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 
-
-
 def check_browser_installed(browser_name):
-    """Vérifie si un navigateur est installé sur Windows"""
-    
-    # Dictionnaire des chemins d'installation possibles pour chaque navigateur sous Windows
+    """Vérifie si un navigateur est installé sur Linux"""
+
+    # Dictionnaire des chemins d'installation possibles pour chaque navigateur sous Linux
     browser_paths = {
-        'firefox': [r"C:\Program Files\Mozilla Firefox\firefox.exe", r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"],
-        'chrome': [r"C:\Program Files\Google\Chrome\Application\chrome.exe", r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"],
-        'edge': [r"C:\Program Files\Microsoft\Edge\Application\msedge.exe", r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"],
-        'opera': [r"C:\Program Files\Opera\Opera\opera.exe", r"C:\Program Files (x86)\Opera\Opera\opera.exe"],
-        'brave': [r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe", r"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe"]
+        'firefox': [
+            "/usr/bin/firefox",
+            "/usr/local/bin/firefox"
+        ],
+        'chrome': [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/local/bin/google-chrome",
+            "/opt/google/chrome/google-chrome"
+        ]
     }
 
-    # Convertir le nom du navigateur en minuscule pour normalisation
+    # Normalisation en minuscule
     browser_key = browser_name.lower()
 
-    # Si le navigateur n'est pas reconnu, retour False
     if browser_key not in browser_paths:
         print(f"✗ Navigateur {browser_name} non reconnu.")
         return False
 
-    # Vérifier chaque chemin d'installation possible
+    # Vérifier chaque chemin possible
     for path in browser_paths[browser_key]:
         if os.path.exists(path):
             print(f"✓ {browser_name} trouvé à: {path}")
@@ -46,6 +48,7 @@ def check_browser_installed(browser_name):
 
     print(f"✗ {browser_name} non installé.")
     return False
+
 
 
 def remove_matches_field(data):

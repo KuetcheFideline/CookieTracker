@@ -1,9 +1,0 @@
-pycryptodome
-keyring
-cryptography
-firebase-admin
-google-cloud-firestore
-customtkinter
-pyinstaller
-PythonForWindows
-

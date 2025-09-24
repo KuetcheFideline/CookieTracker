@@ -97,10 +97,12 @@ def search_personal_info_robust(cookies_by_host, personal_info):
             
             # 1. Recherche données personnelles AVEC TRAÇABILITÉ
             for key, patterns in data_patterns.items():
+                is_exact = False
                 # Recherche exacte
                 for pattern in patterns['exact']:
                     matches = pattern.finditer(val_decoded)
                     for match in matches:
+                        is_exact = True
                         host_info[key]['exact'] += 1
                         host_info[key]['matches'].append({
                             'type': 'exact',
@@ -111,28 +113,25 @@ def search_personal_info_robust(cookies_by_host, personal_info):
                         })
                 
                 # Recherche variants
-                for pattern in patterns['variants']:
-                    matches = pattern.finditer(val_clean)
-                    for match in matches:
-                        is_exact = any(
-                            exact_p.search(match.group()) for exact_p in patterns['exact']
-                        )
-                        if not is_exact:
-                            host_info[key]['variants'] += 1
-                            host_info[key]['matches'].append({
-                                'type': 'variant',
-                                'matched_text': match.group(),
-                                'cookie_name': cookie_name,
-                                'cookie_index': cookie_idx,
-                                'match_position': {'start': match.start(), 'end': match.end()},
-                            })
+                if not is_exact:
+
+                    for pattern in patterns['variants']:
+                        matches = pattern.finditer(val_clean)
+                        for match in matches:
+                                host_info[key]['variants'] += 1
+                                host_info[key]['matches'].append({
+                                    'type': 'variant',
+                                    'matched_text': match.group(),
+                                    'cookie_name': cookie_name,
+                                    'cookie_index': cookie_idx,
+                                    'match_position': {'start': match.start(), 'end': match.end()},
+                                })
             
             # 2. Détection tokens/clés suspectes (inchangé car déjà robuste)
             suspicious_items = detect_suspicious_tokens(val_decoded, cookie_name)
             for item in suspicious_items:
                 item.update({
                     'cookie_index': cookie_idx,
-                    'view': val_decoded[:50] + ('...' if len(val_decoded) > 50 else '')
                 })
                 
                 host_info['suspicious_tokens']['count'] += 1

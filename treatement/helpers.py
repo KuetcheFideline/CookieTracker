@@ -169,6 +169,122 @@ def create_name_variants(name):
     return [v for v in set(variants) if v and v.strip()]
 
 
+
+def create_pobox_variants(pobox):
+    """Crée des variants pour les P.O. Box / Boîtes postales"""
+    if not pobox or not str(pobox).strip():
+        return []
+    
+    variants = [pobox.lower(), pobox.upper()]
+    pobox_clean = pobox.strip()
+    
+    # Vérification si c'est juste un nombre (utilisateur a saisi que les chiffres)
+    if pobox_clean.isdigit():
+        num = pobox_clean
+        
+        # Si c'est juste un nombre, ajouter tous les préfixes possibles
+        variants.extend([
+            # Variants français
+            f"bp {num}",
+            f"bp{num}",
+            f"b.p. {num}",
+            f"b.p.{num}",
+            f"boite postale {num}",
+            f"boîte postale {num}",
+            f"cedex {num}",
+            
+            # Variants anglais
+            f"po box {num}",
+            f"pobox {num}",
+            f"po.box {num}",
+            f"p.o. box {num}",
+            f"p.o.box {num}",
+            f"post office box {num}",
+            f"postbox {num}",
+            
+            # Variants allemands
+            f"postfach {num}",
+            f"pf {num}",
+            
+            # Variants espagnols/italiens
+            f"apartado {num}",
+            f"ap {num}",
+            f"casella postale {num}",
+            f"cp {num}",
+            
+            # Formats numériques
+            f"#{num}",
+            f"no {num}",
+            f"n° {num}",
+            f"nr {num}"
+        ])
+    else:
+        # Extraction du numéro de boîte postale
+        box_number = re.search(r'\b(\d+)\b', pobox_clean)
+        if box_number:
+            num = box_number.group(1)
+            
+            # Variants français
+            variants.extend([
+                f"bp {num}",
+                f"bp{num}",
+                f"b.p. {num}",
+                f"b.p.{num}",
+                f"boite postale {num}",
+                f"boîte postale {num}",
+                f"cedex {num}",
+                
+                # Variants anglais
+                f"po box {num}",
+                f"pobox {num}",
+                f"po.box {num}",
+                f"p.o. box {num}",
+                f"p.o.box {num}",
+                f"post office box {num}",
+                f"postbox {num}",
+                
+                # Variants allemands
+                f"postfach {num}",
+                f"pf {num}",
+                
+                # Variants espagnols/italiens
+                f"apartado {num}",
+                f"ap {num}",
+                f"casella postale {num}",
+                f"cp {num}",
+                
+                # Formats numériques
+                num,
+                f"#{num}",
+                f"no {num}",
+                f"n° {num}",
+                f"nr {num}"
+            ])
+    
+    # Patterns de reconnaissance de boîtes postales
+    pobox_patterns = [
+        r'(bp|b\.p\.?)\s*(\d+)',
+        r'(po\.?\s*box|pobox)\s*(\d+)',
+        r'(postfach|pf)\s*(\d+)',
+        r'(apartado|ap)\s*(\d+)',
+        r'(cedex)\s*(\d+)',
+        r'(boite|boîte)\s*postale\s*(\d+)',
+        r'casella\s*postale\s*(\d+)'
+    ]
+    
+    for pattern in pobox_patterns:
+        match = re.search(pattern, pobox_clean.lower())
+        if match and len(match.groups()) >= 2:
+            prefix = match.group(1)
+            number = match.group(2)
+            variants.extend([
+                f"{prefix} {number}",
+                f"{prefix}{number}",
+                number
+            ])
+    
+    return [v for v in set(variants) if v and v.strip()]
+
 def create_email_variants(email):
     if not email or not str(email).strip():  # AJOUT: Vérification valeur vide
         return []
@@ -177,7 +293,7 @@ def create_email_variants(email):
     
     if '@' in email:
         username, domain = email.lower().split('@', 1)
-        if username:  # AJOUT: Vérifier que le username n'est pas vide
+        if username:  
             variants.extend([
                 username,  
                 f"{username}@",  
@@ -187,11 +303,11 @@ def create_email_variants(email):
                 f"{username}@outlook.com"
             ])
     
-    return [v for v in variants if v and v.strip()]  # AJOUT: Filtrer les variants vides
+    return [v for v in variants if v and v.strip()]  
 
 
 def create_phone_variants(phone):
-    if not phone or not str(phone).strip():  # AJOUT: Vérification valeur vide
+    if not phone or not str(phone).strip():  
         return []
         
     digits_only = re.sub(r'\D', '', phone)
@@ -209,7 +325,7 @@ def create_phone_variants(phone):
             digits_only[1:] if digits_only.startswith('0') else digits_only 
         ])
     
-    return [v for v in set(variants) if v and v.strip()]  # AJOUT: Filtrer les variants vides
+    return [v for v in set(variants) if v and v.strip()]  #
 
 
 def create_generic_variants(value):
@@ -223,7 +339,7 @@ def create_generic_variants(value):
         re.sub(r'[^\w]', '', value.lower()),  
         re.sub(r'\s+', '', value.lower())   
     ]
-    return [v for v in set(variants) if v and v.strip()]  # AJOUT: Filtrer les variants vides
+    return [v for v in set(variants) if v and v.strip()]  
 def create_generic_variants(value: str) -> List[str]:
     """Variants génériques pour autres données"""
     variants = [
@@ -251,5 +367,7 @@ def get_variants_for_key(key: str, value: Union[str, List]) -> List[str]:
         return create_email_variants(value_str)
     elif key in ['phone', 'phone_number', 'tel']:
         return create_phone_variants(value_str)
+    elif key in ['pobox', 'po_box', 'boite_postale', 'box']:
+        return create_pobox_variants(value_str)
     else:
         return create_generic_variants(value_str)
