@@ -1,0 +1,877 @@
+{
+    "chrome": {
+        ".google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 23,
+                "high_risk": 18,
+                "medium_risk": 5,
+                "low_risk": 0,
+                "items": [
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.537844793048881,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 8.137844793048881,
+                        "cookie_index": 0,
+                        "view": "AaJma5tFSY-a0EDQk6EEO7_yXIvDDut0PuPRdelBb9PO50sEeU..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.971211905110698,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 0,
+                        "view": "AaJma5tFSY-a0EDQk6EEO7_yXIvDDut0PuPRdelBb9PO50sEeU..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.537844793048881,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 8.137844793048881,
+                        "cookie_index": 0,
+                        "view": "AaJma5tFSY-a0EDQk6EEO7_yXIvDDut0PuPRdelBb9PO50sEeU..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.971211905110698,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 7.456817857666047,
+                        "cookie_index": 0,
+                        "view": "AaJma5tFSY-a0EDQk6EEO7_yXIvDDut0PuPRdelBb9PO50sEeU..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1,
+                        "view": "CAISHAgCEhJnd3NfMjAyNTA5MTgtMF9SQzEaAmZyIAEaBgiAxs..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1,
+                        "view": "CAISHAgCEhJnd3NfMjAyNTA5MTgtMF9SQzEaAmZyIAEaBgiAxs..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1,
+                        "view": "CAISHAgCEhJnd3NfMjAyNTA5MTgtMF9SQzEaAmZyIAEaBgiAxs..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 7.100074046058254,
+                        "cookie_index": 1,
+                        "view": "CAISHAgCEhJnd3NfMjAyNTA5MTgtMF9SQzEaAmZyIAEaBgiAxs..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.099436412484686,
+                        "length": 46,
+                        "cookie": "",
+                        "risk_score": 9.699436412484687,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.65926470071287,
+                        "length": 99,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.099436412484686,
+                        "length": 46,
+                        "cookie": "",
+                        "risk_score": 9.699436412484687,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.378783493486177,
+                        "length": 28,
+                        "cookie": "",
+                        "risk_score": 7.1787834934861765,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.165894208390023,
+                        "length": 21,
+                        "cookie": "",
+                        "risk_score": 6.265894208390023,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.65926470071287,
+                        "length": 99,
+                        "cookie": "",
+                        "risk_score": 8.488897051069305,
+                        "cookie_index": 2,
+                        "view": "ABablnfcJpOf5rEiQ1yPK9CLy9864wTzDJ7ig9uRmflrFN-Z_t..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.898153434632013,
+                        "length": 42,
+                        "cookie": "",
+                        "risk_score": 9.098153434632014,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.437480133034315,
+                        "length": 119,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.058364648336088,
+                        "length": 64,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.7953813933228755,
+                        "length": 300,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.898153434632013,
+                        "length": 42,
+                        "cookie": "",
+                        "risk_score": 9.098153434632014,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.437480133034315,
+                        "length": 119,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.403856189774723,
+                        "length": 25,
+                        "cookie": "",
+                        "risk_score": 6.903856189774723,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.058364648336088,
+                        "length": 64,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.7953813933228755,
+                        "length": 300,
+                        "cookie": "",
+                        "risk_score": 8.693072089984312,
+                        "cookie_index": 3,
+                        "view": "525=ONBn98B2mzQx3anz_Z6UP1B4vZMiacaQW8OLwp6IGNRfmh..."
+                    }
+                ]
+            }
+        },
+        "accounts.google.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 3,
+                "high_risk": 0,
+                "medium_risk": 3,
+                "low_risk": 0,
+                "items": [
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.2574258137630507,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 6.257425813763051,
+                        "cookie_index": 0,
+                        "view": "8272295_48_52_123900_48_436380"
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.481727678869737,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.481727678869737,
+                        "cookie_index": 1,
+                        "view": "1:XnjgcmjakOjhxugYN8JdWDNZ9cR6DA:jMopW4IAeBt2-9Ps"
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.481727678869737,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.481727678869737,
+                        "cookie_index": 1,
+                        "view": "1:XnjgcmjakOjhxugYN8JdWDNZ9cR6DA:jMopW4IAeBt2-9Ps"
+                    }
+                ]
+            }
+        },
+        ".datacamp.com": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 11,
+                "high_risk": 4,
+                "medium_risk": 7,
+                "low_risk": 0,
+                "items": [
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.67619062614183,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 7.27619062614183,
+                        "cookie_index": 0,
+                        "view": "d6769466-aa00-4472-8802-8d2791a5ee83"
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "uuid",
+                        "entropy": 3.67619062614183,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 7.27619062614183,
+                        "cookie_index": 0,
+                        "view": "d6769466-aa00-4472-8802-8d2791a5ee83"
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.9132696895151082,
+                        "length": 25,
+                        "cookie": "",
+                        "risk_score": 6.413269689515108,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.286790198827112,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.8867901988271125,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.349648912578752,
+                        "length": 23,
+                        "cookie": "",
+                        "risk_score": 6.649648912578752,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.286790198827112,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.8867901988271125,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.349648912578752,
+                        "length": 23,
+                        "cookie": "",
+                        "risk_score": 6.649648912578752,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.711112168386486,
+                        "length": 170,
+                        "cookie": "",
+                        "risk_score": 8.56666825257973,
+                        "cookie_index": 1,
+                        "view": "sON2sgUvM9VhuZ.v73R0aQ2moj8ArW.PLe79LSKoaCw-175871..."
+                    }
+                ]
+            }
+        },
+        ".amazon.fr": {
+            "name": {
+                "exact": 0,
+                "variants": 0
+            },
+            "birthday": {
+                "exact": 0,
+                "variants": 0
+            },
+            "gender": {
+                "exact": 0,
+                "variants": 0
+            },
+            "pobox": {
+                "exact": 0,
+                "variants": 0
+            },
+            "browsers": {
+                "exact": 0,
+                "variants": 0
+            },
+            "ip_info": {
+                "exact": 0,
+                "variants": 0
+            },
+            "nationality": {
+                "exact": 0,
+                "variants": 0
+            },
+            "profession": {
+                "exact": 0,
+                "variants": 0
+            },
+            "bank": {
+                "exact": 0,
+                "variants": 0
+            },
+            "email": {
+                "exact": 0,
+                "variants": 0
+            },
+            "isp": {
+                "exact": 0,
+                "variants": 0
+            },
+            "username": {
+                "exact": 0,
+                "variants": 0
+            },
+            "country": {
+                "exact": 0,
+                "variants": 0
+            },
+            "language": {
+                "exact": 0,
+                "variants": 0
+            },
+            "education": {
+                "exact": 0,
+                "variants": 0
+            },
+            "device": {
+                "exact": 0,
+                "variants": 0
+            },
+            "relatives": {
+                "exact": 0,
+                "variants": 0
+            },
+            "suspicious_tokens": {
+                "count": 19,
+                "high_risk": 13,
+                "medium_risk": 6,
+                "low_risk": 0,
+                "items": [
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.239097917988788,
+                        "length": 72,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.808454713445986,
+                        "length": 55,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.1627631517834205,
+                        "length": 65,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.879506460812007,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.679506460812007,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.239097917988788,
+                        "length": 72,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.808454713445986,
+                        "length": 55,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.132944044980959,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.732944044980959,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.1627631517834205,
+                        "length": 65,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.389364858634393,
+                        "length": 31,
+                        "cookie": "",
+                        "risk_score": 7.489364858634394,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.440223928941852,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.440223928941852,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.879506460812007,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.679506460812007,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.349747626002144,
+                        "length": 80,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.678259937233866,
+                        "length": 148,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.389364858634393,
+                        "length": 31,
+                        "cookie": "",
+                        "risk_score": 7.489364858634394,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.440223928941852,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.440223928941852,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.051803218706688,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.349747626002144,
+                        "length": 80,
+                        "cookie": "",
+                        "risk_score": 8.024621439003216,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.678259937233866,
+                        "length": 148,
+                        "cookie": "",
+                        "risk_score": 8.517389905850798,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    },
+                    {
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.051803218706688,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 7.577704828060032,
+                        "cookie_index": 3,
+                        "view": "PJYgQGG1pCnXr1jScR19qbo5A3WPrC6MKzi5Nq8dFK1zn44KR6..."
+                    }
+                ]
+            }
+        }
+    },
+    "firefox": {}
+}

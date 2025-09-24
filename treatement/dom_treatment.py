@@ -15,7 +15,6 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
     cookies_by_host = { host: {cookie_key: cookie_value, ...}, ... }
     Retourne un dict {host: {clé_info: {'exact': nb, 'variants': nb, 'matches': [...]}, 'suspicious_tokens': {...}}}
     """
-    
     # Préparation des patterns pour chaque info
     data_patterns = {}
     for key, value in personal_info.items():
