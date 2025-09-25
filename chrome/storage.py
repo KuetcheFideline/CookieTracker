@@ -102,7 +102,11 @@ def read_storage(browser, storage_type="local"):
                     if k2 not in all_data[k1]:
                         all_data[k1][k2] = v2
                     else:
-                        all_data[k1][k2].update(v2)
+                         
+                        if isinstance(all_data[k1][k2], list):
+                            all_data[k1][k2].append(v2)
+                        else:
+                            all_data[k1][k2] = [all_data[k1][k2], v2]
     return all_data
 
 

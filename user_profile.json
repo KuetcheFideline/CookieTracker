@@ -1,23 +1,16 @@
 {
     "name": "Fideline kuetche ",
-    "birthday": "2001-05-15",
+    "birthday": "15/03/1990",
     "gender": "female",
-    "adresse": "1 rue rene fernandat",
+    "adresse": "1 rue rene fernadat",
     "pobox": " 15",
-    "browsers": [
-        "Chrome",
-        "Firefox"
-    ],
-    "ip_info": {
-        "ip_public": "78.112.62.219",
-        "ip_local": "127.0.1.1",
-        "mac_address": "dd:71:92:7d:de:76",
-        "os": "Linux",
-        "os_version": "6.8.0-83-generic",
-        "processor": "x86_64"
-    },
-    "nationality": "Cameroon",
+    "nationality": "camerounaise",
+    "marital_status": "celibataire",
     "profession": "Data Scientist / Developpeur",
+    "bank": {
+        "account_number": "0000000000",
+        "bank_name": "revolute"
+    },
     "email": [
         "fidoknn@gmail.com",
         "fidelinekuetche@gmail.com",
@@ -37,15 +30,35 @@
         "kuetchef",
         "lunak"
     ],
+    "city": [
+        "france"
+    ],
     "country": [
         "Cameroon"
     ],
-    "language": [
-        "French",
-        "English"
+    "code_country": [
+        "fr"
     ],
-    "education": [
-        "Licence en Informatique",
-        "Master en Sciences des Donnees (en cours)"
-    ]
+    "language": [
+        "french"
+    ],
+    "brand": [
+        "dell"
+    ],
+    "siblings": [
+        "zaz",
+        "valere"
+    ],
+    "browsers": [
+        "Chrome",
+        "Firefox"
+    ],
+    "ip_info": {
+        "ip_public": "195.220.84.49",
+        "ip_local": "127.0.1.1",
+        "mac_address": "b1:ec:02:b9:e0:a2",
+        "os": "Linux",
+        "os_version": "6.8.0-83-generic",
+        "processor": "x86_64"
+    }
 }

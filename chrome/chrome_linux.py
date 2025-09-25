@@ -4,25 +4,29 @@ from treatement.cookie_treatment import search_personal_info_robust
 from treatement.dom_treatment import search_personal_info_in_dict   
 
 def main_linux(user,browser,date):
-    print("Linux/Ubuntu OS detected")
     
     statistiques = []
-    for b in browser:
-        if b =="mozilla" or b=="firefox":
-            pass
-           
-        else:
-             cookies = get_cookies(b,date)
-             DomStorage = read_storage(b)
 
-
-
+    try:
+        for b in browser:
+            if b =="mozilla" or b=="firefox":
+                pass
             
-             stats= search_personal_info_robust(cookies,user)
-             dom =search_personal_info_in_dict(DomStorage,user)
-             statistiques.append({b:{"cookies":stats,"dom":dom}})                          
+            else:
+                cookies = get_cookies(b,date)
+                DomStorage = read_storage(b)
+
+
+
+                
+                stats= search_personal_info_robust(cookies,user)
+                dom =search_personal_info_in_dict(DomStorage,user)
+                statistiques.append({b:{"cookies":stats,"dom":dom}})   
+        return statistiques
+        
+    except Exception as e:
+         print(f"❌ Erreur lors du traitement de {b}: {e}")                         
                      
-    return statistiques
 
 
 

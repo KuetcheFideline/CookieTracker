@@ -17,6 +17,9 @@ def search_personal_info_robust(cookies_by_host, personal_info):
     Recherche robuste d'informations personnelles dans les cookies, tous navigateurs confondus.
     Retourne un dict {host: {clé_info: nb_matchs, ...}} avec traçabilité complète
     """
+
+
+
     
     # AJOUT: Filtrer les valeurs vides au début
     filtered_personal_info = {}
@@ -32,6 +35,11 @@ def search_personal_info_robust(cookies_by_host, personal_info):
         # Si c'est une chaîne ou autre, vérifier qu'elle n'est pas vide
         elif str(value).strip():
             filtered_personal_info[key] = value
+    account_keys = ['account', 'account_number', 'compte', 'rib', 'iban']
+    for key in account_keys:
+        if key not in filtered_personal_info:
+            filtered_personal_info[key] = ""  
+
     
     # Si aucune donnée personnelle valide, retourner un résultat vide mais structuré
     if not filtered_personal_info:
@@ -68,6 +76,9 @@ def search_personal_info_robust(cookies_by_host, personal_info):
             if len(variant) >= 3:  # Cette condition existe déjà, c'est bien
                 data_patterns[key]['variants'].append(re.compile(rf'\b{re.escape(variant)}\b', re.IGNORECASE))
     
+
+
+
     result = {}
     for host, cookies in cookies_by_host.items():
         host_info = {}

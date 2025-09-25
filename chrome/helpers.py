@@ -37,18 +37,13 @@ def cookie_config(browser):
         if count == 0:
             cookie_file = "~/.config/google-chrome/Default/Cookies"
         else:
-            cookie_file = ["~/.config/google-chrome/Default/Cookies"]
-            for i in range(2, count+2):
-                cookie_file.append(f"~/.config/google-chrome/Profile {i}/Cookies")
 
-    elif browser.title() == "Chromium":
-        cookie_file = "~/.config/chromium/Default/Cookies"
-    elif browser.title() == "Brave":
-        cookie_file = "~/.config/BraveSoftware/Brave-Browser/Default/Cookies"
-    elif browser.title() == "Slack":
-        cookie_file = "~/.config/Slack/Cookies"
-    elif browser.title() == "Edge":
-        cookie_file = "~/.config/microsoft-edge/Default/Cookies"
+            cookie_file = ["~/.config/google-chrome/Default/Cookies"]
+            for i in range(1, count+1):
+
+                profile_path = os.path.join("~/.config/google-chrome/", f"Profile {i}", "Cookies")
+                if os.path.exists(profile_path):
+                    cookie_file.append(f"~/.config/google-chrome/Profile {i}/Cookies")
     else:
            return 0        
 
@@ -64,7 +59,7 @@ def cookie_config(browser):
         gi.require_version("Secret", "1")
         from gi.repository import Secret
     except ImportError:
-        print("Erreur lors de l'importation de `Secret`.")
+        pass
     else:
         flags = Secret.ServiceFlags.LOAD_COLLECTIONS
         service = Secret.Service.get_sync(flags)
@@ -110,6 +105,7 @@ def clean(decrypted):
 def cookie_decrypt(encrypted_value, key, ini_vector,cookie_database_version):
     """Décrypte un cookie."""
 
+   
     encrypted_value = encrypted_value[3:]  
     cipher = Cipher(
         algorithm=AES(key),
@@ -117,6 +113,7 @@ def cookie_decrypt(encrypted_value, key, ini_vector,cookie_database_version):
     )
     decryptor = cipher.decryptor()
     decrypted = decryptor.update(encrypted_value) + decryptor.finalize()
+
     if cookie_database_version >= 24:
           decrypted = decrypted[32:]
 
@@ -145,17 +142,20 @@ def get_encryption_key(config, password=None):
         salt=config["salt"],
     )
     return kdf.derive(key_material)
+
 def get_cookies(browser, date):
     """Récupère et décrypte les cookies du navigateur spécifié."""
     config = cookie_config(browser)
+
     
     if config == 0:
         return 0
 
-    # Initialisation
     config.update(
         {"init_vector": b" " * 16, "length": 16, "salt": b"saltysalt"}
     )
+
+
     password = None
     enc_key = get_encryption_key(config, password)
 
