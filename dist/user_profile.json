@@ -1,0 +1,27 @@
+{
+    "name": "uuu",
+    "adresse": "gt",
+    "nationality": "i",
+    "bank": {
+        "account_number": "0000000000",
+        "bank_name": "Inconnu"
+    },
+    "email": [
+        "ii@gmail.com"
+    ],
+    "city": [
+        "france"
+    ],
+    "browsers": [
+        "Chrome",
+        "Firefox"
+    ],
+    "ip_info": {
+        "ip_public": "195.220.84.49",
+        "ip_local": "127.0.1.1",
+        "mac_address": "b1:ec:02:b9:e0:a2",
+        "os": "Linux",
+        "os_version": "6.8.0-83-generic",
+        "processor": "x86_64"
+    }
+}
