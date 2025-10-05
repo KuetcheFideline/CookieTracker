@@ -122,7 +122,7 @@ Voici la section mise à jour pour l'installation normale avec un environnement 
 4. **Lancer le programme / Run the program** :
 
    ```bash
-   ./main
+   python main.py
    ```
 
 ### **Sur Windows / On Windows**
@@ -148,5 +148,5 @@ Voici la section mise à jour pour l'installation normale avec un environnement 
 4. **Lancer le programme / Run the program** :
 
    ```bash
-   .\mainW.exe
+   python mainW.py
    ```
