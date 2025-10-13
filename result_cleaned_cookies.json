@@ -102,13 +102,14 @@
                 "variants": 0
             },
             "suspicious_tokens": {
-                "count": 16,
-                "high_risk": 0,
-                "medium_risk": 0,
-                "low_risk": 16,
+                "count": 26,
+                "high_risk": 18,
+                "medium_risk": 7,
+                "low_risk": 1,
                 "items": [
                     {
                         "category": "token_detection",
+<<<<<<< HEAD
                         "type": "suspicious_key",
                         "subtype": "id",
                         "name": "APISID",
@@ -282,6 +283,268 @@
                         "cookie": "__Secure-3PSIDCC",
                         "risk_score": 5,
                         "cookie_index": 20
+=======
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.537844793048881,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 8.137844793048881,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.971211905110698,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.537844793048881,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 8.137844793048881,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.971211905110698,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 7.456817857666047,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "cookie": "",
+                        "risk_score": 7.100074046058254,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "navigation_collection",
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 4.7333826973721695,
+                        "length": 54,
+                        "risk_score": 5.81338269737217,
+                        "detected_in": "value",
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.099436412484686,
+                        "length": 46,
+                        "cookie": "",
+                        "risk_score": 9.699436412484687,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.65926470071287,
+                        "length": 99,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.099436412484686,
+                        "length": 46,
+                        "cookie": "",
+                        "risk_score": 9.699436412484687,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.378783493486177,
+                        "length": 28,
+                        "cookie": "",
+                        "risk_score": 7.1787834934861765,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.165894208390023,
+                        "length": 21,
+                        "cookie": "",
+                        "risk_score": 6.265894208390023,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.65926470071287,
+                        "length": 99,
+                        "cookie": "",
+                        "risk_score": 8.488897051069305,
+                        "cookie_index": 2
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.898153434632013,
+                        "length": 42,
+                        "cookie": "",
+                        "risk_score": 9.098153434632014,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.437480133034315,
+                        "length": 119,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.058364648336088,
+                        "length": 64,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.7953813933228755,
+                        "length": 300,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.898153434632013,
+                        "length": 42,
+                        "cookie": "",
+                        "risk_score": 9.098153434632014,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.437480133034315,
+                        "length": 119,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.403856189774723,
+                        "length": 25,
+                        "cookie": "",
+                        "risk_score": 6.903856189774723,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.058364648336088,
+                        "length": 64,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.7953813933228755,
+                        "length": 300,
+                        "cookie": "",
+                        "risk_score": 8.693072089984312,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "navigation_collection",
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 5.437480133034315,
+                        "length": 119,
+                        "risk_score": 7.817480133034315,
+                        "detected_in": "value",
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "navigation_collection",
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 5.058364648336088,
+                        "length": 64,
+                        "risk_score": 6.338364648336088,
+                        "detected_in": "value",
+                        "cookie_index": 3
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
                     }
                 ]
             }
@@ -388,13 +651,14 @@
                 "variants": 0
             },
             "suspicious_tokens": {
-                "count": 4,
+                "count": 3,
                 "high_risk": 0,
-                "medium_risk": 0,
-                "low_risk": 4,
+                "medium_risk": 3,
+                "low_risk": 0,
                 "items": [
                     {
                         "category": "token_detection",
+<<<<<<< HEAD
                         "type": "suspicious_key",
                         "subtype": "account",
                         "name": "ACCOUNT_CHOOSER",
@@ -436,11 +700,44 @@
                         "cookie": "__Host-3PLSID",
                         "risk_score": 5,
                         "cookie_index": 5
+=======
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.2574258137630507,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 6.257425813763051,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.481727678869737,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.481727678869737,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.481727678869737,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.481727678869737,
+                        "cookie_index": 1
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
                     }
                 ]
             }
         },
+<<<<<<< HEAD
         "www.google.com": {
+=======
+        ".datacamp.com": {
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
             "name": {
                 "exact": 0,
                 "variants": 0
@@ -542,6 +839,7 @@
                 "variants": 0
             },
             "suspicious_tokens": {
+<<<<<<< HEAD
                 "count": 0,
                 "high_risk": 0,
                 "medium_risk": 0,
@@ -550,6 +848,127 @@
             }
         },
         "accounts.spotify.com": {
+=======
+                "count": 11,
+                "high_risk": 4,
+                "medium_risk": 7,
+                "low_risk": 0,
+                "items": [
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.67619062614183,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 7.27619062614183,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "uuid",
+                        "entropy": 3.67619062614183,
+                        "length": 36,
+                        "cookie": "",
+                        "risk_score": 7.27619062614183,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 3.9132696895151082,
+                        "length": 25,
+                        "cookie": "",
+                        "risk_score": 6.413269689515108,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.286790198827112,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.8867901988271125,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.349648912578752,
+                        "length": 23,
+                        "cookie": "",
+                        "risk_score": 6.649648912578752,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.286790198827112,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.8867901988271125,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.754377842334022,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.554377842334022,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.349648912578752,
+                        "length": 23,
+                        "cookie": "",
+                        "risk_score": 6.649648912578752,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.711112168386486,
+                        "length": 170,
+                        "cookie": "",
+                        "risk_score": 8.56666825257973,
+                        "cookie_index": 1
+                    }
+                ]
+            }
+        },
+        ".amazon.fr": {
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
             "name": {
                 "exact": 0,
                 "variants": 0
@@ -651,37 +1070,248 @@
                 "variants": 0
             },
             "suspicious_tokens": {
+<<<<<<< HEAD
                 "count": 2,
                 "high_risk": 0,
                 "medium_risk": 0,
                 "low_risk": 2,
                 "items": [
+=======
+                "count": 22,
+                "high_risk": 14,
+                "medium_risk": 8,
+                "low_risk": 0,
+                "items": [
                     {
                         "category": "token_detection",
-                        "type": "suspicious_key",
-                        "subtype": "id",
-                        "name": "__Host-device_id",
-                        "entropy": 3.327819531114783,
-                        "length": 16,
-                        "cookie": "__Host-device_id",
-                        "risk_score": 5,
-                        "cookie_index": 0
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.239097917988788,
+                        "length": 72,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.808454713445986,
+                        "length": 55,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 5.1627631517834205,
+                        "length": 65,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.879506460812007,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.679506460812007,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.239097917988788,
+                        "length": 72,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.808454713445986,
+                        "length": 55,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.132944044980959,
+                        "length": 26,
+                        "cookie": "",
+                        "risk_score": 6.732944044980959,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 5.1627631517834205,
+                        "length": 65,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.389364858634393,
+                        "length": 31,
+                        "cookie": "",
+                        "risk_score": 7.489364858634394,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.440223928941852,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.440223928941852,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.879506460812007,
+                        "length": 38,
+                        "cookie": "",
+                        "risk_score": 8.679506460812007,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.349747626002144,
+                        "length": 80,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.678259937233866,
+                        "length": 148,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.389364858634393,
+                        "length": 31,
+                        "cookie": "",
+                        "risk_score": 7.489364858634394,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.440223928941852,
+                        "length": 30,
+                        "cookie": "",
+                        "risk_score": 7.440223928941852,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 5.051803218706688,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 10,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.349747626002144,
+                        "length": 80,
+                        "cookie": "",
+                        "risk_score": 8.024621439003216,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.678259937233866,
+                        "length": 148,
+                        "cookie": "",
+                        "risk_score": 8.517389905850798,
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.051803218706688,
+                        "length": 59,
+                        "cookie": "",
+                        "risk_score": 7.577704828060032,
+                        "cookie_index": 3
                     },
                     {
                         "category": "navigation_collection",
-                        "type": "suspicious_navigation_key",
-                        "subtype": "device_id",
-                        "cookie_name": "__Host-device_id",
-                        "entropy": 3.327819531114783,
-                        "length": 16,
-                        "risk_score": 5,
-                        "detected_in": "cookie_name",
-                        "cookie_index": 0
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 5.349747626002144,
+                        "length": 80,
+                        "risk_score": 6.949747626002145,
+                        "detected_in": "value",
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "navigation_collection",
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 5.678259937233866,
+                        "length": 148,
+                        "risk_score": 8.638259937233865,
+                        "detected_in": "value",
+                        "cookie_index": 3
+                    },
+                    {
+                        "category": "navigation_collection",
+                        "type": "suspicious_storage_pattern",
+                        "subtype": "encoded_navigation",
+                        "cookie_name": "",
+                        "entropy": 5.051803218706688,
+                        "length": 59,
+                        "risk_score": 6.231803218706688,
+                        "detected_in": "value",
+                        "cookie_index": 3
                     }
                 ]
             }
-        },
-        ".spotify.com": {
+        }
+    },
+    "firefox": {
+        "chatgpt.com": {
             "name": {
                 "exact": 0,
                 "variants": 0
@@ -783,13 +1413,14 @@
                 "variants": 0
             },
             "suspicious_tokens": {
-                "count": 1,
-                "high_risk": 0,
-                "medium_risk": 0,
+                "count": 9,
+                "high_risk": 6,
+                "medium_risk": 2,
                 "low_risk": 1,
                 "items": [
                     {
                         "category": "token_detection",
+<<<<<<< HEAD
                         "type": "suspicious_key",
                         "subtype": "key",
                         "name": "sp_key",
@@ -1136,22 +1767,104 @@
                         "length": 38,
                         "cookie": "MicrosoftApplicationsTelemetryDeviceId",
                         "risk_score": 5,
+=======
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.898153434632012,
+                        "length": 42,
+                        "cookie": "__cflb",
+                        "risk_score": 9.098153434632012,
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
                         "cookie_index": 0
                     },
                     {
                         "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.898153434632012,
+                        "length": 42,
+                        "cookie": "__cflb",
+                        "risk_score": 9.098153434632012,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.898153434632012,
+                        "length": 42,
+                        "cookie": "__cflb",
+                        "risk_score": 9.098153434632012,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.898153434632012,
+                        "length": 42,
+                        "cookie": "__cflb",
+                        "risk_score": 7.347230151948018,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.711034812791318,
+                        "length": 43,
+                        "cookie": "conv_key",
+                        "risk_score": 9.01103481279132,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.711034812791318,
+                        "length": 43,
+                        "cookie": "conv_key",
+                        "risk_score": 9.01103481279132,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.760456902679035,
+                        "length": 44,
+                        "cookie": "conv_key",
+                        "risk_score": 9.160456902679035,
+                        "cookie_index": 1
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 4.760456902679035,
+                        "length": 44,
+                        "cookie": "conv_key",
+                        "risk_score": 7.140685354018553,
+                        "cookie_index": 1
+<<<<<<< HEAD
+=======
+                    },
+                    {
+                        "category": "token_detection",
                         "type": "suspicious_key",
-                        "subtype": "id",
-                        "name": "buid",
-                        "entropy": 2.0,
-                        "length": 4,
-                        "cookie": "buid",
+                        "subtype": "key",
+                        "name": "conv_key",
+                        "entropy": 3.0,
+                        "length": 8,
+                        "cookie": "conv_key",
                         "risk_score": 5,
                         "cookie_index": 1
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
                     }
                 ]
             }
         },
+<<<<<<< HEAD
         ".login.microsoftonline.com": {
             "name": {
                 "exact": 0,
@@ -1611,6 +2324,8 @@
                 "items": []
             }
         },
+=======
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
         ".chatgpt.com": {
             "name": {
                 "exact": 0,
@@ -1713,13 +2428,14 @@
                 "variants": 0
             },
             "suspicious_tokens": {
-                "count": 1,
-                "high_risk": 0,
-                "medium_risk": 0,
-                "low_risk": 1,
+                "count": 9,
+                "high_risk": 5,
+                "medium_risk": 4,
+                "low_risk": 0,
                 "items": [
                     {
                         "category": "token_detection",
+<<<<<<< HEAD
                         "type": "suspicious_key",
                         "subtype": "id",
                         "name": "oai-did",
@@ -1848,10 +2564,19 @@
                         "length": 4,
                         "cookie": "OSID",
                         "risk_score": 5,
+=======
+                        "type": "token_pattern",
+                        "subtype": "api_key",
+                        "entropy": 4.701943564960621,
+                        "length": 39,
+                        "cookie": "__cf_bm",
+                        "risk_score": 8.60194356496062,
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
                         "cookie_index": 0
                     },
                     {
                         "category": "token_detection",
+<<<<<<< HEAD
                         "type": "suspicious_key",
                         "subtype": "id",
                         "name": "__Secure-OSID",
@@ -52251,6 +52976,88 @@
                 "low_risk": 0,
                 "items": []
             }
+=======
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.976474118254377,
+                        "length": 56,
+                        "cookie": "__cf_bm",
+                        "risk_score": 10,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.334962500721156,
+                        "length": 24,
+                        "cookie": "__cf_bm",
+                        "risk_score": 6.734962500721156,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.918562939644918,
+                        "length": 50,
+                        "cookie": "__cf_bm",
+                        "risk_score": 9.918562939644918,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "session_id",
+                        "entropy": 4.4531888161970326,
+                        "length": 33,
+                        "cookie": "__cf_bm",
+                        "risk_score": 7.753188816197032,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.701943564960621,
+                        "length": 39,
+                        "cookie": "__cf_bm",
+                        "risk_score": 8.60194356496062,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.418157288156418,
+                        "length": 29,
+                        "cookie": "__cf_bm",
+                        "risk_score": 7.318157288156417,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "token_pattern",
+                        "subtype": "base64_data",
+                        "entropy": 4.1219280948873624,
+                        "length": 20,
+                        "cookie": "__cf_bm",
+                        "risk_score": 6.1219280948873624,
+                        "cookie_index": 0
+                    },
+                    {
+                        "category": "token_detection",
+                        "type": "high_entropy",
+                        "subtype": "random_string",
+                        "entropy": 5.624130330950192,
+                        "length": 170,
+                        "cookie": "__cf_bm",
+                        "risk_score": 8.436195496425288,
+                        "cookie_index": 0
+                    }
+                ]
+            }
+>>>>>>> 7d818174b83a1c11665d953fb93bde07fac46d92
         }
     }
 }
