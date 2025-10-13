@@ -46,7 +46,7 @@ def search_profile():
     """
 
     profile = load_profile_from_terminal_validated()
-    os_type = get_os_info().lower()
+    os_type = "ttete"
     count, date = init_runtime_file("runtime.txt")
     results = []
     browsers = [b.lower() for b in profile.get("browsers", [])]
@@ -55,7 +55,7 @@ def search_profile():
 
     print("profile to search : ",json.dumps(profile, indent=4))
 
-    if os_type == "linux/ubuntu":
+    if os_type == "linux/ubuntu" or True:
         from chrome.chrome_linux import main_linux
         
         for browser in browsers:

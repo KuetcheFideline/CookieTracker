@@ -54,11 +54,11 @@
         "Firefox"
     ],
     "ip_info": {
-        "ip_public": "195.220.84.49",
+        "ip_public": "195.220.84.54",
         "ip_local": "127.0.1.1",
-        "mac_address": "b1:ec:02:b9:e0:a2",
+        "mac_address": "d9:2d:0d:36:0e:b6",
         "os": "Linux",
-        "os_version": "6.8.0-83-generic",
+        "os_version": "6.8.0-85-generic",
         "processor": "x86_64"
     }
 }
