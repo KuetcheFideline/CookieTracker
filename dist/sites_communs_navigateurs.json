@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "total_sites_communs": 2,
+    "navigateurs_analyses": [
+      "firefox",
+      "chrome"
+    ],
+    "date_analyse": "2025-10-25 10:12:42"
+  },
+  "sites": {
+    "linkedin.com": {
+      "firefox": {
+        "present": true,
+        "trackers": [
+          "li.protechts.net",
+          "www.google.com"
+        ],
+        "nb_trackers": 2
+      },
+      "chrome": {
+        "present": true,
+        "trackers": [
+          "li.protechts.net",
+          "www.google.com"
+        ],
+        "nb_trackers": 2
+      }
+    },
+    "google.com": {
+      "firefox": {
+        "present": true,
+        "trackers": [
+          "www.youtube.com"
+        ],
+        "nb_trackers": 1
+      },
+      "chrome": {
+        "present": true,
+        "trackers": [
+          "www.youtube.com"
+        ],
+        "nb_trackers": 1
+      }
+    }
+  }
+}

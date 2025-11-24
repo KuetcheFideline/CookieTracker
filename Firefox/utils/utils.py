@@ -3,22 +3,21 @@ import os
 import time
 from datetime import datetime
 
+
+
 def get_os_info():
     system_info = platform.uname()
 
-    # Extraire les détails du système
     os_system = system_info.system
-    os_version = system_info.version
 
     if os_system == 'Linux':
-
-        if 'Ubuntu' in os_version:
-            distro = "Ubuntu"
-            # Concaténer les informations
-            os_info = f"{os_system}/{distro}"
-        return os_info
+        return os_system
     else:
         return os_system
+    
+
+
+
 
 
 def init_var_env()->None:

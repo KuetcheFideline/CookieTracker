@@ -14,6 +14,7 @@ class Firefox:
     def __init__(self, os_name):
 
         self.os_name = os_name
+
         # self.data_path = data_path
         self.data = None
         self.cookies_path = None
@@ -29,16 +30,17 @@ class Firefox:
     def get_cookies_file_path(self):
         profile_dir = None
 
-        if self.os_name == "Linux/Ubuntu":
+
+
+
+        if self.os_name !="Windows": 
             profile_dir = Path("~/.mozilla/firefox/").expanduser()
             if not profile_dir.exists():
                 profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-        elif self.os_name == "Windows":
+        else :
             profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
 
-        else:
-            raise Exception("Unsupported Operating System")
-
+        
         if profile_dir is not None:
             # Find the default profile directory
             profile_ini = profile_dir / "profiles.ini"

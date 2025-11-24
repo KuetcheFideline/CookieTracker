@@ -1,0 +1,1107 @@
+{
+  "https+++del.dhl.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "pinterest.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.recaptcha.net"
+    ]
+  },
+  "https+++delivery.dhl.com.": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "image-line.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "https+++community.cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++ubuntu.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++wwwd.caf.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++caf.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++citethisforme.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "mermaidchart.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com"
+    ]
+  },
+  "https+++mybag.aero": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "idloom.events": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "https+++oracle.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "gulian.uk": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "https+++app.revolut.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++192.168.100.10": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++192.168.100.4": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++idp.inp-toulouse.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "lemonde.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "euw2-cs.amx1.net",
+      "static.btloader.com",
+      "widgets.outbrain.com",
+      "www.google.com"
+    ]
+  },
+  "studocu.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com"
+    ]
+  },
+  "linuxtiwary.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "https+++netacad.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "chegg.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com",
+      "static.btloader.com"
+    ]
+  },
+  "https+++fr.wikipedia.org": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "oag.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "oag.chilipiper.com"
+    ]
+  },
+  "https+++youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "haveibeenpwned.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com"
+    ]
+  },
+  "https+++crous-toulouse.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++auth0.identity1.chegg.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "ethiopianairlines.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "em-frame.securitytrfx.com",
+      "www.google.com"
+    ]
+  },
+  "https+++fiveable.me": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++dxbooking.ethiopianairlines.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++etudiant-etranger.ameli.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "cisco.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "cdn.appdynamics.com",
+      "khoros.app.box.com"
+    ]
+  },
+  "oracle.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "consent.trustarc.com"
+    ]
+  },
+  "https+++accounts.firefox.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "staralliance.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.recaptcha.net"
+    ]
+  },
+  "https+++192.168.100.2": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "bandsintown.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.stay22.com"
+    ]
+  },
+  "https+++drive.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++linkedin.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++gns3.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++lemonde.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++nextjs.org": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++evento.renater.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++ca.pinterest.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++levels.fyi": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++packettracernetwork.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++image-line.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++haveibeenpwned.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++ethiopianairlines.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++calendly.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++docs.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++login.mathworks.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "steamgg.net": {
+    "type": "avec_tracker",
+    "trackers": [
+      "web.tolstoycomments.com"
+    ]
+  },
+  "z-lib.id": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com",
+      "www.youtube.com"
+    ]
+  },
+  "https+++portal-front.wifirst.net": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "linkedin.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "li.protechts.net",
+      "www.google.com"
+    ]
+  },
+  "https+++onepiecescan.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++accounts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++mail.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++etudiant.lefigaro.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++matrix.inp-toulouse.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++dhl.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++speedtest.net": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++pynetlabs.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++booking.staralliance.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++planetcampus.wifirst.net": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++github.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++networklessons.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++support.wifirst.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++electronicsforu.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++welcome.adblockplus.org": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++chatgpt.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++ticketmaster.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++reddit.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "google.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "http+++192.168.100.5": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++web.whatsapp.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++mermaid.live": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "franceconnect.gouv.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "geo.dailymotion.com"
+    ]
+  },
+  "https+++datanodes.to": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++linuxtiwary.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++webmail.partage.renater.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++skyscanner.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++chegg.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "lvswitches.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "mc.yandex.md"
+    ]
+  },
+  "https+++connect.caf.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++mangaplus.shueisha.co.jp": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "http+++192.168.100.101": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++messervices.etudiant.gouv.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "datanodes.to": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "https+++ipinfo.io": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "lefigaro.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com"
+    ]
+  },
+  "https+++aistudio.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "steamrip.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com",
+      "web.tolstoycomments.com"
+    ]
+  },
+  "fitgirl-repacks.site": {
+    "type": "avec_tracker",
+    "trackers": [
+      "web.tolstoycomments.com",
+      "www.youtube.com"
+    ]
+  },
+  "https+++google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "http+++192.168.100.2": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++rfi.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++kentik.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++learningnetwork.cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++studocu.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "voiranime.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "vidmoly.net",
+      "www.google.com"
+    ]
+  },
+  "https+++stackoverflow.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++lvswitches.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "electronicsforu.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "https+++askubuntu.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++enseeiht.jobteaser.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++staralliance.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++turkishairlines.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "mybag.aero": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "https+++en.wikipedia.org": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++canva.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++letudiant.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++accounts.youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++adblockplus.org": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++v6.voiranime.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++bandsintown.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "enseeiht.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "https+++crypto.stackexchange.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++auth.openai.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "reddit.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "https+++forums.futura-sciences.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++workspace.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++meetyourschool.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++planetcampus-selfcare.wifirst.net": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "letudiant.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "geo.dailymotion.com"
+    ]
+  },
+  "https+++forecast.lemonde.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++turboscribe.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++inp-toulouse-fr.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++mermaidchart.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++moodle.inp-toulouse.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++payscale.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "http+++192.168.100.4": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++fast.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++gamejolt.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "https+++nytimes.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "ticketmaster.fr": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "META:meet.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:meet.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_meet.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:accounts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:accounts.youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:aistudio.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:anakin.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:app.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:auth.openai.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "claude.ai": {
+    "type": "avec_tracker",
+    "trackers": [
+      "challenges.cloudflare.com",
+      "www.google.com"
+    ]
+  },
+  "META:chat.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:chatgpt.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:claude.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:contacts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:docs.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:drive.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:github.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:grok.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:huggingface.co": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:intranet.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:mail.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:medium.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:neo.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:openclassrooms.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:ubc.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:wiki.seeedstudio.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:anaconda.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:deepl.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "medium.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.google.com"
+    ]
+  },
+  "META:grid5000.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:linkedin.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:loom.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:overleaf.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "META:pdf2go.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "zoom.us": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.recaptcha.net"
+    ]
+  },
+  "META:urban-vpn.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "anaconda.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube-nocookie.com",
+      "www.youtube.com"
+    ]
+  },
+  "META:youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "seeedstudio.com": {
+    "type": "avec_tracker",
+    "trackers": [
+      "www.youtube.com"
+    ]
+  },
+  "META:x.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:accounts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:accounts.youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:aistudio.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:anakin.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:app.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:auth.openai.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:chat.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:chatgpt.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:claude.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:contacts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:docs.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:drive.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:github.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:grok.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:huggingface.co": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:intranet.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:mail.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:medium.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:neo.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:openclassrooms.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:ubc.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:wiki.seeedstudio.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:anaconda.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:deepl.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:grid5000.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:linkedin.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:loom.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:overleaf.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:pdf2go.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:urban-vpn.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "METAACCESS:x.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_accounts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_accounts.youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_aistudio.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_anakin.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_app.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_auth.openai.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_chat.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_chatgpt.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_claude.ai": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_contacts.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_docs.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_drive.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_github.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_grok.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_huggingface.co": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_intranet.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_mail.google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_medium.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_neo.cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_openclassrooms.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_ubc.zoom.us": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_wiki.seeedstudio.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_anaconda.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_cisco.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_cnrs.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_deepl.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_google.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_grid5000.fr": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_linkedin.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_loom.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_overleaf.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_pdf2go.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_urban-vpn.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_youtube.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  },
+  "_x.com": {
+    "type": "sans_tracker",
+    "trackers": []
+  }
+}

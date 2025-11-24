@@ -1,11 +1,17 @@
 
 from Firefox.utils.utils import get_os_info
 from Firefox.firefox  import Firefox
+import distro
+import platform
 from Firefox.cookies_data import PersonalCookies, PersonalDOM
 from treatement.cookie_treatment import search_personal_info_robust
 from treatement.dom_treatment import search_personal_info_in_dict
 def main_firefox(last_run,user) -> None:
-    os_name = get_os_info()
+    system_info = platform.uname()
+
+   
+   
+    os_name =  f"{system_info.system}/{distro.id()}"
 
 
 

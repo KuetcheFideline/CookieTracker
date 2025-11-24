@@ -14,7 +14,7 @@ from colorama import Fore, Style, init
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
 from treatement.profile_utils import (update_runtime_file, json_Result,json_Result,init_runtime_file,load_profile_from_terminal_validated)
-
+from chrome.chrome_linux import main_linux
 
 
 # Fonctions de saisie avec validation
@@ -46,7 +46,7 @@ def search_profile():
     """
 
     profile = load_profile_from_terminal_validated()
-    os_type = "ttete"
+    os_type = get_os_info()
     count, date = init_runtime_file("runtime.txt")
     results = []
     browsers = [b.lower() for b in profile.get("browsers", [])]
@@ -55,10 +55,8 @@ def search_profile():
 
     print("profile to search : ",json.dumps(profile, indent=4))
 
-    if os_type == "linux/ubuntu" or True:
-        from chrome.chrome_linux import main_linux
         
-        for browser in browsers:
+    for browser in browsers:
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
                 try:
@@ -67,12 +65,12 @@ def search_profile():
                 except Exception as e:
                     print(f"❌ Erreur lors du traitement de {browser}: {e}")
         
-        try:
+    try:
             linux_result = main_linux(user=profile, browser=browsers, date=date)
             print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
             results.extend(linux_result)
-        except Exception as e:
-            print(f"❌ Erreur lors du traitement Linux: {e}")
+    except Exception as e:
+            print(f"❌ Erreur lors du traitement : {e}")
 
     count += 1
     current = int(time.time() * 1e6)
