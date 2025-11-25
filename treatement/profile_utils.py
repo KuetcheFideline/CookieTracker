@@ -570,91 +570,143 @@ def display_profile_summary(profile):
     confirm = input(f"\n{Fore.YELLOW}Les informations sont-elles correctes ? (o/n): {Style.RESET_ALL}").strip().lower()
     return confirm in ['o', 'oui', 'y', 'yes']
 
-def print_analysis_summary(json_path='result_cookies.json'):
+def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'):
     """
-    Affiche un résumé des détections importantes trouvées dans le fichier de résultats.
-    Met en évidence les nouveaux types de données détectés (user_id, device_id, etc.)
+    Affiche un résumé des statistiques des informations trouvées.
     """
-    if not os.path.exists(json_path):
-        return
-
-    try:
-        with open(json_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    except Exception as e:
-        print(Fore.RED + f"Erreur lors de la lecture des résultats: {e}" + Style.RESET_ALL)
-        return
-
-    print(Fore.CYAN + "\n" + "="*60)
-    print(Fore.YELLOW + "   Rapport d'Analyse - Détections Avancées")
-    print(Fore.CYAN + "="*60 + Style.RESET_ALL)
-
-    # Compteurs pour les types spécifiques
-    counts = {
-        'user_id': 0,
-        'device_id': 0,
-        'timezone': 0,
-        'theme': 0,
-        'session_id': 0,
-        'api_key': 0
+    print(Fore.CYAN + "\n" + "="*70)
+    print(Fore.YELLOW + "   RÉSUMÉ DE L'ANALYSE - STATISTIQUES")
+    print(Fore.CYAN + "="*70 + Style.RESET_ALL)
+    
+    total_stats = {
+        'personal_info': {},
+        'decoded_tokens': 0,
+        'decoded_tokens_with_personal_info': 0,
+        'personal_info_in_decoded': {},
+        'detected_emails': set(),
+        'suspicious_tokens': 0,
+        'domains': 0
     }
     
-    total_suspicious = 0
-
-    decoded_tokens = []
-
-    # Parcours des navigateurs et domaines
-    for browser, domains in data.items():
-        for domain, categories in domains.items():
-            if 'suspicious_tokens' in categories:
-                suspicious = categories['suspicious_tokens']
-                total_suspicious += suspicious.get('count', 0)
+    # Analyser les cookies
+    if os.path.exists(cookies_path):
+        try:
+            with open(cookies_path, 'r', encoding='utf-8') as f:
+                cookies_data = json.load(f)
                 
-                for item in suspicious.get('items', []):
-                    subtype = item.get('subtype')
-                    if subtype in counts:
-                        counts[subtype] += 1
+            for browser, domains in cookies_data.items():
+                for domain, data in domains.items():
+                    total_stats['domains'] += 1
                     
-                    # Collecter les tokens décodés
-                    if 'decoded_value' in item and item['decoded_value']:
-                        # On limite la taille de l'original pour l'affichage
-                        original_val = item.get('cookie', 'Unknown')
-                        decoded_tokens.append({
-                            'type': subtype,
-                            'original': original_val,
-                            'decoded': item['decoded_value']
-                        })
-
-    # Affichage du tableau
-    print(f"{'Type de Donnée':<20} | {'Nombre de Détections':<20}")
-    print("-" * 45)
+                    # Informations personnelles
+                    if 'personal_information' in data:
+                        for key, info in data['personal_information'].items():
+                            if key not in total_stats['personal_info']:
+                                total_stats['personal_info'][key] = {'exact': 0, 'variants': 0}
+                            total_stats['personal_info'][key]['exact'] += info.get('exact', 0)
+                            total_stats['personal_info'][key]['variants'] += info.get('variants', 0)
+                    
+                    # Tokens décodés et informations personnelles dedans
+                    if 'decoded_tokens' in data:
+                        total_stats['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
+                        
+                        # Analyser les informations personnelles dans les tokens décodés
+                        for token in data['decoded_tokens'].get('items', []):
+                            personal_matches = token.get('personal_info_matches')
+                            if personal_matches:
+                                total_stats['decoded_tokens_with_personal_info'] += 1
+                                for match in personal_matches:
+                                    info_type = match.get('info_type')
+                                    if info_type:
+                                        if info_type not in total_stats['personal_info_in_decoded']:
+                                            total_stats['personal_info_in_decoded'][info_type] = 0
+                                        total_stats['personal_info_in_decoded'][info_type] += 1
+                    
+                    # Emails détectés
+                    if 'detected_emails' in data:
+                        for email in data['detected_emails'].get('unique_emails', []):
+                            total_stats['detected_emails'].add(email)
+                    
+                    # Tokens suspects
+                    if 'suspicious_tokens' in data:
+                        total_stats['suspicious_tokens'] += data['suspicious_tokens'].get('count', 0)
+        except Exception as e:
+            print(Fore.RED + f"Erreur lors de la lecture de {cookies_path}: {e}" + Style.RESET_ALL)
     
-    for key, count in counts.items():
-        color = Fore.GREEN if count > 0 else Fore.WHITE
-        # Mettre en évidence les nouveaux types
-        if key in ['user_id', 'device_id', 'timezone', 'theme']:
-            if count > 0:
-                color = Fore.MAGENTA + Style.BRIGHT
+    # Analyser le DOM
+    if os.path.exists(dom_path):
+        try:
+            with open(dom_path, 'r', encoding='utf-8') as f:
+                dom_data = json.load(f)
                 
-        print(f"{color}{key:<20} | {count:<20}{Style.RESET_ALL}")
+            for browser, domains in dom_data.items():
+                for domain, data in domains.items():
+                    # Informations personnelles
+                    if 'personal_information' in data:
+                        for key, info in data['personal_information'].items():
+                            if key not in total_stats['personal_info']:
+                                total_stats['personal_info'][key] = {'exact': 0, 'variants': 0}
+                            total_stats['personal_info'][key]['exact'] += info.get('exact', 0)
+                            total_stats['personal_info'][key]['variants'] += info.get('variants', 0)
+                    
+                    # Tokens décodés et informations personnelles dedans
+                    if 'decoded_tokens' in data:
+                        total_stats['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
+                        
+                        # Analyser les informations personnelles dans les tokens décodés
+                        for token in data['decoded_tokens'].get('items', []):
+                            personal_matches = token.get('personal_info_matches')
+                            if personal_matches:
+                                total_stats['decoded_tokens_with_personal_info'] += 1
+                                for match in personal_matches:
+                                    info_type = match.get('info_type')
+                                    if info_type:
+                                        if info_type not in total_stats['personal_info_in_decoded']:
+                                            total_stats['personal_info_in_decoded'][info_type] = 0
+                                        total_stats['personal_info_in_decoded'][info_type] += 1
+                    
+                    # Emails détectés
+                    if 'detected_emails' in data:
+                        for email in data['detected_emails'].get('unique_emails', []):
+                            total_stats['detected_emails'].add(email)
+                    
+                    # Tokens suspects
+                    if 'suspicious_tokens' in data:
+                        total_stats['suspicious_tokens'] += data['suspicious_tokens'].get('count', 0)
+        except Exception as e:
+            print(Fore.RED + f"Erreur lors de la lecture de {dom_path}: {e}" + Style.RESET_ALL)
     
-    print("-" * 45)
-    print(Fore.CYAN + f"Total éléments suspects analysés: {total_suspicious}" + Style.RESET_ALL)
+    # Affichage des statistiques
+    print(f"\n{Fore.GREEN}📊 Domaines analysés: {total_stats['domains']}{Style.RESET_ALL}")
     
-    # Affichage des tokens décodés
-    if decoded_tokens:
-        print(Fore.CYAN + "\n" + "="*60)
-        print(Fore.YELLOW + "   Tokens Décodés (Extrait)")
-        print(Fore.CYAN + "="*60 + Style.RESET_ALL)
-        
-        # On affiche les 5 premiers pour ne pas spammer
-        for i, token in enumerate(decoded_tokens[:20]): 
-            print(f"{Fore.GREEN}[{token['type']}] {token['original']}:{Style.RESET_ALL}")
-            # Indenter la valeur décodée
-            decoded_lines = str(token['decoded']).split('\n')
-            print(decoded_lines)
-            # for line in decoded_lines:
-            #     print(f"  {line}")
-            print("-" * 30)
-
-    print(Fore.CYAN + "="*60 + "\n" + Style.RESET_ALL)
+    print(f"\n{Fore.YELLOW}🔍 INFORMATIONS PERSONNELLES TROUVÉES:{Style.RESET_ALL}")
+    if total_stats['personal_info']:
+        for key, counts in sorted(total_stats['personal_info'].items()):
+            total = counts['exact'] + counts['variants']
+            if total > 0:
+                print(f"  • {key:20} : {Fore.GREEN}{counts['exact']:3} exact{Style.RESET_ALL}, "
+                      f"{Fore.CYAN}{counts['variants']:3} variants{Style.RESET_ALL} "
+                      f"(Total: {Fore.MAGENTA}{total}{Style.RESET_ALL})")
+    else:
+        print(f"  {Fore.RED}Aucune information personnelle trouvée{Style.RESET_ALL}")
+    
+    print(f"\n{Fore.YELLOW}🔓 TOKENS DÉCODÉS:{Style.RESET_ALL}")
+    print(f"  • Total: {Fore.MAGENTA}{total_stats['decoded_tokens']}{Style.RESET_ALL} tokens décodés (JWT/Base64)")
+    if total_stats['decoded_tokens_with_personal_info'] > 0:
+        print(f"  • {Fore.GREEN}{total_stats['decoded_tokens_with_personal_info']}{Style.RESET_ALL} tokens contiennent des informations personnelles")
+        if total_stats['personal_info_in_decoded']:
+            print(f"  • Informations trouvées dans les tokens:")
+            for info_type, count in sorted(total_stats['personal_info_in_decoded'].items()):
+                print(f"    - {info_type}: {Fore.CYAN}{count}{Style.RESET_ALL} occurrence(s)")
+    
+    print(f"\n{Fore.YELLOW}📧 EMAILS DÉTECTÉS:{Style.RESET_ALL}")
+    if total_stats['detected_emails']:
+        print(f"  • Total: {Fore.MAGENTA}{len(total_stats['detected_emails'])}{Style.RESET_ALL} emails uniques")
+        print(f"  • Liste: {Fore.CYAN}{', '.join(sorted(total_stats['detected_emails']))}{Style.RESET_ALL}")
+    else:
+        print(f"  {Fore.RED}Aucun email détecté{Style.RESET_ALL}")
+    
+    print(f"\n{Fore.YELLOW}⚠️  TOKENS SUSPECTS:{Style.RESET_ALL}")
+    print(f"  • Total: {Fore.MAGENTA}{total_stats['suspicious_tokens']}{Style.RESET_ALL} tokens suspects")
+    
+    print(Fore.CYAN + "\n" + "="*70 + "\n" + Style.RESET_ALL)

@@ -137,24 +137,33 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
     result = {}
     
     for host, cookie_dict in cookies_by_host.items():
-        host_info = {}
+        # Nouvelle structure avec sections séparées
+        host_info = {
+            'personal_information': {},
+            'decoded_tokens': {
+                'count': 0,
+                'items': []
+            },
+            'detected_emails': {
+                'count': 0,
+                'unique_emails': []
+            },
+            'suspicious_tokens': {
+                'count': 0,
+                'high_risk': 0,
+                'medium_risk': 0,
+                'low_risk': 0,
+                'items': []
+            }
+        }
         
         # Initialisation pour données personnelles
         for key in personal_info.keys():
-            host_info[key] = {
+            host_info['personal_information'][key] = {
                 'exact': 0,
                 'variants': 0,
                 'matches': []  
             }
-        
-        # Initialisation pour tokens suspects
-        host_info['suspicious_tokens'] = {
-            'count': 0,
-            'high_risk': 0,
-            'medium_risk': 0,
-            'low_risk': 0,
-            'items': []
-        }
         
         for cookie_idx, (cookie_name, cookie_value) in enumerate(cookie_dict.items()):
             # Normaliser les valeurs
@@ -179,8 +188,8 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                         is_exact = True
                         confidence = calculate_match_confidence('exact', match.group(), cookie_name_str, key)
                         
-                        host_info[key]['exact'] += 1
-                        host_info[key]['matches'].append({
+                        host_info['personal_information'][key]['exact'] += 1
+                        host_info['personal_information'][key]['matches'].append({
                             'type': 'exact',
                             'matched_text': match.group(),
                             'cookie_name': cookie_name_str,
@@ -204,8 +213,8 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                             
                             confidence = calculate_match_confidence('variant', match.group(), cookie_name_str, key)
                             
-                            host_info[key]['variants'] += 1
-                            host_info[key]['matches'].append({
+                            host_info['personal_information'][key]['variants'] += 1
+                            host_info['personal_information'][key]['matches'].append({
                                 'type': 'variant',
                                 'matched_text': match.group(),
                                 'cookie_name': cookie_name_str,
@@ -215,26 +224,40 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                             })
             
             # 2. Détection tokens suspects
-            suspicious_items = detect_suspicious_tokens(val, cookie_name_str)
+            suspicious_items = detect_suspicious_tokens(val, cookie_name_str, personal_info=personal_info)
             for item in suspicious_items:
                 item.update({
                     'cookie_index': cookie_idx,
                 })
-                host_info['suspicious_tokens']['count'] += 1
-                host_info['suspicious_tokens']['items'].append(item)
                 
-                if item['risk_score'] >= 8:
-                    host_info['suspicious_tokens']['high_risk'] += 1
-                elif item['risk_score'] >= 6:
-                    host_info['suspicious_tokens']['medium_risk'] += 1
+                # Séparer les tokens décodés, emails détectés et autres tokens suspects
+                if item.get('category') == 'email_detection':
+                    # C'est un email détecté
+                    email = item.get('email')
+                    if email and email not in host_info['detected_emails']['unique_emails']:
+                        host_info['detected_emails']['unique_emails'].append(email)
+                        host_info['detected_emails']['count'] += 1
+                elif item.get('subtype') in ['jwt_token', 'base64_data'] and item.get('decoded_value'):
+                    # C'est un token décodé
+                    host_info['decoded_tokens']['count'] += 1
+                    host_info['decoded_tokens']['items'].append(item)
                 else:
-                    host_info['suspicious_tokens']['low_risk'] += 1
+                    # Autres tokens suspects
+                    host_info['suspicious_tokens']['count'] += 1
+                    host_info['suspicious_tokens']['items'].append(item)
+                    
+                    if item['risk_score'] >= 8:
+                        host_info['suspicious_tokens']['high_risk'] += 1
+                    elif item['risk_score'] >= 6:
+                        host_info['suspicious_tokens']['medium_risk'] += 1
+                    else:
+                        host_info['suspicious_tokens']['low_risk'] += 1
         
         # Dédupliquer les matches pour chaque clé d'information personnelle
         for key in personal_info.keys():
-            if host_info[key]['matches']:
-                host_info[key]['matches'] = deduplicate_matches(host_info[key]['matches'])
-                host_info[key]['unique_count'] = len(host_info[key]['matches'])
+            if host_info['personal_information'][key]['matches']:
+                host_info['personal_information'][key]['matches'] = deduplicate_matches(host_info['personal_information'][key]['matches'])
+                host_info['personal_information'][key]['unique_count'] = len(host_info['personal_information'][key]['matches'])
         
         result[host] = host_info
     
