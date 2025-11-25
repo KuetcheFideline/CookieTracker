@@ -570,6 +570,71 @@ def display_profile_summary(profile):
     confirm = input(f"\n{Fore.YELLOW}Les informations sont-elles correctes ? (o/n): {Style.RESET_ALL}").strip().lower()
     return confirm in ['o', 'oui', 'y', 'yes']
 
+def clean_results(input_path, output_path):
+    """
+    Nettoie les résultats en ne gardant que les valeurs non-nulles.
+    """
+    if not os.path.exists(input_path):
+        return
+    
+    try:
+        with open(input_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        cleaned_data = {}
+        
+        for browser, domains in data.items():
+            cleaned_domains = {}
+            
+            for domain, domain_data in domains.items():
+                cleaned_domain = {}
+                
+                # Nettoyer personal_information - ne garder que les statistiques
+                if 'personal_information' in domain_data:
+                    cleaned_personal_info = {}
+                    for key, info in domain_data['personal_information'].items():
+                        if info.get('exact', 0) > 0 or info.get('variants', 0) > 0:
+                            # Ne garder que les compteurs, pas les matches
+                            cleaned_personal_info[key] = {
+                                'exact': info.get('exact', 0),
+                                'variants': info.get('variants', 0),
+                                'unique_count': info.get('unique_count', 0)
+                            }
+                    
+                    if cleaned_personal_info:
+                        cleaned_domain['personal_information'] = cleaned_personal_info
+                
+                # Garder decoded_tokens si count > 0
+                if 'decoded_tokens' in domain_data:
+                    if domain_data['decoded_tokens'].get('count', 0) > 0:
+                        cleaned_domain['decoded_tokens'] = domain_data['decoded_tokens']
+                
+                # Garder detected_emails si count > 0
+                if 'detected_emails' in domain_data:
+                    if domain_data['detected_emails'].get('count', 0) > 0:
+                        cleaned_domain['detected_emails'] = domain_data['detected_emails']
+                
+                # Garder suspicious_tokens si count > 0
+                if 'suspicious_tokens' in domain_data:
+                    if domain_data['suspicious_tokens'].get('count', 0) > 0:
+                        cleaned_domain['suspicious_tokens'] = domain_data['suspicious_tokens']
+                
+                # Ne garder le domaine que s'il a des données
+                if cleaned_domain:
+                    cleaned_domains[domain] = cleaned_domain
+            
+            if cleaned_domains:
+                cleaned_data[browser] = cleaned_domains
+        
+        # Sauvegarder le fichier nettoyé
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(cleaned_data, f, indent=2, ensure_ascii=False)
+        
+        print(f"{Fore.GREEN}✓ Fichier nettoyé sauvegardé: {output_path}{Style.RESET_ALL}")
+    
+    except Exception as e:
+        print(f"{Fore.RED}Erreur lors du nettoyage de {input_path}: {e}{Style.RESET_ALL}")
+
 def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'):
     """
     Affiche un résumé des statistiques des informations trouvées.
@@ -585,6 +650,7 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
         'personal_info_in_decoded': {},
         'detected_emails': set(),
         'suspicious_tokens': 0,
+        'suspicious_tokens_by_type': {},
         'domains': 0
     }
     
@@ -627,9 +693,16 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
                         for email in data['detected_emails'].get('unique_emails', []):
                             total_stats['detected_emails'].add(email)
                     
-                    # Tokens suspects
+                    # Tokens suspects avec comptage par type
                     if 'suspicious_tokens' in data:
                         total_stats['suspicious_tokens'] += data['suspicious_tokens'].get('count', 0)
+                        
+                        # Compter par type de pattern
+                        for item in data['suspicious_tokens'].get('items', []):
+                            subtype = item.get('subtype', 'other')
+                            if subtype not in total_stats['suspicious_tokens_by_type']:
+                                total_stats['suspicious_tokens_by_type'][subtype] = 0
+                            total_stats['suspicious_tokens_by_type'][subtype] += 1
         except Exception as e:
             print(Fore.RED + f"Erreur lors de la lecture de {cookies_path}: {e}" + Style.RESET_ALL)
     
@@ -670,9 +743,16 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
                         for email in data['detected_emails'].get('unique_emails', []):
                             total_stats['detected_emails'].add(email)
                     
-                    # Tokens suspects
+                    # Tokens suspects avec comptage par type
                     if 'suspicious_tokens' in data:
                         total_stats['suspicious_tokens'] += data['suspicious_tokens'].get('count', 0)
+                        
+                        # Compter par type de pattern
+                        for item in data['suspicious_tokens'].get('items', []):
+                            subtype = item.get('subtype', 'other')
+                            if subtype not in total_stats['suspicious_tokens_by_type']:
+                                total_stats['suspicious_tokens_by_type'][subtype] = 0
+                            total_stats['suspicious_tokens_by_type'][subtype] += 1
         except Exception as e:
             print(Fore.RED + f"Erreur lors de la lecture de {dom_path}: {e}" + Style.RESET_ALL)
     
@@ -708,5 +788,21 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
     
     print(f"\n{Fore.YELLOW}⚠️  TOKENS SUSPECTS:{Style.RESET_ALL}")
     print(f"  • Total: {Fore.MAGENTA}{total_stats['suspicious_tokens']}{Style.RESET_ALL} tokens suspects")
+    
+    if total_stats['suspicious_tokens_by_type']:
+        print(f"  • Détail par type de pattern:")
+        # Grouper les patterns similaires
+        important_types = ['user_agent', 'user_id', 'device_id', 'session_id', 'api_key', 'uuid']
+        
+        for pattern_type in important_types:
+            if pattern_type in total_stats['suspicious_tokens_by_type']:
+                count = total_stats['suspicious_tokens_by_type'][pattern_type]
+                print(f"    - {pattern_type:20}: {Fore.CYAN}{count:5}{Style.RESET_ALL}")
+        
+        # Afficher les autres types
+        other_count = sum(count for ptype, count in total_stats['suspicious_tokens_by_type'].items() 
+                         if ptype not in important_types)
+        if other_count > 0:
+            print(f"    - {'autres':20}: {Fore.CYAN}{other_count:5}{Style.RESET_ALL}")
     
     print(Fore.CYAN + "\n" + "="*70 + "\n" + Style.RESET_ALL)

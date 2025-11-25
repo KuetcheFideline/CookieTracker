@@ -282,6 +282,7 @@ def detect_suspicious_tokens(value, cookie_name, personal_info=None):
         'device_id': r'device[_-]?id[=:]([a-f0-9-]+)',
         'timezone': r'timezone[=:]([A-Za-z/_]+)',
         'theme': r'theme[=:](dark|light)',
+        'user_agent': r'Mozilla/[0-9.]+\s*\([^)]+\)[^"\']*',
         'uuid': r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}',
         'base64_data': r'[A-Za-z0-9+/_-]{20,}={0,2}',
         'hash_sha256': r'[a-fA-F0-9]{64}',
@@ -305,16 +306,18 @@ def detect_suspicious_tokens(value, cookie_name, personal_info=None):
             if isinstance(match, tuple):
                 match = match[0] # On prend le premier groupe capturé
             
-            # Gestion spéciale pour les nouveaux types qui peuvent être courts
-            is_short_allowed = pattern_name in ['user_id', 'device_id', 'timezone', 'theme']
+            # Gestion spéciale pour les nouveaux types qui peuvent être courts ou longs
+            is_short_allowed = pattern_name in ['user_id', 'device_id', 'timezone', 'theme', 'user_agent']
             
             if len(match) >= 8 or (is_short_allowed and len(match) >= 2): 
                 entropy = calculate_entropy(match)
                 
                 # Score ajusté pour les types courts connus
                 risk = min(10, entropy + len(match)/10)
-                if is_short_allowed:
+                if pattern_name in ['user_id', 'device_id', 'timezone', 'theme']:
                     risk = 5.0 # Score fixe moyen pour ces détections explicites
+                elif pattern_name == 'user_agent':
+                    risk = 6.0 # Score moyen-élevé pour les User-Agents
                 
                 # Tentative de décodage pour les types pertinents
                 decoded_value = None

@@ -13,7 +13,7 @@ from colorama import Fore, Style, init
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary)
+from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary, clean_results)
 from chrome.chrome_linux import main_linux
 
 
@@ -73,6 +73,10 @@ def search_profile():
             print(f"Erreur lors du traitement : {e}")
 
     json_Result(results)
+    
+    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
+    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
+    clean_results('result_dom.json', 'result_cleaned_dom.json')
     
     # Affichage du résumé des statistiques
     print_summary()
