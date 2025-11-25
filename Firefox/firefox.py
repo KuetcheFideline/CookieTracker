@@ -91,16 +91,13 @@ class Firefox:
     def get_domstorage_file_path(self):
             profile_dir = None
 
-            if self.os_name == "Linux/Ubuntu":
+            if self.os_name != "Windows":
                 profile_dir = Path("~/.mozilla/firefox/").expanduser()
                 if not profile_dir.exists():
                     profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-            elif self.os_name == "Windows":
-                profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
             else:
-                raise Exception("Unsupported Operating System")
+                profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
 
-            # Fichier profiles.ini
           
             # Find the default profile directory
             profile_ini = profile_dir / "profiles.ini"
@@ -143,6 +140,7 @@ class Firefox:
                 raise FileNotFoundError(f"DOM Storage directory not found at {domstorage_dir}")
 
             self.dom_path = domstorage_dir
+
     
 
     def move_cookies_file_to_temp_dir(self):

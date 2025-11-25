@@ -13,7 +13,7 @@ from colorama import Fore, Style, init
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (update_runtime_file, json_Result,json_Result,init_runtime_file,load_profile_from_terminal_validated)
+from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated)
 from chrome.chrome_linux import main_linux
 
 
@@ -47,11 +47,10 @@ def search_profile():
 
     profile = load_profile_from_terminal_validated()
     os_type = get_os_info()
-    count, date = init_runtime_file("runtime.txt")
     results = []
     browsers = [b.lower() for b in profile.get("browsers", [])]
 
-    print(f"📋 Navigateurs à traiter: {', '.join(browsers)}")
+    print(f" Navigateurs à traiter: {', '.join(browsers)}")
 
     print("profile to search : ",json.dumps(profile, indent=4))
 
@@ -60,21 +59,19 @@ def search_profile():
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
                 try:
-                    result_dict = main_firefox(date, user=profile)
+                    # last_run=0 désactive le filtrage par date (analyse tous les cookies)
+                    result_dict = main_firefox(last_run=0, user=profile)
                     results.append(result_dict)
                 except Exception as e:
-                    print(f"❌ Erreur lors du traitement de {browser}: {e}")
+                    print(f" Erreur lors du traitement de {browser}: {e}")
         
     try:
-            linux_result = main_linux(user=profile, browser=browsers, date=date)
+            linux_result = main_linux(user=profile, browser=browsers, date=0)
             print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
             results.extend(linux_result)
     except Exception as e:
-            print(f"❌ Erreur lors du traitement : {e}")
+            print(f"Erreur lors du traitement : {e}")
 
-    count += 1
-    current = int(time.time() * 1e6)
-    update_runtime_file("runtime.txt", count, current)
     json_Result(results)
 
 

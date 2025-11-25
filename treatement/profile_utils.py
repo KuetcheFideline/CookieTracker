@@ -6,11 +6,15 @@ import socket
 import uuid
 import platform
 import requests
+import distro
 from datetime import datetime
 from colorama import Fore, Style, init
 
+init(autoreset=True)
+
 PROFILE_FILE = "user_profile.json"
 
+# --- Validation Functions ---
 def validate_date(date_str):
     """Valide le format de date JJ/MM/AAAA"""
     if not date_str:
@@ -60,7 +64,7 @@ def validate_account_number(account_num):
 
 def validate_non_empty(value, field_name):
     if not value or not value.strip():
-        print(Fore.RED + f"❌ Le champ '{field_name}' est obligatoire." + Style.RESET_ALL)
+        print(Fore.RED + f" Le champ '{field_name}' est obligatoire." + Style.RESET_ALL)
         return False
     return True
 
@@ -74,22 +78,19 @@ def validate_length(value, min_len=None, max_len=None):
         return False
     return True
 
-def remove_empty_values(data):
-    """Supprime les valeurs vides (chaînes vides, listes vides, None) du dictionnaire."""
+
+def clean_empty_values(data):
+    """Supprime les valeurs vides (chaînes vides, listes vides, dictionnaires vides) du profil."""
     if isinstance(data, dict):
         cleaned = {}
         for k, v in data.items():
-            cleaned_v = remove_empty_values(v)
-            if cleaned_v is not None and cleaned_v != "" and cleaned_v != [] and cleaned_v != {}:
-                cleaned[k] = cleaned_v
+            cleaned_value = clean_empty_values(v)
+            if cleaned_value or cleaned_value == 0 or cleaned_value is False:  
+                if not (isinstance(cleaned_value, (str, list, dict)) and len(cleaned_value) == 0):
+                    cleaned[k] = cleaned_value
         return cleaned
     elif isinstance(data, list):
-        cleaned_list = []
-        for item in data:
-            cleaned_item = remove_empty_values(item)
-            if cleaned_item is not None and cleaned_item != "" and cleaned_item != [] and cleaned_item != {}:
-                cleaned_list.append(cleaned_item)
-        return cleaned_list
+        return [clean_empty_values(item) for item in data if item and str(item).strip()]
     else:
         return data
 
@@ -139,14 +140,153 @@ def get_system_info():
         "processor": platform.processor()
     }
 
+def detect_installed_browsers():
+    """Détecte les navigateurs installés sur le système"""
+    browsers = []
+    os_type = platform.system()
+    
+    if os_type == "Linux":
+        distro_id = distro.id().lower()
+        
+        if distro_id in ["ubuntu", "debian", "linuxmint", "pop"]:
+            browser_paths = {
+                "Chrome": [
+                    os.path.expanduser("~/.config/google-chrome"),
+                    os.path.expanduser("~/.config/chrome")
+                ],
+                "Firefox": [
+                    os.path.expanduser("~/.mozilla/firefox"),
+                    os.path.expanduser("~/snap/firefox")  
+                ],
+                "Chromium": [
+                    os.path.expanduser("~/.config/chromium"),
+                    os.path.expanduser("~/snap/chromium") 
+                ],
+                "Brave": [
+                    os.path.expanduser("~/.config/BraveSoftware/Brave-Browser")
+                ],
+                "Edge": [
+                    os.path.expanduser("~/.config/microsoft-edge")
+                ]
+            }
+        elif distro_id in ["fedora", "rhel", "centos"]:
+            browser_paths = {
+                "Chrome": [
+                    os.path.expanduser("~/.config/google-chrome"),
+                    os.path.expanduser("~/.config/chrome")
+                ],
+                "Firefox": [
+                    os.path.expanduser("~/.mozilla/firefox")
+                ],
+                "Chromium": [
+                    os.path.expanduser("~/.config/chromium")
+                ],
+                "Brave": [
+                    os.path.expanduser("~/.config/BraveSoftware/Brave-Browser")
+                ],
+                "Edge": [
+                    os.path.expanduser("~/.config/microsoft-edge")
+                ]
+            }
+        else:
+            browser_paths = {
+                "Chrome": [
+                    os.path.expanduser("~/.config/google-chrome")
+                ],
+                "Firefox": [
+                    os.path.expanduser("~/.mozilla/firefox")
+                ],
+                "Chromium": [
+                    os.path.expanduser("~/.config/chromium")
+                ]
+            }
+    else:
+        print(f"Système d'exploitation non supporté: {os_type}")
+        browser_paths = {}
+    
+    for browser, paths in browser_paths.items():
+        for path in paths:
+            if os.path.exists(path):
+                browsers.append(browser)
+                break
+    
+    return browsers
 
 
-
+def select_browsers_interactive():
+    """Permet à l'utilisateur de sélectionner les navigateurs à analyser"""
+    available_browsers = {
+        "1": "Chrome",
+        "2": "Firefox",
+        "3": "Chromium",
+        "4": "Brave",
+        "5": "Edge"
+    }
+    
+    installed = detect_installed_browsers()
+    
+    print(Fore.YELLOW + "\n--- Sélection des navigateurs ---" + Style.RESET_ALL)
+    print("Navigateurs disponibles :")
+    for key, browser in available_browsers.items():
+        status = Fore.GREEN + " (installé)" + Style.RESET_ALL if browser in installed else Fore.RED + " (non détecté)" + Style.RESET_ALL
+        print(f"  {key}. {browser}{status}")
+    
+    while True:
+        choice = input("\n>> Sélectionnez les navigateurs (ex: 1,2,3): ").strip()
+        
+        if not choice:
+            print(Fore.RED + "Veuillez sélectionner au moins un navigateur." + Style.RESET_ALL)
+            continue
+        
+        selected_numbers = [num.strip() for num in choice.split(",")]
+        selected_browsers = []
+        
+        invalid = False
+        for num in selected_numbers:
+            if num in available_browsers:
+                selected_browsers.append(available_browsers[num])
+            else:
+                print(Fore.RED + f"Choix invalide: {num}" + Style.RESET_ALL)
+                invalid = True
+                break
+        
+        if not invalid and selected_browsers:
+            return selected_browsers
 
 def update_runtime_file(file_path, count, date):
     with open(file_path, "w") as file:
         file.write(f"count={count}\ndate={date}\n")
 
+def init_runtime_file(path):
+    if not os.path.exists(path):
+        with open(path, "w") as file:
+            file.write("count=0\nlastrun=0\n")
+    
+    with open(path, "r") as file:
+        lines = file.readlines()
+        
+        # Parser avec gestion des valeurs vides
+        try:
+            count_value = lines[0].strip().split("=")[1]
+            count = int(count_value) if count_value else 0
+        except (IndexError, ValueError):
+            count = 0
+        
+        try:
+            date_value = lines[1].strip().split("=")[1]
+            date = int(date_value) if date_value else 0
+        except (IndexError, ValueError):
+            date = 0
+    
+    return count, date
+
+def load_config(profile):
+    with open(profile, "r") as file:
+        profile = json.load(file)
+    browsers = profile["browsers"]
+    profile.pop("browsers")
+    users = profile
+    return users, browsers
 
 def json_Result(results):
     """
@@ -181,7 +321,22 @@ def json_Result(results):
     print("Results structured. For us to send ")
 
 
+def prompt_field(field_name, default=""):
+    """Affiche ancienne valeur et permet modification"""
+    if default:
+        val = input(f">> {field_name} [{default}]: ").strip()
+        return val if val else default
+    else:
+        return input(f">> {field_name}: ").strip()
 
+def multi_input(field_name, default=None):
+    """Champ multiple séparé par des virgules"""
+    if default:
+        print(f">> {field_name} actuel: {', '.join(default)}")
+    val = input(f">> {field_name} (séparez par des virgules, Entrée pour garder): ").strip()
+    if not val and default is not None:
+        return default
+    return [v.strip() for v in val.split(",") if v.strip()]
 
 def prompt_field_validated(field_name, default="", validator=None, required=False, error_msg=None):
     """Affiche ancienne valeur et permet modification avec validation"""
@@ -192,13 +347,11 @@ def prompt_field_validated(field_name, default="", validator=None, required=Fals
         else:
             val = input(f">> {field_name}: ").strip()
         
-        # Vérifier si le champ est requis
         if required and not validate_non_empty(val, field_name):
             continue
         
-        # Appliquer le validateur si fourni
         if validator and not validator(val):
-            msg = error_msg or f"❌ Format invalide pour '{field_name}'. Veuillez réessayer."
+            msg = error_msg or f" Format invalide pour '{field_name}'. Veuillez réessayer."
             print(Fore.RED + msg + Style.RESET_ALL)
             continue
         
@@ -219,7 +372,6 @@ def multi_input_validated(field_name, default=None, validator=None, error_msg=No
         
         items = [v.strip() for v in val.split(",") if v.strip()]
         
-        # Valider chaque élément si un validateur est fourni
         if validator:
             invalid_items = []
             for item in items:
@@ -227,13 +379,13 @@ def multi_input_validated(field_name, default=None, validator=None, error_msg=No
                     invalid_items.append(item)
             
             if invalid_items:
-                msg = error_msg or f"❌ Éléments invalides: {', '.join(invalid_items)}"
+                msg = error_msg or f" Éléments invalides: {', '.join(invalid_items)}"
                 print(Fore.RED + msg + Style.RESET_ALL)
                 continue
         
         return items
 
-# Fonction principale avec validation
+
 def load_profile_from_terminal_validated():
     old_data = load_existing_profile()
 
@@ -256,14 +408,14 @@ def load_profile_from_terminal_validated():
         "Date de naissance (JJ/MM/AAAA)", 
         old_data.get("birthday", ""),
         validator=validate_date,
-        error_msg="❌ Format de date invalide. Utilisez JJ/MM/AAAA (ex: 15/03/1990)"
+        error_msg="Format de date invalide. Utilisez JJ/MM/AAAA (ex: 15/03/1990)"
     )
 
     user_data["gender"] = prompt_field_validated(
         "Genre (male/female/other)", 
         old_data.get("gender", ""),
         validator=validate_gender,
-        error_msg="❌ Genre invalide. Utilisez: male, female ou other"
+        error_msg="Genre invalide. Utilisez: male, female ou other"
     )
 
     user_data["adresse"] = prompt_field_validated(
@@ -300,7 +452,7 @@ def load_profile_from_terminal_validated():
         "N° compte bancaire",
         old_data.get("bank", {}).get("account_number", "") or "0000000000",
         validator=validate_account_number,
-        error_msg="❌ Format de compte invalide. Utilisez lettres, chiffres et tirets"
+        error_msg="Format de compte invalide. Utilisez lettres, chiffres et tirets"
     ),
     "bank_name": prompt_field_validated(
         "Nom banque", 
@@ -315,23 +467,23 @@ def load_profile_from_terminal_validated():
         "Emails *", 
         old_data.get("email", []),
         validator=validate_email,
-        error_msg="❌ Certains emails sont invalides. Format attendu: user@domain.com"
+        error_msg="Certains emails sont invalides. Format attendu: user@domain.com"
     )
     
-    if not user_data["email"]:  # Au moins un email requis
-        print(Fore.RED + "❌ Au moins un email est requis." + Style.RESET_ALL)
+    if not user_data["email"]:  
+        print(Fore.RED + "Au moins un email est requis." + Style.RESET_ALL)
         user_data["email"] = multi_input_validated(
             "Emails *", 
             [],
             validator=validate_email,
-            error_msg="❌ Format email invalide"
+            error_msg="Format email invalide"
         )
 
     user_data["phone_number"] = multi_input_validated(
         "Numéros de téléphone", 
         old_data.get("phone_number", []),
         validator=validate_phone,
-        error_msg="❌ Format de téléphone invalide. Ex: +33123456789, 0123456789"
+        error_msg="Format de téléphone invalide. Ex: +33123456789, 0123456789"
     )
 
     user_data["isp"] = multi_input_validated(
@@ -357,7 +509,7 @@ def load_profile_from_terminal_validated():
     )
     
     if not user_data["city"]:  # Au moins une ville requise
-        print(Fore.RED + "❌ Au moins une ville est requise." + Style.RESET_ALL)
+        print(Fore.RED + "Au moins une ville est requise." + Style.RESET_ALL)
         user_data["city"] = multi_input_validated("Villes *", [])
 
     user_data["country"] = multi_input_validated(
@@ -369,7 +521,7 @@ def load_profile_from_terminal_validated():
         "Code pays (2 lettres, ex: FR, US)", 
         old_data.get("code_country", []),
         validator=validate_country_code,
-        error_msg="❌ Code pays invalide. Utilisez 2 lettres (ex: FR, US, DE)"
+        error_msg="Code pays invalide. Utilisez 2 lettres (ex: FR, US, DE)"
     )
 
     user_data["language"] = multi_input_validated(
@@ -391,17 +543,16 @@ def load_profile_from_terminal_validated():
     )
 
     # Informations système automatiques
-    user_data["browsers"] = old_data.get("browsers", ["Chrome", "Firefox"])
+    user_data["browsers"] = select_browsers_interactive()
     user_data["ip_info"] = get_system_info()
 
     # Nettoie les valeurs vides avant de sauvegarder
     cleaned_user_data = clean_empty_values(user_data)
     save_profile(cleaned_user_data)
     
-    print(Fore.GREEN + "\n✅ Profil sauvegardé avec succès!" + Style.RESET_ALL)
+    print(Fore.GREEN + "\n Profil sauvegardé avec succès!" + Style.RESET_ALL)
     return cleaned_user_data
 
-# Fonction d'affichage du profil pour vérification
 def display_profile_summary(profile):
     """Affiche un résumé du profil pour vérification"""
     print(Fore.CYAN + "\n" + "="*50)
@@ -418,173 +569,3 @@ def display_profile_summary(profile):
     # Demander confirmation
     confirm = input(f"\n{Fore.YELLOW}Les informations sont-elles correctes ? (o/n): {Style.RESET_ALL}").strip().lower()
     return confirm in ['o', 'oui', 'y', 'yes']
-
-# Autres fonctions nécessaires (à garder de votre code original)
-def load_existing_profile():
-    PROFILE_FILE = "user_profile.json"
-    if os.path.exists(PROFILE_FILE):
-        with open(PROFILE_FILE, "r") as f:
-            return json.load(f)
-    return {}
-
-def save_profile(user_data):
-    PROFILE_FILE = "user_profile.json"
-    with open(PROFILE_FILE, "w") as f:
-        json.dump(user_data, f, indent=4)
-
-def clean_empty_values(data):
-    """Supprime les valeurs vides du profil."""
-    if isinstance(data, dict):
-        cleaned = {}
-        for k, v in data.items():
-            cleaned_value = clean_empty_values(v)
-            if cleaned_value or cleaned_value == 0 or cleaned_value is False:
-                if not (isinstance(cleaned_value, (str, list, dict)) and len(cleaned_value) == 0):
-                    cleaned[k] = cleaned_value
-        return cleaned
-    elif isinstance(data, list):
-        return [clean_empty_values(item) for item in data if item and str(item).strip()]
-    else:
-        return data
-
-def get_system_info():
-    """Retourne infos système automatiques"""
-    try:
-        ip_public = requests.get("https://api.ipify.org", timeout=5).text
-    except:
-        ip_public = "Non disponible"
-    
-    try:
-        ip_local = socket.gethostbyname(socket.gethostname())
-    except:
-        ip_local = "Non disponible"
-    
-    try:
-        mac = ':'.join(['{:02x}'.format((uuid.getnode() >> i) & 0xff) 
-                        for i in range(0, 8*6, 8)][::-1])
-    except:
-        mac = "Non disponible"
-    
-    return {
-        "ip_public": ip_public,
-        "ip_local": ip_local,
-        "mac_address": mac,
-        "os": platform.system(),
-        "os_version": platform.release(),
-        "processor": platform.processor()
-    }
-
-
-
-def remove_matches_field(data):
-    """Supprime la clé 'matches' à tous les niveaux du dictionnaire imbriqué."""
-    if isinstance(data, dict):
-        return {k: remove_matches_field(v) for k, v in data.items() if k != "matches"}
-    elif isinstance(data, list):
-        return [remove_matches_field(item) for item in data]
-    else:
-        return data
-
-
-def clean_empty_values(data):
-    """Supprime les valeurs vides (chaînes vides, listes vides, dictionnaires vides) du profil."""
-    if isinstance(data, dict):
-        cleaned = {}
-        for k, v in data.items():
-            cleaned_value = clean_empty_values(v)
-            # Garde seulement les valeurs non vides
-            if cleaned_value or cleaned_value == 0 or cleaned_value is False:  # Garde 0 et False
-                if not (isinstance(cleaned_value, (str, list, dict)) and len(cleaned_value) == 0):
-                    cleaned[k] = cleaned_value
-        return cleaned
-    elif isinstance(data, list):
-        # Filtre les éléments vides et nettoie récursivement
-        return [clean_empty_values(item) for item in data if item and str(item).strip()]
-    else:
-        return data
-
-
-def resource_path(relative_path):
-    """ Trouve le bon chemin même avec PyInstaller """
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(os.path.abspath("."), relative_path)
-
-
-def load_config(profile):
-    with open(profile, "r") as file:
-        profile = json.load(file)
-    browsers = profile["browsers"]
-    profile.pop("browsers")
-    users = profile
-    return users, browsers
-
-
-def init_runtime_file(path):
-    if not os.path.exists(path):
-        with open(path, "w") as file:
-            file.write("count=0\nlastrun=0\n")
-    with open(path, "r") as file:
-        lines = file.readlines()
-        count = int(lines[0].strip().split("=")[1])
-        date = int(lines[1].strip().split("=")[1])
-    return count, date
-
-
-init(autoreset=True)
-
-
-def get_system_info():
-    """Retourne infos système automatiques"""
-    try:
-        ip_public = requests.get("https://api.ipify.org").text
-    except:
-        ip_public = "Non disponible"
-    ip_local = socket.gethostbyname(socket.gethostname())
-    mac = ':'.join(['{:02x}'.format((uuid.getnode() >> i) & 0xff) 
-                    for i in range(0, 8*6, 8)][::-1])
-    return {
-        "ip_public": ip_public,
-        "ip_local": ip_local,
-        "mac_address": mac,
-        "os": platform.system(),
-        "os_version": platform.release(),
-        "processor": platform.processor()
-    }
-
-
-PROFILE_FILE = "user_profile.json"
-
-
-def load_existing_profile():
-    if os.path.exists(PROFILE_FILE):
-        with open(PROFILE_FILE, "r") as f:
-            return json.load(f)
-    return {}
-
-
-def save_profile(user_data):
-    with open(PROFILE_FILE, "w") as f:
-        json.dump(user_data, f, indent=4)
-
-
-def prompt_field(field_name, default=""):
-    """Affiche ancienne valeur et permet modification"""
-    if default:
-        val = input(f">> {field_name} [{default}]: ").strip()
-        return val if val else default
-    else:
-        return input(f">> {field_name}: ").strip()
-
-
-def multi_input(field_name, default=None):
-    """Champ multiple séparé par des virgules"""
-    if default:
-        print(f">> {field_name} actuel: {', '.join(default)}")
-    val = input(f">> {field_name} (séparez par des virgules, Entrée pour garder): ").strip()
-    if not val and default is not None:
-        return default
-    return [v.strip() for v in val.split(",") if v.strip()]
-
-
-

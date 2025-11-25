@@ -1,9 +1,40 @@
 import sqlite3
-import os 
+import os
+import shutil
+import tempfile
+
 class PersonalCookies:
     def __init__(self, db, last_run):
         self.last_run = last_run
-        self.db = sqlite3.connect(db)
+        self.original_db = db
+        
+        # Créer une copie temporaire pour éviter le verrou "database is locked"
+        try:
+            # Créer un fichier temporaire
+            temp_fd, self.temp_db = tempfile.mkstemp(suffix='.sqlite')
+            os.close(temp_fd)
+            
+            # Copier la base de données
+            shutil.copy2(db, self.temp_db)
+            
+            # Se connecter à la copie
+            self.db = sqlite3.connect(self.temp_db)
+        except Exception as e:
+            print(f"⚠️  Avertissement: Impossible de copier la base de données ({e})")
+            print("   Assurez-vous que Firefox est fermé.")
+            # Essayer de se connecter directement (peut échouer si Firefox est ouvert)
+            self.temp_db = None
+            self.db = sqlite3.connect(db)
+    
+    def __del__(self):
+        """Nettoyer le fichier temporaire à la destruction de l'objet"""
+        try:
+            if hasattr(self, 'db'):
+                self.db.close()
+            if hasattr(self, 'temp_db') and self.temp_db and os.path.exists(self.temp_db):
+                os.remove(self.temp_db)
+        except:
+            pass
 
     def filter_data_by_date(self, user):
         """Filtrer les cookies en fonction de la date et retourner les statistiques des informations personnelles."""
