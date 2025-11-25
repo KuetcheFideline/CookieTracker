@@ -211,15 +211,63 @@ def decode_token(token, token_type, depth=0):
         
     return None
 
-def detect_suspicious_tokens(value, cookie_name):
+def search_personal_info_in_decoded(decoded_value, personal_info):
+    """
+    Recherche les informations personnelles dans une valeur décodée.
+    
+    Args:
+        decoded_value: Valeur décodée (string)
+        personal_info: Dictionnaire des informations personnelles
+        
+    Returns:
+        Liste de dictionnaires contenant les matches trouvés
+    """
+    matches = []
+    
+    if not decoded_value or not personal_info:
+        return matches
+    
+    # Convertir en minuscules pour la recherche
+    decoded_lower = str(decoded_value).lower()
+    
+    # Rechercher chaque type d'information personnelle
+    for key, value in personal_info.items():
+        if not value:
+            continue
+            
+        # Gérer les listes de valeurs
+        values_to_search = []
+        if isinstance(value, list):
+            values_to_search = [str(v) for v in value if v]
+        else:
+            values_to_search = [str(value)]
+        
+        # Rechercher chaque valeur
+        for search_value in values_to_search:
+            if not search_value.strip():
+                continue
+                
+            # Recherche insensible à la casse
+            if search_value.lower() in decoded_lower:
+                matches.append({
+                    'info_type': key,
+                    'matched_value': search_value,
+                    'found_in_decoded': True
+                })
+    
+    return matches
+
+def detect_suspicious_tokens(value, cookie_name, personal_info=None):
     """
     Fonction unifiée qui détecte à la fois :
     - Les tokens, clés et patterns suspects
     - La collecte d'historiques de navigation
+    - Les informations personnelles dans les tokens décodés
     
     Args:
         value: Valeur à analyser (contenu du cookie, localStorage, etc.)
         cookie_name: Nom du cookie/clé (peut être None)
+        personal_info: Dictionnaire des informations personnelles à rechercher (optionnel)
     """
     suspicious_items = []
     
@@ -270,8 +318,14 @@ def detect_suspicious_tokens(value, cookie_name):
                 
                 # Tentative de décodage pour les types pertinents
                 decoded_value = None
+                personal_info_matches = []
+                
                 if pattern_name in ['jwt_token', 'base64_data']:
                     decoded_value = decode_token(match, pattern_name)
+                    
+                    # Recherche d'informations personnelles dans la valeur décodée
+                    if decoded_value and personal_info:
+                        personal_info_matches = search_personal_info_in_decoded(decoded_value, personal_info)
 
                 suspicious_items.append({
                     'category': 'token_detection',
@@ -281,8 +335,20 @@ def detect_suspicious_tokens(value, cookie_name):
                     'length': len(match),
                     'cookie': cookie_name,
                     'risk_score': risk,
-                    'decoded_value': decoded_value
+                    'decoded_value': decoded_value,
+                    'personal_info_matches': personal_info_matches if personal_info_matches else None
                 })
+    
+    # 1.5. Détection d'emails (tous les emails, pas seulement ceux du profil)
+    email_pattern = r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b'
+    email_matches = re.findall(email_pattern, value, re.IGNORECASE)
+    for email in email_matches:
+        suspicious_items.append({
+            'category': 'email_detection',
+            'type': 'detected_email',
+            'email': email.lower(),  # Normaliser en minuscules
+            'cookie': cookie_name
+        })
     
     # 2. Analyse entropique des segments
     segments = re.split(r'[&=;,|:\s]+', value)
