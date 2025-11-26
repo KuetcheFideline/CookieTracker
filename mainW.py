@@ -12,7 +12,7 @@ import re
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (update_runtime_file, json_Result,json_Result,init_runtime_file,load_profile_from_terminal_validated)
+from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary, clean_results, update_runtime_file, init_runtime_file)
 
 init(autoreset=True)
 
@@ -46,7 +46,7 @@ def search_profile():
     results = []
     browsers = [b.lower() for b in profile.get("browsers", [])]
 
-    print(f"📋 Navigateurs à traiter: {', '.join(browsers)}")
+    print(f"Navigateurs à traiter: {', '.join(browsers)}")
 
     print("profile to search : ",json.dumps(profile, indent=4))
 
@@ -59,17 +59,24 @@ def search_profile():
                     result_dict = main_firefox(date, user=profile)
                     results.append(result_dict)
                 except Exception as e:
-                    print(f"❌ Erreur lors du traitement de {browser}: {e}")
+                    print(f"Erreur lors du traitement de {browser}: {e}")
             else:
                 try:
                     result_dict = main_chromium(profile, date, browser)
                     results.append(result_dict)
                 except Exception as e:
-                    print(f"❌ Erreur lors du traitement de {browser}: {e}")
+                    print(f" Erreur lors du traitement de {browser}: {e}")
     count += 1
     current = int(time.time() * 1e6)
     update_runtime_file("runtime.txt", count, current)
     json_Result(results)
+    
+    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
+    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
+    clean_results('result_dom.json', 'result_cleaned_dom.json')
+    
+    # Affichage du résumé des statistiques
+    print_summary()
 
 if __name__ == "__main__":
     search_profile()
