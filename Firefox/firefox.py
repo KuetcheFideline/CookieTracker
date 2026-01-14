@@ -47,10 +47,29 @@ class Firefox:
       
 
             if not profile_ini.exists():
-                profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-                profile_ini= profile_dir / "profiles.ini"
-                if not profile_ini.exists():
-                    raise FileNotFoundError("Firefox profiles.ini file not found.")
+                # Fallback: check Profiles directory directly (common on some Windows setups)
+                profiles_folder = profile_dir / "Profiles"
+                if profiles_folder.exists():
+                     candidates = [p for p in profiles_folder.iterdir() if p.is_dir()]
+                     if candidates:
+                         # Prioritize default-release or default
+                         selected_profile = next((p for p in candidates if "default-release" in p.name), None)
+                         if not selected_profile:
+                             selected_profile = next((p for p in candidates if "default" in p.name), candidates[0])
+                         
+                         self.cookies_path = selected_profile / "cookies.sqlite"
+                         if not self.cookies_path.exists():
+                             raise FileNotFoundError(f"Cookies database not found at {self.cookies_path}")
+                         return
+
+                # Only try snap fallback if NOT on Windows
+                if self.os_name != "Windows":
+                    profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+                    profile_ini = profile_dir / "profiles.ini"
+                    if not profile_ini.exists():
+                        raise FileNotFoundError(f"Firefox profiles.ini file not found at {profile_dir} or standard locations.")
+                else:
+                    raise FileNotFoundError(f"Firefox profiles.ini file not found at {profile_dir}")
 
             profiles_ini = configparser.ConfigParser()
             profiles_ini.read(profile_ini)
@@ -104,10 +123,30 @@ class Firefox:
       
 
             if not profile_ini.exists():
-                profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-                profile_ini= profile_dir / "profiles.ini"
-                if not profile_ini.exists():
-                    raise FileNotFoundError("Firefox profiles.ini file not found.")
+                # Fallback: check Profiles directory directly
+                profiles_folder = profile_dir / "Profiles"
+                if profiles_folder.exists():
+                     candidates = [p for p in profiles_folder.iterdir() if p.is_dir()]
+                     if candidates:
+                         # Prioritize default-release or default
+                         selected_profile = next((p for p in candidates if "default-release" in p.name), None)
+                         if not selected_profile:
+                             selected_profile = next((p for p in candidates if "default" in p.name), candidates[0])
+                         
+                         domstorage_dir = selected_profile / "storage" / "default"
+                         if not domstorage_dir.exists():
+                             raise FileNotFoundError(f"DOM Storage directory not found at {domstorage_dir}")
+                         self.dom_path = domstorage_dir
+                         return
+
+                # Only try snap fallback if NOT on Windows
+                if self.os_name != "Windows":
+                    profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+                    profile_ini = profile_dir / "profiles.ini"
+                    if not profile_ini.exists():
+                        raise FileNotFoundError(f"Firefox profiles.ini file not found at {profile_dir} or standard locations.")
+                else:
+                    raise FileNotFoundError(f"Firefox profiles.ini file not found at {profile_dir}")
 
             profiles_ini = configparser.ConfigParser()
             profiles_ini.read(profile_ini)

@@ -11,7 +11,10 @@ def main_firefox(last_run,user) -> None:
 
    
    
-    os_name =  f"{system_info.system}/{distro.id()}"
+    try:
+        os_name = f"{system_info.system}/{distro.id()}"
+    except Exception:
+        os_name = system_info.system
 
 
 
