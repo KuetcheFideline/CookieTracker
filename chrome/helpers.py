@@ -45,7 +45,7 @@ def cookie_config(browser):
                 if os.path.exists(profile_path):
                     cookie_file.append(f"~/.config/google-chrome/Profile {i}/Cookies")
     else:
-           return 0        
+           return None        
 
     config = {
         "key_material": "peanuts",
@@ -98,7 +98,7 @@ def clean(decrypted):
     try:
         return decrypted[:-last].decode("utf-8")
     except UnicodeDecodeError:
-        # décodage tolérant → remplace les octets invalides par �
+        # décodage tolérant → remplace les octets invalides par 
         return decrypted[:-last].decode("utf-8", errors="replace")
 
 
@@ -119,6 +119,7 @@ def cookie_decrypt(encrypted_value, key, ini_vector,cookie_database_version):
 
 
     return clean(decrypted)
+
 
 
 
@@ -148,8 +149,8 @@ def get_cookies(browser, date):
     config = cookie_config(browser)
 
     
-    if config == 0:
-        return 0
+    if config is None:
+        return {}
 
     config.update(
         {"init_vector": b" " * 16, "length": 16, "salt": b"saltysalt"}
@@ -200,10 +201,9 @@ def get_cookies(browser, date):
                     config["init_vector"],
                     cookie_database_version
                 )
-
                 # Chrome ≥ v24 : retirer les 32 premiers octets
-                if cookie_database_version >= 24 and decrypted_value:
-                    decrypted_value = decrypted_value[32:]
+                # if cookie_database_version >= 24 and decrypted_value:
+                #     decrypted_value = decrypted_value[32:]
                 
                 cookie_dict = {
                     "name": name,
@@ -262,25 +262,42 @@ def count_matches(text, item):
     """
     Compte combien de fois les éléments de 'item' apparaissent dans 'text'.
     'item' peut être une str, une list ou un dict.
-    La recherche est insensible à la casse.
+    La recherche est insensible à la casse et utilise des frontières de mots (\b)
+    pour éviter les faux positifs (ex: 'Ali' dans 'Qualité').
     """
     
-    # time.sleep(1)
+    if not text:
+        return 0
 
     text_lower = text.lower()
     count = 0
-
+    
+    # Normaliser l'entrée en liste de chaînes
+    items_to_check = []
     if isinstance(item, list):
-        for e in item:
-            if e.lower() in text_lower:
-                count += 1
+        items_to_check = [str(e) for e in item if e]
     elif isinstance(item, dict):
-        for val in item.values():
-            if str(val).lower() in text_lower:
+        items_to_check = [str(v) for v in item.values() if v]
+    else:
+        items_to_check = [str(item)]
+        
+    for val in items_to_check:
+        if not val or not val.strip():
+            continue
+            
+        # Échapper les caractères spéciaux regex
+        val_escaped = re.escape(val.lower())
+        
+        # Utiliser \b pour les frontières de mots
+        # Cela empêche de trouver "Ali" dans "Qualité" ou "Jean" dans "Jeans"
+        pattern = rf'\b{val_escaped}\b'
+        
+        try:
+            matches = re.findall(pattern, text_lower)
+            count += len(matches)
+        except re.error:
+            # Fallback en cas d'erreur regex (très rare avec re.escape)
+            if val.lower() in text_lower:
                 count += 1
-    else:  # str
-        mots = item.lower().split()
-        for m in mots:
-            if m in text_lower:
-                count += 1
+                
     return count

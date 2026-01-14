@@ -46,9 +46,7 @@ def storage_config(browser, storage_type="Local"):
 
 
 
-
 def read_storage(browser, storage_type="local"):
-    """Lit et fusionne LocalStorage ou SessionStorage pour tous les profils."""
     folders = storage_config(browser, storage_type)
     all_data = {}
 
@@ -56,13 +54,12 @@ def read_storage(browser, storage_type="local"):
         try:
             db = plyvel.DB(folder, compression=None)
         except Exception as e:
-            print(f"Une erreur s'est produite lors de l'ouverture de la base de données : {e}")
-            continue  
-    
+            print(f"Erreur ouverture DB {folder}: {e}")
+            continue
 
         data = {}
-        main_separator = '\x00\x01'   
-        embedded_separator = '\x00'  
+        main_separator = '\x00\x01'
+        embedded_separator = '\x00'
 
         for key, value in db:
             raw_key = key.decode('utf-8', errors='ignore')
@@ -72,41 +69,34 @@ def read_storage(browser, storage_type="local"):
                 continue
 
             origin1 = ''
-            origin2 = ''
             final_key = ''
 
             if main_separator in raw_key:
-                origin1, final_key = raw_key.split(main_separator, 1)
-                if embedded_separator in origin1:
-                    origin2, origin1 = origin1.split(embedded_separator, 1)
+                origin_part, final_key = raw_key.split(main_separator, 1)
+                if embedded_separator in origin_part:
+                    _, origin1 = origin_part.split(embedded_separator, 1)
                 else:
-                    origin2 = ''
+                    origin1 = origin_part
             else:
                 origin1 = raw_key
-                origin2 = ''
-                final_key = ''
-            keys = origin1 + origin2
-            # Initialisation sécurisée
+
             if origin1 not in data:
-                data[keys] = {}
-            data[origin1]= {final_key: value_str}
+                data[origin1] = {}
+
+            if final_key:
+                data[origin1][final_key] = value_str
+            else:
+                data[origin1]["__raw__"] = value_str
 
         db.close()
 
-        # Fusionner dans all_data
-        for k1, v1 in data.items():
-            if k1 not in all_data:
-                all_data[k1] = v1
+        # Fusion propre
+        for origin, kv in data.items():
+            if origin not in all_data:
+                all_data[origin] = kv
             else:
-                for k2, v2 in v1.items():
-                    if k2 not in all_data[k1]:
-                        all_data[k1][k2] = v2
-                    else:
-                         
-                        if isinstance(all_data[k1][k2], list):
-                            all_data[k1][k2].append(v2)
-                        else:
-                            all_data[k1][k2] = [all_data[k1][k2], v2]
+                all_data[origin].update(kv)
+
     return all_data
 
 

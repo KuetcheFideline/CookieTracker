@@ -13,7 +13,7 @@ from colorama import Fore, Style, init
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary)
+from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary, clean_results)
 from chrome.chrome_linux import main_linux
 
 
@@ -37,7 +37,7 @@ def search_profile():
     3. Quatre fichiers JSON sont générés :
        - `result_cookies.json` et `result_dom.json` (bruts, avec la colonne `matches`
          qui montre où les données ont été trouvées).
-       - `result_cookies_clean.json` et `result_dom_clean.json` (nettoyés, sans la colonne `matches`,
+       - `result_cleaned_cookies.json` et `result_cleaned_dom.json` (nettoyés, sans la colonne `matches`,
          ceux-ci sont à transmettre pour analyse).
 
      Remarques :
@@ -64,15 +64,20 @@ def search_profile():
                     results.append(result_dict)
                 except Exception as e:
                     print(f" Erreur lors du traitement de {browser}: {e}")
-        
-    try:
-            linux_result = main_linux(user=profile, browser=browsers, date=0)
-            print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
-            results.extend(linux_result)
-    except Exception as e:
-            print(f"Erreur lors du traitement : {e}")
+            else :
+
+                try:
+                        linux_result = main_linux(user=profile, browser=browsers, date=0)
+                        print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
+                        results.extend(linux_result)
+                except Exception as e:
+                        print(f"Erreur lors du traitement des sites de chrome  : {e}")
 
     json_Result(results)
+    
+    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
+    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
+    clean_results('result_dom.json', 'result_cleaned_dom.json')
     
     # Affichage du résumé des statistiques
     print_summary()

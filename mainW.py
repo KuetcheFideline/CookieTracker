@@ -12,7 +12,7 @@ import re
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (update_runtime_file, json_Result,json_Result,init_runtime_file,load_profile_from_terminal_validated)
+from treatement.profile_utils import (update_runtime_file, json_Result, init_runtime_file, load_profile_from_terminal_validated, clean_results, print_summary)
 
 init(autoreset=True)
 
@@ -56,7 +56,8 @@ def search_profile():
             print(Fore.GREEN + f"Processing browser: {browser}" + Style.RESET_ALL)
             if browser in ["mozilla", "firefox"]:
                 try:
-                    result_dict = main_firefox(date, user=profile)
+                    # last_run=0 désactive le filtrage par date (analyse tous les cookies)
+                    result_dict = main_firefox(last_run=0, user=profile)
                     results.append(result_dict)
                 except Exception as e:
                     print(f"❌ Erreur lors du traitement de {browser}: {e}")
@@ -70,6 +71,13 @@ def search_profile():
     current = int(time.time() * 1e6)
     update_runtime_file("runtime.txt", count, current)
     json_Result(results)
+
+    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
+    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
+    clean_results('result_dom.json', 'result_cleaned_dom.json')
+    
+    # Affichage du résumé des statistiques
+    print_summary()
 
 if __name__ == "__main__":
     search_profile()
