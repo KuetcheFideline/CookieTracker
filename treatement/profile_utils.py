@@ -200,6 +200,34 @@ def detect_installed_browsers():
                     os.path.expanduser("~/.config/chromium")
                 ]
             }
+    elif os_type == "Windows":
+        program_files = os.environ.get("PROGRAMFILES", "C:\\Program Files")
+        program_files_x86 = os.environ.get("PROGRAMFILES(X86)", "C:\\Program Files (x86)")
+        local_app_data = os.environ.get("LOCALAPPDATA", "C:\\Users\\Default\\AppData\\Local")
+
+        browser_paths = {
+            "Chrome": [
+                os.path.join(program_files, "Google", "Chrome", "Application", "chrome.exe"),
+                os.path.join(program_files_x86, "Google", "Chrome", "Application", "chrome.exe"),
+                os.path.join(local_app_data, "Google", "Chrome", "Application", "chrome.exe")
+            ],
+            "Firefox": [
+                os.path.join(program_files, "Mozilla Firefox", "firefox.exe"),
+                os.path.join(program_files_x86, "Mozilla Firefox", "firefox.exe")
+            ],
+            "Edge": [
+                os.path.join(program_files, "Microsoft", "Edge", "Application", "msedge.exe"),
+                os.path.join(program_files_x86, "Microsoft", "Edge", "Application", "msedge.exe")
+            ],
+            "Brave": [
+                os.path.join(program_files, "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
+                os.path.join(program_files_x86, "BraveSoftware", "Brave-Browser", "Application", "brave.exe")
+            ],
+            "Chromium": [
+                os.path.join(program_files, "Chromium", "Application", "chrome.exe"),
+                os.path.join(local_app_data, "Chromium", "Application", "chrome.exe")
+            ]
+        }
     else:
         print(f"Système d'exploitation non supporté: {os_type}")
         browser_paths = {}
