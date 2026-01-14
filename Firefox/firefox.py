@@ -28,65 +28,68 @@ class Firefox:
         # shutil.copy(self.data_path, destination_file)
 
     def get_cookies_file_path(self):
-        profile_dir = None
+            import configparser
+            from pathlib import Path
+            import os
 
+            profile_dir = None
 
+            # 1️⃣ Déterminer le dossier Firefox selon l'OS
+            if self.os_name != "Windows":
+                profile_dir = Path("~/.mozilla/firefox/").expanduser()
+                if not profile_dir.exists():
+                    profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+            else:
+                profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
 
+            if profile_dir is None:
+                raise Exception("Cannot determine Firefox profile directory")
 
-        if self.os_name !="Windows": 
-            profile_dir = Path("~/.mozilla/firefox/").expanduser()
-            if not profile_dir.exists():
-                profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-        else :
-            profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
-
-        
-        if profile_dir is not None:
-            # Find the default profile directory
-            profile_ini = profile_dir / "profiles.ini"
-      
-
-            if not profile_ini.exists():
-                profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-                profile_ini= profile_dir / "profiles.ini"
-                if not profile_ini.exists():
+            # 2️⃣ Lire profiles.ini
+            profiles_ini_path = profile_dir / "profiles.ini"
+            if not profiles_ini_path.exists():
+                # Si Linux/Snap, tenter Snap
+                if self.os_name != "Windows":
+                    profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+                    profiles_ini_path = profile_dir / "profiles.ini"
+                    if not profiles_ini_path.exists():
+                        raise FileNotFoundError("Firefox profiles.ini file not found.")
+                else:
                     raise FileNotFoundError("Firefox profiles.ini file not found.")
 
             profiles_ini = configparser.ConfigParser()
-            profiles_ini.read(profile_ini)
+            profiles_ini.read(profiles_ini_path)
 
+            profile_path = None
+
+            # 3️⃣ Firefox >= 67
             installs = [s for s in profiles_ini.sections() if s.startswith("Install")]
-            if installs:  # Firefox >= 67
-                profile = profiles_ini[installs[0]]["Default"]
-            else:  # Firefox < 67
-                profiles = [
-                    s for s in profiles_ini.sections() if s.startswith("Profile")
-                ]
-                for profile in profiles:
-                    if profiles_ini[profile].get("Default") == "1":
-                        profile = profiles_ini[profile]["Path"]
+            if installs:
+                profile_path = profiles_ini[installs[0]]["Default"]
+            else:
+                # Firefox < 67
+                profiles = [s for s in profiles_ini.sections() if s.startswith("Profile")]
+                for p in profiles:
+                    if profiles_ini[p].get("Default") == "1":
+                        profile_path = profiles_ini[p]["Path"]
                         break
                 else:
                     if profiles:
-                        profile = profiles_ini[profiles[0]]["Path"]
+                        profile_path = profiles_ini[profiles[0]]["Path"]
                     else:
-                        raise Exception("No profiles found at {}".format(profile_dir))
+                        raise Exception(f"No profiles found at {profile_dir}")
 
-            # Adjust the profile path for Windows
+            # 4️⃣ Construire le chemin final vers cookies.sqlite
             if self.os_name == "Windows":
-                if profile.startswith("Profiles/"):
-                    profile = profile.split("/", 1)[1]
-
-                profile_dir = profile_dir / "Profiles"
-                self.cookies_path = profile_dir / profile / "cookies.sqlite"
+                profile_dir = profile_dir / "Profiles" / profile_path
             else:
-                self.cookies_path = profile_dir / profile / "cookies.sqlite"
+                profile_dir = profile_dir / profile_path
+
+            self.cookies_path = profile_dir / "cookies.sqlite"
 
             if not self.cookies_path.exists():
-                raise FileNotFoundError(
-                    f"Cookies database not found at {self.cookies_path}"
-                )
-   
+                raise FileNotFoundError(f"Cookies database not found at {self.cookies_path}")
+
 
     def get_domstorage_file_path(self):
             profile_dir = None
@@ -128,8 +131,7 @@ class Firefox:
                         raise Exception("No profiles found at {}".format(profile_dir))
 
             # Ajustement pour Windows
-            if self.os_name == "Windows":
-                 profile = Path("Profiles") / Path(profile.split("/", 1)[1])
+           
             profile_path = profile_dir /profile
 
               
