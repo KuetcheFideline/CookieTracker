@@ -13,15 +13,10 @@ def test_decode(name, token, token_type):
     result = decode_token(token, token_type)
     print(f"Result: {result}")
     print("-" * 20)
-
-# Test cases
 test_decode("Simple Base64", "SGVsbG8gV29ybGQ=", "base64_data")
 test_decode("Base64 with padding missing", "SGVsbG8gV29ybGQ", "base64_data")
-test_decode("Base64 URL Safe", "SGVsbG8tV29ybGQ", "base64_data") # Hello-World -> Hello+World in std base64? No, - is + and _ is /
-# "Hello World" in base64 is "SGVsbG8gV29ybGQ="
-# "Hello?World" -> "SGVsbG8/V29ybGQ="
-# "Hello>World" -> "SGVsbG8+V29ybGQ="
-# URL safe: + -> -, / -> _
+test_decode("Base64 URL Safe", "SGVsbG8tV29ybGQ", "base64_data")
+
 test_decode("Base64 URL Safe 2", "SGVsbG8-V29ybGQ", "base64_data") 
 
 test_decode("Invalid Base64", "Not a base64 string!!!", "base64_data")
@@ -35,6 +30,5 @@ s_padded = s + "=" * (-len(s) % 4)
 
 decoded = base64.urlsafe_b64decode(s_padded)
 print(decoded)
-# Test cases that might fail
 test_decode("Base64 with spaces", "SGVsbG8g V29ybGQ=", "base64_data")
 test_decode("Base64 with newlines", "SGVsbG8g\nV29ybGQ=", "base64_data")

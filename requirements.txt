@@ -5,3 +5,7 @@ firebase-admin
 google-cloud-firestore
 customtkinter
 pyinstaller
+requests
+colorama
+distro
+plyvel

@@ -9,10 +9,6 @@ def main_linux(user,browser,date):
 
     try:
         for b in browser:
-            if b =="mozilla" or b=="firefox":
-                pass
-            
-            else:
                 cookies = get_cookies(b,date)
                 DomStorage = read_storage(b)
 
@@ -25,7 +21,7 @@ def main_linux(user,browser,date):
         return statistiques
         
     except Exception as e:
-         print(f"❌ Erreur lors du traitement de {b}: {e}")                         
+         print(f"Erreur lors du traitement de {b}: {e}")                         
                      
 
 

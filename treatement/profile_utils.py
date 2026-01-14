@@ -424,11 +424,6 @@ def load_profile_from_terminal_validated():
         required=True
     )
 
-    user_data["pobox"] = prompt_field_validated(
-        "PO Box (optionnel)", 
-        old_data.get("pobox", "")
-    )
-
     user_data["nationality"] = prompt_field_validated(
         "Nationalité *", 
         old_data.get("nationality", ""),
@@ -449,14 +444,14 @@ def load_profile_from_terminal_validated():
     print(Fore.YELLOW + "\n--- Informations bancaires ---" + Style.RESET_ALL)
     user_data["bank"] = {
     "account_number": prompt_field_validated(
-        "N° compte bancaire",
-        old_data.get("bank", {}).get("account_number", "") or "0000000000",
+        "N° compte bancaire (optionnel)",
+        old_data.get("bank", {}).get("account_number", ""),
         validator=validate_account_number,
         error_msg="Format de compte invalide. Utilisez lettres, chiffres et tirets"
     ),
     "bank_name": prompt_field_validated(
-        "Nom banque", 
-        old_data.get("bank", {}).get("bank_name", "") or "Inconnu"
+        "Nom banque (optionnel)", 
+        old_data.get("bank", {}).get("bank_name", "")
     )
 }
 

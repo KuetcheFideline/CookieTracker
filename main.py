@@ -37,7 +37,7 @@ def search_profile():
     3. Quatre fichiers JSON sont générés :
        - `result_cookies.json` et `result_dom.json` (bruts, avec la colonne `matches`
          qui montre où les données ont été trouvées).
-       - `result_cookies_clean.json` et `result_dom_clean.json` (nettoyés, sans la colonne `matches`,
+       - `result_cleaned_cookies.json` et `result_cleaned_dom.json` (nettoyés, sans la colonne `matches`,
          ceux-ci sont à transmettre pour analyse).
 
      Remarques :
@@ -64,13 +64,14 @@ def search_profile():
                     results.append(result_dict)
                 except Exception as e:
                     print(f" Erreur lors du traitement de {browser}: {e}")
-        
-    try:
-            linux_result = main_linux(user=profile, browser=browsers, date=0)
-            print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
-            results.extend(linux_result)
-    except Exception as e:
-            print(f"Erreur lors du traitement : {e}")
+            else :
+
+                try:
+                        linux_result = main_linux(user=profile, browser=browsers, date=0)
+                        print(Fore.MAGENTA + "Linux results:" + Style.RESET_ALL)
+                        results.extend(linux_result)
+                except Exception as e:
+                        print(f"Erreur lors du traitement des sites de chrome  : {e}")
 
     json_Result(results)
     

@@ -3,102 +3,14 @@ import urllib.parse
 
 from treatement.helpers import (
     detect_suspicious_tokens,
-    get_variants_for_key
+    get_variants_for_key,
+    get_compiled_pattern,
+    deduplicate_matches,
+    calculate_match_confidence,
+    is_technical_context
 )
 
-# Cache global pour les regex compilées (amélioration performance)
-_regex_cache = {}
 
-def get_compiled_pattern(pattern_str):
-    """Cache les regex compilées pour éviter la recompilation."""
-    if pattern_str not in _regex_cache:
-        _regex_cache[pattern_str] = re.compile(pattern_str, re.IGNORECASE)
-    return _regex_cache[pattern_str]
-
-def deduplicate_matches(matches):
-    """Groupe les matches identiques ensemble pour éviter la redondance."""
-    if not matches:
-        return []
-    
-    unique_matches = {}
-    
-    for match in matches:
-        key = (match.get('matched_text', ''), match.get('type', ''))
-        
-        if key not in unique_matches:
-            unique_matches[key] = {
-                'matched_text': match.get('matched_text', ''),
-                'type': match.get('type', ''),
-                'occurrences': []
-            }
-        
-        unique_matches[key]['occurrences'].append({
-            'cookie_name': match.get('cookie_name', ''),
-            'cookie_index': match.get('cookie_index', 0),
-            'position': match.get('match_position', {}),
-            'confidence': match.get('confidence', 1.0)
-        })
-    
-    result = []
-    for match_data in unique_matches.values():
-        match_data['occurrence_count'] = len(match_data['occurrences'])
-        confidences = [occ.get('confidence', 1.0) for occ in match_data['occurrences']]
-        match_data['avg_confidence'] = sum(confidences) / len(confidences) if confidences else 0.0
-        result.append(match_data)
-    
-    return result
-
-def calculate_match_confidence(match_type, matched_text, cookie_name, key):
-    """Calcule un score de confiance entre 0.0 et 1.0 pour un match."""
-    confidence = 1.0
-    
-    if match_type == 'exact':
-        confidence = 1.0
-    elif match_type == 'variant':
-        confidence = 0.7
-    else:
-        confidence = 0.5
-    
-    text_len = len(matched_text)
-    if text_len < 3:
-        confidence *= 0.3
-    elif text_len < 5:
-        confidence *= 0.6
-    elif text_len > 20:
-        confidence *= 1.2
-    
-    if cookie_name and key:
-        cookie_lower = cookie_name.lower()
-        key_lower = key.lower()
-        
-        if key_lower in cookie_lower:
-            confidence *= 1.3
-        elif any(word in cookie_lower for word in ['user', 'profile', 'account', 'session']):
-            confidence *= 1.1
-    
-    return min(1.0, max(0.0, confidence))
-
-def is_technical_context(val_decoded, match_start, match_end):
-    """Vérifie si le match est dans un contexte technique."""
-    context_before = val_decoded[max(0, match_start-10):match_start]
-    context_after = val_decoded[match_end:match_end+10]
-    
-    technical_patterns = [
-        r'[_\-\.]$',
-        r'^[_\-\.]',
-        r'(token|key|id|hash|uuid)$',
-        r'^(token|key|id|hash|uuid)',
-        r'(session|auth|api)$',
-        r'^(session|auth|api)',
-    ]
-    
-    for pattern in technical_patterns:
-        if re.search(pattern, context_before, re.IGNORECASE):
-            return True
-        if re.search(pattern, context_after, re.IGNORECASE):
-            return True
-    
-    return False
 
 
 
@@ -125,14 +37,34 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                     data_patterns[key]['exact'].append(get_compiled_pattern(pattern_str))
         else:
             if value and str(value).strip():
-                pattern_str = rf'\b{re.escape(str(value))}\b'
-                data_patterns[key]['exact'].append(get_compiled_pattern(pattern_str))
+                val_str = str(value)
+                pattern_str = rf'\b{re.escape(val_str)}\b'
+                
+                # Logique stricte pour les codes courts (pays, langue)
+                flags = re.IGNORECASE
+                if key in ['country', 'code_pays', 'language', 'lang'] and len(val_str) == 2:
+                    common_words = {'us', 'it', 'at', 'in', 'to', 'do', 'is', 'an', 'or', 'if', 'my', 'me', 'we', 'he', 'be', 'by', 'on', 'go', 'up', 'no', 'as', 'of'}
+                    if val_str.lower() in common_words:
+                        flags = 0 # Case sensitive
+                        
+                data_patterns[key]['exact'].append(get_compiled_pattern(pattern_str, flags))
         
         # Patterns variants avec cache
         for variant in variants:
             if len(variant) >= 3:
                 pattern_str = rf'\b{re.escape(variant)}\b'
                 data_patterns[key]['variants'].append(get_compiled_pattern(pattern_str))
+            # Exception pour les codes de 2 lettres (pays/langue) qui sont pertinents
+            elif len(variant) == 2 and key in ['country', 'code_pays', 'language', 'lang']:
+                pattern_str = rf'\b{re.escape(variant)}\b'
+                
+                # Même logique stricte pour les variants
+                flags = re.IGNORECASE
+                common_words = {'us', 'it', 'at', 'in', 'to', 'do', 'is', 'an', 'or', 'if', 'my', 'me', 'we', 'he', 'be', 'by', 'on', 'go', 'up', 'no', 'as', 'of'}
+                if variant.lower() in common_words:
+                    flags = 0 # Case sensitive
+                    
+                data_patterns[key]['variants'].append(get_compiled_pattern(pattern_str, flags))
     
     result = {}
     
@@ -247,13 +179,6 @@ def search_personal_info_in_dict(cookies_by_host, personal_info):
                     # Autres tokens suspects
                     host_info['suspicious_tokens']['count'] += 1
                     host_info['suspicious_tokens']['items'].append(item)
-                    
-                    if item['risk_score'] >= 8:
-                        host_info['suspicious_tokens']['high_risk'] += 1
-                    elif item['risk_score'] >= 6:
-                        host_info['suspicious_tokens']['medium_risk'] += 1
-                    else:
-                        host_info['suspicious_tokens']['low_risk'] += 1
         
         # Dédupliquer les matches pour chaque clé d'information personnelle
         for key in personal_info.keys():
