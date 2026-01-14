@@ -1,8 +1,606 @@
 {
   "_analysis_summary": {
-    "total_domains_analyzed": 0,
+    "total_domains_analyzed": 32,
     "total_items_analyzed": 1,
-    "domains_with_findings": 0,
-    "analysis_date": "2026-01-14T17:44:41.904719"
+    "domains_with_findings": 29,
+    "analysis_date": "2026-01-14T18:24:37.904897"
+  },
+  "chrome": {
+    ".google.com": {
+      "suspicious_tokens": {
+        "count": 17,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 14,
+          "suspicious_storage_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 6,
+          "session_id": 4,
+          "base64_data": 4,
+          "encoded_navigation": 3
+        }
+      }
+    },
+    "accounts.google.com": {
+      "suspicious_tokens": {
+        "count": 4,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 4
+        },
+        "by_subtype": {
+          "session_id": 2,
+          "base64_data": 2
+        }
+      }
+    },
+    ".datacamp.com": {
+      "decoded_tokens": {
+        "count": 2
+      },
+      "suspicious_tokens": {
+        "count": 10,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 10
+        },
+        "by_subtype": {
+          "session_id": 5,
+          "uuid": 1,
+          "api_key": 1,
+          "base64_data": 3
+        }
+      }
+    },
+    ".amazon.fr": {
+      "decoded_tokens": {
+        "count": 1
+      },
+      "suspicious_tokens": {
+        "count": 18,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 15,
+          "suspicious_storage_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 4,
+          "session_id": 7,
+          "base64_data": 4,
+          "encoded_navigation": 3
+        }
+      }
+    }
+  },
+  "firefox": {
+    ".chatgpt.com": {
+      "suspicious_tokens": {
+        "count": 35,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 30,
+          "suspicious_key": 2,
+          "suspicious_storage_pattern": 2,
+          "suspicious_navigation_key": 1
+        },
+        "by_subtype": {
+          "session_id": 10,
+          "uuid": 1,
+          "base64_data": 10,
+          "id": 1,
+          "api_key": 9,
+          "encoded_navigation": 2,
+          "analytics": 2
+        }
+      }
+    },
+    ".github.com": {
+      "personal_information": {
+        "name": {
+          "exact": 0,
+          "variants": 1,
+          "unique_count": 1
+        }
+      },
+      "suspicious_tokens": {
+        "count": 1,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "suspicious_key": 1
+        },
+        "by_subtype": {
+          "user": 1
+        }
+      }
+    },
+    "ai.google.dev": {
+      "personal_information": {
+        "code_country": {
+          "exact": 1,
+          "variants": 0,
+          "unique_count": 1
+        },
+        "language": {
+          "exact": 0,
+          "variants": 2,
+          "unique_count": 1
+        }
+      },
+      "suspicious_tokens": {
+        "count": 1,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "suspicious_key": 1
+        },
+        "by_subtype": {
+          "age": 1
+        }
+      }
+    },
+    "stackoverflow.com": {
+      "suspicious_tokens": {
+        "count": 3,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 1,
+          "session_id": 1,
+          "base64_data": 1
+        }
+      }
+    },
+    ".stackoverflow.com": {
+      "decoded_tokens": {
+        "count": 2
+      },
+      "suspicious_tokens": {
+        "count": 42,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 36,
+          "suspicious_storage_pattern": 5,
+          "suspicious_key": 1
+        },
+        "by_subtype": {
+          "api_key": 11,
+          "session_id": 12,
+          "base64_data": 10,
+          "iso_timestamps": 1,
+          "encoded_navigation": 4,
+          "uuid": 3,
+          "id": 1
+        }
+      }
+    },
+    ".sstatic.net": {
+      "suspicious_tokens": {
+        "count": 7,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 7
+        },
+        "by_subtype": {
+          "api_key": 1,
+          "session_id": 3,
+          "base64_data": 3
+        }
+      }
+    },
+    ".i.sstatic.net": {
+      "suspicious_tokens": {
+        "count": 8,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 7,
+          "suspicious_storage_pattern": 1
+        },
+        "by_subtype": {
+          "api_key": 1,
+          "session_id": 3,
+          "base64_data": 3,
+          "encoded_navigation": 1
+        }
+      }
+    },
+    "pypi.org": {
+      "suspicious_tokens": {
+        "count": 12,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 10,
+          "suspicious_storage_pattern": 2
+        },
+        "by_subtype": {
+          "api_key": 6,
+          "session_id": 2,
+          "base64_data": 2,
+          "encoded_navigation": 2
+        }
+      }
+    },
+    "github.com": {
+      "decoded_tokens": {
+        "count": 1
+      },
+      "suspicious_tokens": {
+        "count": 14,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 9,
+          "suspicious_key": 4,
+          "suspicious_navigation_key": 1
+        },
+        "by_subtype": {
+          "api_key": 1,
+          "session_id": 4,
+          "hash_md5": 1,
+          "id": 1,
+          "device_id": 1,
+          "base64_data": 3,
+          "session": 3
+        }
+      }
+    },
+    ".web.whatsapp.com": {
+      "personal_information": {
+        "language": {
+          "exact": 0,
+          "variants": 1,
+          "unique_count": 1
+        }
+      },
+      "suspicious_tokens": {
+        "count": 3,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 3
+        },
+        "by_subtype": {
+          "session_id": 1,
+          "uuid": 1,
+          "base64_data": 1
+        }
+      }
+    },
+    "chatgpt.com": {
+      "decoded_tokens": {
+        "count": 1,
+        "tokens_with_personal_info": 1,
+        "personal_info_found": {
+          "code_country": 1
+        }
+      },
+      "suspicious_tokens": {
+        "count": 23,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 20,
+          "suspicious_key": 2,
+          "suspicious_storage_pattern": 1
+        },
+        "by_subtype": {
+          "api_key": 5,
+          "session_id": 7,
+          "base64_data": 6,
+          "auth": 1,
+          "encoded_navigation": 1,
+          "key": 1,
+          "uuid": 2
+        }
+      }
+    },
+    "auth.openai.com": {
+      "decoded_tokens": {
+        "count": 2
+      },
+      "suspicious_tokens": {
+        "count": 12,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 10,
+          "suspicious_key": 1,
+          "suspicious_storage_pattern": 1
+        },
+        "by_subtype": {
+          "api_key": 2,
+          "session_id": 4,
+          "login": 1,
+          "encoded_navigation": 1,
+          "base64_data": 2,
+          "uuid": 2
+        }
+      }
+    },
+    ".openai.com": {
+      "suspicious_tokens": {
+        "count": 4,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 3,
+          "suspicious_key": 1
+        },
+        "by_subtype": {
+          "session_id": 1,
+          "uuid": 1,
+          "base64_data": 1,
+          "id": 1
+        }
+      }
+    },
+    ".auth.openai.com": {
+      "decoded_tokens": {
+        "count": 7,
+        "tokens_with_personal_info": 2,
+        "personal_info_found": {
+          "code_country": 2
+        }
+      },
+      "suspicious_tokens": {
+        "count": 108,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 94,
+          "suspicious_key": 4,
+          "suspicious_storage_pattern": 10
+        },
+        "by_subtype": {
+          "api_key": 29,
+          "session_id": 36,
+          "base64_data": 26,
+          "auth": 3,
+          "encoded_navigation": 10,
+          "jwt_token": 3,
+          "session": 1
+        }
+      }
+    },
+    ".oaistatic.com": {
+      "decoded_tokens": {
+        "count": 1
+      },
+      "suspicious_tokens": {
+        "count": 17,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 16,
+          "suspicious_storage_pattern": 1
+        },
+        "by_subtype": {
+          "api_key": 3,
+          "session_id": 7,
+          "base64_data": 6,
+          "encoded_navigation": 1
+        }
+      }
+    },
+    "sentinel.openai.com": {
+      "suspicious_tokens": {
+        "count": 3,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 1,
+          "session_id": 1,
+          "base64_data": 1
+        }
+      }
+    },
+    ".sentinel.openai.com": {
+      "suspicious_tokens": {
+        "count": 24,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 22,
+          "suspicious_storage_pattern": 2
+        },
+        "by_subtype": {
+          "api_key": 6,
+          "session_id": 8,
+          "base64_data": 8,
+          "encoded_navigation": 2
+        }
+      }
+    },
+    "accounts.google.com": {
+      "suspicious_tokens": {
+        "count": 28,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 20,
+          "suspicious_key": 4,
+          "suspicious_storage_pattern": 4
+        },
+        "by_subtype": {
+          "session_id": 7,
+          "base64_data": 7,
+          "api_key": 6,
+          "id": 3,
+          "encoded_navigation": 4,
+          "account": 1
+        }
+      }
+    },
+    ".google.com": {
+      "suspicious_tokens": {
+        "count": 66,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 42,
+          "suspicious_key": 16,
+          "suspicious_storage_pattern": 8
+        },
+        "by_subtype": {
+          "api_key": 18,
+          "session_id": 10,
+          "base64_data": 14,
+          "id": 16,
+          "encoded_navigation": 8
+        }
+      }
+    },
+    ".docs.google.com": {
+      "suspicious_tokens": {
+        "count": 21,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 16,
+          "suspicious_key": 2,
+          "suspicious_storage_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 10,
+          "session_id": 3,
+          "base64_data": 3,
+          "id": 2,
+          "encoded_navigation": 3
+        }
+      }
+    },
+    ".youtube.com": {
+      "suspicious_tokens": {
+        "count": 33,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 19,
+          "suspicious_key": 11,
+          "suspicious_storage_pattern": 3
+        },
+        "by_subtype": {
+          "api_key": 5,
+          "session_id": 5,
+          "base64_data": 9,
+          "id": 11,
+          "encoded_navigation": 3
+        }
+      }
+    },
+    ".google.cm": {
+      "suspicious_tokens": {
+        "count": 33,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "suspicious_key": 10,
+          "token_pattern": 19,
+          "suspicious_storage_pattern": 4
+        },
+        "by_subtype": {
+          "id": 10,
+          "base64_data": 8,
+          "api_key": 7,
+          "session_id": 4,
+          "encoded_navigation": 4
+        }
+      }
+    },
+    ".google.fr": {
+      "suspicious_tokens": {
+        "count": 34,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "suspicious_key": 10,
+          "token_pattern": 20,
+          "suspicious_storage_pattern": 4
+        },
+        "by_subtype": {
+          "id": 10,
+          "base64_data": 8,
+          "api_key": 8,
+          "session_id": 4,
+          "encoded_navigation": 4
+        }
+      }
+    },
+    "appsgenaiserver-pa.clients6.google.com": {
+      "suspicious_tokens": {
+        "count": 6,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 4,
+          "suspicious_storage_pattern": 2
+        },
+        "by_subtype": {
+          "api_key": 2,
+          "session_id": 1,
+          "base64_data": 1,
+          "encoded_navigation": 2
+        }
+      }
+    },
+    "contacts.google.com": {
+      "suspicious_tokens": {
+        "count": 2,
+        "high_risk": 0,
+        "medium_risk": 0,
+        "low_risk": 0,
+        "by_type": {
+          "token_pattern": 2
+        },
+        "by_subtype": {
+          "session_id": 1,
+          "base64_data": 1
+        }
+      }
+    }
   }
 }

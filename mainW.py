@@ -72,12 +72,7 @@ def search_profile():
     update_runtime_file("runtime.txt", count, current)
     json_Result(results)
     
-    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
-    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
-    clean_results('result_dom.json', 'result_cleaned_dom.json')
     
-    # Affichage du résumé des statistiques
-    print_summary()
 
     # Nettoyer les résultats (ne garder que les valeurs non-nulles)
     clean_results('result_cookies.json', 'result_cleaned_cookies.json')
