@@ -155,6 +155,7 @@ def search_personal_info_robust(cookies_by_host, personal_info):
                             'type': 'exact',
                             'matched_text': match.group(),
                             'cookie_name': cookie_name,
+                            'cookie_value': val_decoded,  # Valeur complète du cookie
                             'cookie_index': cookie_idx,
                             'match_position': {'start': match.start(), 'end': match.end()},
                             'confidence': confidence
@@ -178,6 +179,7 @@ def search_personal_info_robust(cookies_by_host, personal_info):
                                 'type': 'variant',
                                 'matched_text': match.group(),
                                 'cookie_name': cookie_name,
+                                'cookie_value': val_clean,  # Valeur complète du cookie (nettoyée)
                                 'cookie_index': cookie_idx,
                                 'match_position': {'start': match.start(), 'end': match.end()},
                                 'confidence': confidence
