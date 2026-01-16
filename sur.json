@@ -1,0 +1,155 @@
+{
+    "analysis_date": "2026-01-16T12:25:29.597705",
+    "cookies": {
+        "analysis_summary": {
+            "total_domains_analyzed": 803
+        },
+        "personal_information": {
+            "code_country": {
+                "exact": 9,
+                "variants": 0,
+                "total": 9
+            },
+            "language": {
+                "exact": 9,
+                "variants": 13,
+                "total": 22
+            }
+        },
+        "decoded_tokens": {
+            "total_count": 0,
+            "with_personal_info": 0,
+            "info_types_found": {}
+        },
+        "emails": {
+            "unique_count": 0
+        },
+        "suspicious_tokens": {
+            "total_count": 58,
+            "by_type": {
+                "device_id": 4,
+                "analytics": 5,
+                "geo": 14,
+                "tracking": 5,
+                "browser_id": 1,
+                "history": 1,
+                "visited": 4,
+                "timezone": 2,
+                "location": 4,
+                "previous": 3,
+                "fingerprint": 2,
+                "referrer": 2,
+                "conversion": 6,
+                "source": 4,
+                "signature": 1
+            }
+        }
+    },
+    "dom": {
+        "analysis_summary": {
+            "total_domains_analyzed": 3331
+        },
+        "personal_information": {
+            "gender": {
+                "exact": 2,
+                "variants": 0,
+                "total": 2
+            },
+            "email": {
+                "exact": 1,
+                "variants": 0,
+                "total": 1
+            },
+            "isp": {
+                "exact": 12,
+                "variants": 0,
+                "total": 12
+            },
+            "city": {
+                "exact": 15,
+                "variants": 0,
+                "total": 15
+            },
+            "country": {
+                "exact": 11,
+                "variants": 0,
+                "total": 11
+            },
+            "code_country": {
+                "exact": 1608,
+                "variants": 0,
+                "total": 1608
+            },
+            "language": {
+                "exact": 1608,
+                "variants": 1123,
+                "total": 2731
+            },
+            "browsers": {
+                "exact": 40,
+                "variants": 0,
+                "total": 40
+            }
+        },
+        "decoded_tokens": {
+            "total_count": 7176,
+            "with_personal_info": 19,
+            "info_types_found": {
+                "code_country": 19,
+                "language": 19,
+                "browsers": 2,
+                "country": 1
+            }
+        },
+        "emails": {
+            "unique_count": 3
+        },
+        "suspicious_tokens": {
+            "total_count": 132420,
+            "by_type": {
+                "json_navigation": 237,
+                "complex_session": 294,
+                "previous": 9,
+                "session_id": 63727,
+                "base64_data": 54796,
+                "api_key": 11080,
+                "encoded_navigation": 431,
+                "uuid": 429,
+                "location": 3,
+                "visit_sequence_tracking": 179,
+                "referrer_tracking": 24,
+                "behavior_analytics": 10,
+                "hash_md5": 679,
+                "hash_sha256": 80,
+                "device_id": 9,
+                "tracking": 10,
+                "url_array": 58,
+                "iso_timestamps": 88,
+                "navigation_history_urls": 57,
+                "ab_testing": 18,
+                "visited": 7,
+                "referrer": 76,
+                "history": 11,
+                "path": 2,
+                "user_agent": 15,
+                "attribution": 5,
+                "scroll": 1,
+                "visit_timestamps": 8,
+                "signature": 7,
+                "conversion_tracking": 11,
+                "base64_json": 16,
+                "source": 6,
+                "pages": 4,
+                "browser_fingerprint": 4,
+                "screen_resolution": 5,
+                "browser_features": 10,
+                "gps_coordinates": 4,
+                "geo": 3,
+                "campaign": 1,
+                "clicks": 2,
+                "analytics": 2,
+                "navigation": 2
+            }
+        }
+    }
+}

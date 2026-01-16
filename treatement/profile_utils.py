@@ -340,12 +340,8 @@ def json_Result(results):
     print("Results saved to result_dom.json")
 
     cleaned_cookies_stat = remove_matches_field(cookies_stat)
-    cleaned_dom_stat = remove_matches_field(dom_stat)
-
     with open(f"result_cleaned_cookies.json", "w") as file:
         json.dump(cleaned_cookies_stat, file, indent=4)
-    with open(f"result_cleaned_dom.json", "w") as file:
-        json.dump(cleaned_dom_stat, file, indent=4)
     print("Results structured. For us to send ")
 
 
@@ -754,15 +750,21 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
     print(Fore.YELLOW + "   RÉSUMÉ DE L'ANALYSE - STATISTIQUES")
     print(Fore.CYAN + "="*70 + Style.RESET_ALL)
     
+    def init_stats():
+        return {
+            'personal_info': {},
+            'decoded_tokens': 0,
+            'decoded_tokens_with_personal_info': 0,
+            'personal_info_in_decoded': {},
+            'detected_emails': set(),
+            'suspicious_tokens': 0,
+            'suspicious_tokens_by_type': {},
+            'domains': 0
+        }
+
     total_stats = {
-        'personal_info': {},
-        'decoded_tokens': 0,
-        'decoded_tokens_with_personal_info': 0,
-        'personal_info_in_decoded': {},
-        'detected_emails': set(),
-        'suspicious_tokens': 0,
-        'suspicious_tokens_by_type': {},
-        'domains': 0
+        'cookies': init_stats(),
+        'dom': init_stats()
     }
     
     # Analyser les cookies
@@ -773,55 +775,46 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
                 
             for browser, domains in cookies_data.items():
                 for domain, data in domains.items():
-                    total_stats['domains'] += 1
+                    total_stats['cookies']['domains'] += 1
                     
                     # Informations personnelles
                     if 'personal_information' in data:
                         for key, info in data['personal_information'].items():
-                            if key not in total_stats['personal_info']:
-                                total_stats['personal_info'][key] = {'exact': 0, 'variants': 0}
-                            total_stats['personal_info'][key]['exact'] += info.get('exact', 0)
-                            total_stats['personal_info'][key]['variants'] += info.get('variants', 0)
+                            if key not in total_stats['cookies']['personal_info']:
+                                total_stats['cookies']['personal_info'][key] = {'exact': 0, 'variants': 0}
+                            total_stats['cookies']['personal_info'][key]['exact'] += info.get('exact', 0)
+                            total_stats['cookies']['personal_info'][key]['variants'] += info.get('variants', 0)
                     
-                    # Tokens décodés et informations personnelles dedans
+                    # Tokens décodés
                     if 'decoded_tokens' in data:
-                        total_stats['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
-                        
-                        # Analyser les informations personnelles dans les tokens décodés
+                        total_stats['cookies']['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
                         for token in data['decoded_tokens'].get('items', []):
                             personal_matches = token.get('personal_info_matches')
                             if personal_matches:
-                                total_stats['decoded_tokens_with_personal_info'] += 1
+                                total_stats['cookies']['decoded_tokens_with_personal_info'] += 1
                                 for match in personal_matches:
                                     info_type = match.get('info_type')
                                     if info_type:
-                                        if info_type not in total_stats['personal_info_in_decoded']:
-                                            total_stats['personal_info_in_decoded'][info_type] = 0
-                                        total_stats['personal_info_in_decoded'][info_type] += 1
+                                        if info_type not in total_stats['cookies']['personal_info_in_decoded']:
+                                            total_stats['cookies']['personal_info_in_decoded'][info_type] = 0
+                                        total_stats['cookies']['personal_info_in_decoded'][info_type] += 1
                     
-                    # Emails détectés
+                    # Emails
                     if 'detected_emails' in data:
                         for email in data['detected_emails'].get('unique_emails', []):
-                            total_stats['detected_emails'].add(email)
+                            total_stats['cookies']['detected_emails'].add(email)
                     
-                    # Tokens suspects avec comptage par type
+                    # Tokens suspects
                     if 'suspicious_tokens' in data:
-                        # Types à exclure du total
                         excluded_types = ['encoded_data', 'suspicious_key']
-                        
                         for item in data['suspicious_tokens'].get('items', []):
                             item_type = item.get('type', 'unknown')
                             subtype = item.get('subtype', 'other')
-                            
-                            # Ne compter le subtype que si le type n'est pas exclu
                             if item_type not in excluded_types:
-                                # Compter par type de pattern
-                                if subtype not in total_stats['suspicious_tokens_by_type']:
-                                    total_stats['suspicious_tokens_by_type'][subtype] = 0
-                                total_stats['suspicious_tokens_by_type'][subtype] += 1
-                                
-                                # Ajouter au total
-                                total_stats['suspicious_tokens'] += 1
+                                if subtype not in total_stats['cookies']['suspicious_tokens_by_type']:
+                                    total_stats['cookies']['suspicious_tokens_by_type'][subtype] = 0
+                                total_stats['cookies']['suspicious_tokens_by_type'][subtype] += 1
+                                total_stats['cookies']['suspicious_tokens'] += 1
         except Exception as e:
             print(Fore.RED + f"Erreur lors de la lecture de {cookies_path}: {e}" + Style.RESET_ALL)
     
@@ -833,112 +826,142 @@ def print_summary(cookies_path='result_cookies.json', dom_path='result_dom.json'
                 
             for browser, domains in dom_data.items():
                 for domain, data in domains.items():
+                    total_stats['dom']['domains'] += 1
+                    
                     # Informations personnelles
                     if 'personal_information' in data:
                         for key, info in data['personal_information'].items():
-                            if key not in total_stats['personal_info']:
-                                total_stats['personal_info'][key] = {'exact': 0, 'variants': 0}
-                            total_stats['personal_info'][key]['exact'] += info.get('exact', 0)
-                            total_stats['personal_info'][key]['variants'] += info.get('variants', 0)
+                            if key not in total_stats['dom']['personal_info']:
+                                total_stats['dom']['personal_info'][key] = {'exact': 0, 'variants': 0}
+                            total_stats['dom']['personal_info'][key]['exact'] += info.get('exact', 0)
+                            total_stats['dom']['personal_info'][key]['variants'] += info.get('variants', 0)
                     
-                    # Tokens décodés et informations personnelles dedans
+                    # Tokens décodés
                     if 'decoded_tokens' in data:
-                        total_stats['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
-                        
-                        # Analyser les informations personnelles dans les tokens décodés
+                        total_stats['dom']['decoded_tokens'] += data['decoded_tokens'].get('count', 0)
                         for token in data['decoded_tokens'].get('items', []):
                             personal_matches = token.get('personal_info_matches')
                             if personal_matches:
-                                total_stats['decoded_tokens_with_personal_info'] += 1
+                                total_stats['dom']['decoded_tokens_with_personal_info'] += 1
                                 for match in personal_matches:
                                     info_type = match.get('info_type')
                                     if info_type:
-                                        if info_type not in total_stats['personal_info_in_decoded']:
-                                            total_stats['personal_info_in_decoded'][info_type] = 0
-                                        total_stats['personal_info_in_decoded'][info_type] += 1
+                                        if info_type not in total_stats['dom']['personal_info_in_decoded']:
+                                            total_stats['dom']['personal_info_in_decoded'][info_type] = 0
+                                        total_stats['dom']['personal_info_in_decoded'][info_type] += 1
                     
-                    # Emails détectés
+                    # Emails
                     if 'detected_emails' in data:
                         for email in data['detected_emails'].get('unique_emails', []):
-                            total_stats['detected_emails'].add(email)
+                            total_stats['dom']['detected_emails'].add(email)
                     
-                    # Tokens suspects avec comptage par type
+                    # Tokens suspects
                     if 'suspicious_tokens' in data:
-                        # Types à exclure du total
                         excluded_types = ['encoded_data', 'suspicious_key']
-                        
                         for item in data['suspicious_tokens'].get('items', []):
                             item_type = item.get('type', 'unknown')
                             subtype = item.get('subtype', 'other')
-                            
-                            # Ne compter le subtype que si le type n'est pas exclu
                             if item_type not in excluded_types:
-                                # Compter par type de pattern
-                                if subtype not in total_stats['suspicious_tokens_by_type']:
-                                    total_stats['suspicious_tokens_by_type'][subtype] = 0
-                                total_stats['suspicious_tokens_by_type'][subtype] += 1
-                                
-                                # Ajouter au total
-                                total_stats['suspicious_tokens'] += 1
+                                if subtype not in total_stats['dom']['suspicious_tokens_by_type']:
+                                    total_stats['dom']['suspicious_tokens_by_type'][subtype] = 0
+                                total_stats['dom']['suspicious_tokens_by_type'][subtype] += 1
+                                total_stats['dom']['suspicious_tokens'] += 1
         except Exception as e:
             print(Fore.RED + f"Erreur lors de la lecture de {dom_path}: {e}" + Style.RESET_ALL)
     
     # Affichage des statistiques
-    print(f"\n{Fore.GREEN}[STATS] Domaines analyses: {total_stats['domains']}{Style.RESET_ALL}")
-    
-    print(f"\n{Fore.YELLOW}[INFO] INFORMATIONS PERSONNELLES TROUVEES:{Style.RESET_ALL}")
-    if total_stats['personal_info']:
-        for key, counts in sorted(total_stats['personal_info'].items()):
-            total = counts['exact'] + counts['variants']
-            if total > 0:
-                print(f"  • {key:20} : {Fore.GREEN}{counts['exact']:3} exact{Style.RESET_ALL}, "
-                      f"{Fore.CYAN}{counts['variants']:3} variants{Style.RESET_ALL} "
-                      f"(Total: {Fore.MAGENTA}{total}{Style.RESET_ALL})")
-    else:
-        print(f"  {Fore.RED}Aucune information personnelle trouvee{Style.RESET_ALL}")
-    
-    print(f"\n{Fore.YELLOW}[DECODE] TOKENS DECODES:{Style.RESET_ALL}")
-    print(f"  • Total: {Fore.MAGENTA}{total_stats['decoded_tokens']}{Style.RESET_ALL} tokens decodes (JWT/Base64)")
-    if total_stats['decoded_tokens_with_personal_info'] > 0:
-        print(f"  • {Fore.GREEN}{total_stats['decoded_tokens_with_personal_info']}{Style.RESET_ALL} tokens contiennent des informations personnelles")
-        if total_stats['personal_info_in_decoded']:
-            print(f"  • Informations trouvees dans les tokens:")
-            for info_type, count in sorted(total_stats['personal_info_in_decoded'].items()):
-                print(f"    - {info_type}: {Fore.CYAN}{count}{Style.RESET_ALL} occurrence(s)")
-    
-    print(f"\n{Fore.YELLOW}[EMAIL] EMAILS DETECTES:{Style.RESET_ALL}")
-    if total_stats['detected_emails']:
-        print(f"  • Total: {Fore.MAGENTA}{len(total_stats['detected_emails'])}{Style.RESET_ALL} emails uniques")
-        print(f"  • Liste: {Fore.CYAN}{', '.join(sorted(total_stats['detected_emails']))}{Style.RESET_ALL}")
-    else:
-        print(f"  {Fore.RED}Aucun email detecte{Style.RESET_ALL}")
-    
-    print(f"\n{Fore.YELLOW}[WARN] TOKENS SUSPECTS:{Style.RESET_ALL}")
-    print(f"  • Total: {Fore.MAGENTA}{total_stats['suspicious_tokens']}{Style.RESET_ALL} tokens suspects")
-    print(f"    {Fore.CYAN}(Exclut: encoded_data, suspicious_key){Style.RESET_ALL}")
-    
-    if total_stats['suspicious_tokens_by_type']:
-        print(f"  • Détail par type de pattern:")
+    for storage_type in ['cookies', 'dom']:
+        label = "COOKIES" if storage_type == 'cookies' else "DOM STORAGE"
+        stats = total_stats[storage_type]
         
-        # Trier tous les types par ordre décroissant de count
-        sorted_types = sorted(total_stats['suspicious_tokens_by_type'].items(), 
-                             key=lambda x: x[1], reverse=True)
+        print(f"\n{Fore.CYAN}--- STATISTIQUES {label} ---{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}[STATS] Domaines analyses: {stats['domains']}{Style.RESET_ALL}")
         
-        # Types à exclure (affichés séparément)
-        excluded_types = ['encoded_data', 'suspicious_key']
+        print(f"\n{Fore.YELLOW}[INFO] INFORMATIONS PERSONNELLES TROUVEES ({label}):{Style.RESET_ALL}")
+        if stats['personal_info']:
+            for key, counts in sorted(stats['personal_info'].items()):
+                total = counts['exact'] + counts['variants']
+                if total > 0:
+                    print(f"  • {key:20} : {Fore.GREEN}{counts['exact']:3} exact{Style.RESET_ALL}, "
+                          f"{Fore.CYAN}{counts['variants']:3} variants{Style.RESET_ALL} "
+                          f"(Total: {Fore.MAGENTA}{total}{Style.RESET_ALL})")
+        else:
+            print(f"  {Fore.RED}Aucune information personnelle trouvee{Style.RESET_ALL}")
         
-        # Afficher tous les types non-exclus
-        for pattern_type, count in sorted_types:
-            if pattern_type not in excluded_types:
-                print(f"    - {pattern_type:20}: {Fore.CYAN}{count:5}{Style.RESET_ALL}")
+        print(f"\n{Fore.YELLOW}[DECODE] TOKENS DECODES ({label}):{Style.RESET_ALL}")
+        print(f"  • Total: {Fore.MAGENTA}{stats['decoded_tokens']}{Style.RESET_ALL} tokens decodes")
+        if stats['decoded_tokens_with_personal_info'] > 0:
+            print(f"  • {Fore.GREEN}{stats['decoded_tokens_with_personal_info']}{Style.RESET_ALL} tokens contiennent des infos personnelles")
+            for info_type, count in sorted(stats['personal_info_in_decoded'].items()):
+                print(f"    - {info_type:25} : {Fore.MAGENTA}{count}{Style.RESET_ALL}")
         
-        # Afficher les types exclus séparément
-        excluded_count = sum(total_stats['suspicious_tokens_by_type'].get(t, 0) for t in excluded_types)
-        
-        if excluded_count > 0:
-            print(f"    {Fore.YELLOW}[Exclus du total]{Style.RESET_ALL}")
-            for excluded_type in excluded_types:
-                if excluded_type in total_stats['suspicious_tokens_by_type']:
-                    print(f"    - {excluded_type:20}: {Fore.YELLOW}{total_stats['suspicious_tokens_by_type'][excluded_type]:5}{Style.RESET_ALL}")
+        print(f"\n{Fore.YELLOW}[EMAIL] EMAILS DETECTES ({label}):{Style.RESET_ALL}")
+        if stats['detected_emails']:
+            print(f"  • Total: {Fore.MAGENTA}{len(stats['detected_emails'])}{Style.RESET_ALL} emails uniques")
+        else:
+            print(f"  {Fore.RED}Aucun email detecte{Style.RESET_ALL}")
+            
+        print(f"\n{Fore.YELLOW}[WARN] TOKENS SUSPECTS ({label}):{Style.RESET_ALL}")
+        print(f"  • Total: {Fore.MAGENTA}{stats['suspicious_tokens']}{Style.RESET_ALL} tokens suspects")
+        if stats['suspicious_tokens_by_type']:
+            # Trier par nombre d'occurrences décroissant
+            sorted_types = sorted(stats['suspicious_tokens_by_type'].items(), key=lambda x: x[1], reverse=True)
+            for s_type, count in sorted_types:
+                if count > 0:
+                    print(f"    - {s_type:25} : {Fore.MAGENTA}{count}{Style.RESET_ALL}")
     
     print(Fore.CYAN + "\n" + "="*70 + "\n" + Style.RESET_ALL)
+    
+    return total_stats
+
+def save_global_stats(stats, output_path='result_global_stats.json'):
+    """
+    Sauvegarde les statistiques globales dans un fichier JSON anonymisé.
+    """
+    if not stats:
+        return
+        
+    final_stats = {
+        'analysis_date': datetime.now().isoformat(),
+        'cookies': {},
+        'dom': {}
+    }
+    
+    for storage_type in ['cookies', 'dom']:
+        s_stats = stats[storage_type]
+        serializable = {
+            'analysis_summary': {
+                'total_domains_analyzed': s_stats.get('domains', 0)
+            },
+            'personal_information': {},
+            'decoded_tokens': {
+                'total_count': s_stats.get('decoded_tokens', 0),
+                'with_personal_info': s_stats.get('decoded_tokens_with_personal_info', 0),
+                'info_types_found': s_stats.get('personal_info_in_decoded', {})
+            },
+            'emails': {
+                'unique_count': len(s_stats.get('detected_emails', set()))
+            },
+            'suspicious_tokens': {
+                'total_count': s_stats.get('suspicious_tokens', 0),
+                'by_type': s_stats.get('suspicious_tokens_by_type', {})
+            }
+        }
+        
+        for key, counts in s_stats.get('personal_info', {}).items():
+            total = counts.get('exact', 0) + counts.get('variants', 0)
+            if total > 0:
+                serializable['personal_information'][key] = {
+                    'exact': counts.get('exact', 0),
+                    'variants': counts.get('variants', 0),
+                    'total': total
+                }
+        
+        final_stats[storage_type] = serializable
+            
+    try:
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(final_stats, f, indent=4, ensure_ascii=False)
+        print(f"{Fore.GREEN}[OK] Rapport de statistiques globales sauvegarde: {output_path}{Style.RESET_ALL}")
+    except Exception as e:
+        print(f"{Fore.RED}Erreur lors de la sauvegarde des statistiques globales: {e}{Style.RESET_ALL}")

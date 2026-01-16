@@ -122,38 +122,38 @@ def calculate_match_confidence(match_type, matched_text, cookie_name, key):
     return min(1.0, max(0.0, confidence))
 
 
+# Cache pour les regex combinées de détection
+_combined_regex_cache = {}
+
+def _get_combined_regex(patterns_dict, flags=re.IGNORECASE):
+    """Crée et cache une regex combinée avec des groupes nommés."""
+    cache_key = (tuple(sorted(patterns_dict.keys())), flags)
+    if cache_key not in _combined_regex_cache:
+        parts = [f"(?P<{name}>{pattern})" for name, pattern in patterns_dict.items()]
+        combined_pattern = "|".join(parts)
+        _combined_regex_cache[cache_key] = re.compile(combined_pattern, flags)
+    return _combined_regex_cache[cache_key]
+
 def is_technical_context(val_decoded, match_start, match_end):
     """
     Vérifie si le match est dans un contexte technique (identifiant, token, etc.)
-    pour éviter les faux positifs.
-    
-    Args:
-        val_decoded: Valeur complète du cookie
-        match_start: Position de début du match
-        match_end: Position de fin du match
-        
-    Returns:
-        True si le contexte est technique (à ignorer), False sinon
+    Version optimisée avec regex combinée.
     """
-    # Contexte avant et après (10 caractères)
     context_before = val_decoded[max(0, match_start-10):match_start]
     context_after = val_decoded[match_end:match_end+10]
     
-    # Patterns techniques à détecter
-    technical_patterns = [
-        r'[_\-\.]$',                    # Underscore, tiret, point avant
-        r'^[_\-\.]',                    # Underscore, tiret, point après
-        r'(token|key|id|hash|uuid)$',  # Mots techniques avant
-        r'^(token|key|id|hash|uuid)',  # Mots techniques après
-        r'(session|auth|api)$',        # Contexte d'authentification
-        r'^(session|auth|api)',
-    ]
+    # Cache pour la regex technique
+    if 'technical' not in _combined_regex_cache:
+        technical_patterns = [
+            r'[_\-\.]$', r'^[_\-\.]',
+            r'(token|key|id|hash|uuid)$', r'^(token|key|id|hash|uuid)',
+            r'(session|auth|api)$', r'^(session|auth|api)',
+        ]
+        _combined_regex_cache['technical'] = re.compile("|".join(technical_patterns), re.IGNORECASE)
     
-    for pattern in technical_patterns:
-        if re.search(pattern, context_before, re.IGNORECASE):
-            return True
-        if re.search(pattern, context_after, re.IGNORECASE):
-            return True
+    tech_re = _combined_regex_cache['technical']
+    if tech_re.search(context_before) or tech_re.search(context_after):
+        return True
     
     return False
 
@@ -435,10 +435,6 @@ def is_valid_email(email):
     # Si tous les tests passent, c'est probablement un vrai email
     return True
 
-
-    # Si tous les tests passent, c'est probablement un vrai email
-    return True
-
 def decode_token(token, token_type, depth=0):
     """
     Tente de décoder un token (Base64 ou JWT) pour révéler son contenu.
@@ -569,21 +565,13 @@ def search_personal_info_in_decoded(decoded_value, personal_info):
 
 def detect_suspicious_tokens(value, cookie_name, personal_info=None):
     """
-    Fonction unifiée qui détecte à la fois :
-    - Les tokens, clés et patterns suspects
-    - La collecte d'historiques de navigation
-    - Les informations personnelles dans les tokens décodés
-    
-    Args:
-        value: Valeur à analyser (contenu du cookie, localStorage, etc.)
-        cookie_name: Nom du cookie/clé (peut être None)
-        personal_info: Dictionnaire des informations personnelles à rechercher (optionnel)
+    Fonction unifiée optimisée pour la détection de tokens et collecte de navigation.
     """
     suspicious_items = []
-    
-    # ========== DÉTECTION DE TOKENS SUSPECTS ==========
-    
-    # Patterns de tokens/clés suspectes
+    if not value:
+        return suspicious_items
+
+    # 1. Patterns de tokens/clés suspectes
     token_patterns = {
         'jwt_token': r'eyJ[A-Za-z0-9+/=]+\.[A-Za-z0-9+/=]+\.[A-Za-z0-9+/=]+',
         'api_key': r'[A-Za-z0-9]{32,}',
@@ -600,305 +588,156 @@ def detect_suspicious_tokens(value, cookie_name, personal_info=None):
         'encoded_data': r'%[0-9A-Fa-f]{2}',
     }
     
-    # Noms de cookies/clés suspects pour tokens
-    suspicious_token_keys = [
-        'token', 'auth', 'session', 'user', 'login', 'account', 'profile',
-        'email', 'name', 'phone', 'address', 'location', 'geo', 'lat', 'lng',
-        'birth', 'age', 'gender', 'password', 'pwd', 'secret', 'key', 'id',
-        'tracking', 'analytics', 'fingerprint', 'device', 'browser', 'ip'
-    ]
-    
-    # 1. Analyse des patterns de tokens
-    for pattern_name, pattern in token_patterns.items():
-        matches = re.findall(pattern, value, re.IGNORECASE)
-        for match in matches:
-            # Si le pattern a des groupes, findall retourne un tuple ou la string du groupe
-            if isinstance(match, tuple):
-                match = match[0] # On prend le premier groupe capturé
-            
-            # Gestion spéciale pour les nouveaux types qui peuvent être courts ou longs
-            is_short_allowed = pattern_name in ['user_id', 'device_id', 'timezone', 'theme', 'user_agent']
-            
-            if len(match) >= 8 or (is_short_allowed and len(match) >= 2): 
-                
-                # Tentative de décodage pour les types pertinents
-                decoded_value = None
-                personal_info_matches = []
-                
-                if pattern_name in ['jwt_token', 'base64_data']:
-                    decoded_value = decode_token(match, pattern_name)
-                    
-                    # Recherche d'informations personnelles dans la valeur décodée
-                    if decoded_value and personal_info:
-                        personal_info_matches = search_personal_info_in_decoded(decoded_value, personal_info)
-
-                suspicious_items.append({
-                    'category': 'token_detection',
-                    'type': 'token_pattern',
-                    'subtype': pattern_name,
-                    'length': len(match),
-                    'cookie': cookie_name,
-                    'decoded_value': decoded_value,
-                    'personal_info_matches': personal_info_matches if personal_info_matches else None
-                })
-    
-    # 1.5. Détection d'emails (tous les emails, pas seulement ceux du profil)
-    # Utilise une validation robuste pour éviter les faux positifs (code JS, etc.)
-    email_pattern = r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b'
-    email_matches = re.findall(email_pattern, value, re.IGNORECASE)
-    for email in email_matches:
-        # Valider l'email pour filtrer les faux positifs
-        if is_valid_email(email):
-            suspicious_items.append({
-                'category': 'email_detection',
-                'type': 'detected_email',
-                'email': email.lower(),  # Normaliser en minuscules
-                'cookie': cookie_name
-            })
-    
-    # 3. Analyse du nom du cookie pour tokens
-    if cookie_name:
-        cookie_lower = cookie_name.lower()
-        for suspicious_key in suspicious_token_keys:
-            if suspicious_key in cookie_lower:
-                suspicious_items.append({
-                    'category': 'token_detection',
-                    'type': 'suspicious_key',
-                    'subtype': suspicious_key,
-                    'name': cookie_name,
-                    'length': len(cookie_name),
-                    'cookie': cookie_name
-                })
-                break
-    
-    # 4. Détection de données JSON encodées pour tokens
-    try:
-        # Tentative de décoder base64
-        if len(value) > 10 and '=' in value[-3:]:
-            try:
-                decoded = base64.b64decode(value).decode('utf-8')
-                if decoded.startswith('{') or decoded.startswith('['):
-                    json_data = json.loads(decoded)
-                    suspicious_items.append({
-                        'category': 'token_detection',
-                        'type': 'encoded_json',
-                        'subtype': 'base64_json',
-                        'length': len(value),
-                        'cookie': cookie_name
-                    })
-            except:
-                pass
+    combined_tokens_re = _get_combined_regex(token_patterns)
+    for match in combined_tokens_re.finditer(value):
+        pattern_name = match.lastgroup
+        match_str = match.group()
         
-        # JSON direct
-        if value.strip().startswith(('{', '[')):
-            json_data = json.loads(value)
+        is_short_allowed = pattern_name in ['user_id', 'device_id', 'timezone', 'theme', 'user_agent']
+        if len(match_str) >= 8 or (is_short_allowed and len(match_str) >= 2):
+            decoded_value = None
+            personal_info_matches = []
+            
+            if pattern_name in ['jwt_token', 'base64_data']:
+                decoded_value = decode_token(match_str, pattern_name)
+                if decoded_value and personal_info:
+                    personal_info_matches = search_personal_info_in_decoded(decoded_value, personal_info)
+
             suspicious_items.append({
                 'category': 'token_detection',
-                'type': 'json_data',
-                'subtype': 'direct_json',
-                'length': len(value),
-                'cookie': cookie_name
+                'type': 'token_pattern',
+                'subtype': pattern_name,
+                'length': len(match_str),
+                'cookie': cookie_name,
+                'decoded_value': decoded_value,
+                'personal_info_matches': personal_info_matches if personal_info_matches else None
             })
-    except:
-        pass
+
+    # 2. Détection d'emails
+    email_pattern = r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b'
+    if 'email' not in _combined_regex_cache:
+        _combined_regex_cache['email'] = re.compile(email_pattern, re.IGNORECASE)
     
-    # ========== DÉTECTION DE COLLECTE DE NAVIGATION ==========
-    
-    # Patterns indiquant la collecte d'historique de navigation
-    navigation_collection_patterns = {
-        # Stockage d'URLs visitées
+    for email in _combined_regex_cache['email'].findall(value):
+        if is_valid_email(email):
+            suspicious_items.append({
+                'category': 'email_detection', 'type': 'detected_email',
+                'email': email.lower(), 'cookie': cookie_name
+            })
+
+    # 3. Analyse du nom du cookie (Tokens & Navigation)
+    if cookie_name:
+        if 'suspicious_keys' not in _combined_regex_cache:
+            token_keys = ['token', 'auth', 'session', 'user', 'login', 'account', 'profile', 'email', 'name', 'phone', 'address', 'location', 'geo', 'lat', 'lng', 'birth', 'age', 'gender', 'password', 'pwd', 'secret', 'key', 'id', 'tracking', 'analytics', 'fingerprint', 'device', 'browser', 'ip']
+            nav_keys = ['history', 'visited', 'pages', 'navigation', 'journey', 'path', 'referrer', 'previous', 'last_page', 'came_from', 'source', 'scroll', 'time_on_page', 'dwell', 'duration', 'engagement', 'clicks', 'interactions', 'mouse', 'cursor', 'tracking', 'fingerprint', 'signature', 'browser_id', 'device_id', 'session_data', 'replay', 'analytics', 'behavior', 'location', 'geo', 'coordinates', 'timezone', 'conversion', 'funnel', 'attribution', 'campaign']
+            all_keys = sorted(list(set(token_keys + nav_keys)), key=len, reverse=True)
+            _combined_regex_cache['suspicious_keys'] = re.compile("|".join(all_keys), re.IGNORECASE)
+        
+        cookie_lower = cookie_name.lower()
+        key_match = _combined_regex_cache['suspicious_keys'].search(cookie_lower)
+        if key_match:
+            matched_key = key_match.group()
+            # On ajoute les deux catégories si applicable
+            suspicious_items.append({
+                'category': 'token_detection', 'type': 'suspicious_key',
+                'subtype': matched_key, 'name': cookie_name, 'cookie': cookie_name
+            })
+            suspicious_items.append({
+                'category': 'navigation_collection', 'type': 'suspicious_navigation_key',
+                'subtype': matched_key, 'cookie_name': cookie_name, 'detected_in': 'cookie_name'
+            })
+
+    # 4. Collecte de navigation dans la valeur
+    navigation_patterns = {
         'visited_urls': r'(visited_urls?|browsing_history|page_history|url_history|site_history)',
         'referrer_tracking': r'(referrer|referer|previous_page|last_page|came_from)',
         'page_sequence': r'(page_sequence|navigation_path|user_journey|page_flow)',
-        
-        # Métadonnées de navigation
         'scroll_tracking': r'(scroll_position|scroll_depth|scroll_time|page_scroll)',
         'time_on_page': r'(time_spent|dwell_time|session_duration|page_time|visit_duration)',
         'click_tracking': r'(click_map|click_tracking|mouse_tracking|interaction_data)',
-        
-        # Fingerprinting du navigateur
         'browser_fingerprint': r'(fingerprint|browser_id|device_signature|client_signature)',
         'screen_resolution': r'(screen_width|screen_height|resolution|display_size)',
         'browser_features': r'(plugins|extensions|fonts|webgl|canvas_fingerprint)',
-        
-        # Données de session détaillées
         'session_replay': r'(session_replay|user_session|replay_data|interaction_log)',
         'keystroke_logging': r'(keylog|keystroke|input_tracking|form_analytics)',
         'mouse_movements': r'(mouse_move|cursor_tracking|pointer_events)',
-        
-        # Données de géolocalisation
-
-        # Analytics avancés
         'behavior_analytics': r'(behavior|user_analytics|engagement_metrics|activity_log)',
         'conversion_tracking': r'(conversion|funnel|attribution|campaign_tracking)',
         'ab_testing': r'(ab_test|split_test|variant|experiment_data)'
     }
     
-    # Patterns de stockage suspect dans les valeurs
+    combined_nav_re = _get_combined_regex(navigation_patterns)
+    value_lower = value.lower()
+    for match in combined_nav_re.finditer(value_lower):
+        suspicious_items.append({
+            'category': 'navigation_collection',
+            'type': 'navigation_collection_pattern',
+            'subtype': match.lastgroup,
+            'cookie_name': cookie_name,
+            'detected_in': 'value'
+        })
+
+    # 5. Storage patterns
     storage_patterns = {
-        # Données encodées suspectes
-        'encoded_navigation': r'[A-Za-z0-9+/]{50,}={0,2}',  # Base64 long
+        'encoded_navigation': r'[A-Za-z0-9+/]{50,}={0,2}',
         'json_navigation': r'\{[^}]*(?:url|page|visit|history|navigation)[^}]*\}',
-        'serialized_data': r'(a:\d+:\{|O:\d+:|s:\d+:)',  # PHP serialize
-        
-        # URLs multiples stockées
+        'serialized_data': r'(a:\d+:\{|O:\d+:|s:\d+:)',
         'multiple_urls': r'https?://[^\s,;|]+[,;|]https?://',
         'url_array': r'\[(.*https?://.*)\]',
-        
-        # Timestamps de visite
-        'visit_timestamps': r'\d{10,13}[,;|]\d{10,13}',  # Unix timestamps
+        'visit_timestamps': r'\d{10,13}[,;|]\d{10,13}',
         'iso_timestamps': r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}',
-        
-        # Données de session complexes
         'complex_session': r'[{[].*(?:page|url|time|duration).*[}\]]',
     }
     
-    # Noms de cookies/clés suspects pour la collecte de navigation
-    suspicious_navigation_keys = [
-        'history', 'visited', 'pages', 'navigation', 'journey', 'path',
-        'referrer', 'previous', 'last_page', 'came_from', 'source',
-        'scroll', 'time_on_page', 'dwell', 'duration', 'engagement',
-        'clicks', 'interactions', 'mouse', 'cursor', 'tracking',
-        'fingerprint', 'signature', 'browser_id', 'device_id',
-        'session_data', 'replay', 'analytics', 'behavior',
-        'location', 'geo', 'coordinates', 'timezone',
-        'conversion', 'funnel', 'attribution', 'campaign'
-    ]
-    
-    # 5. Analyse des patterns de collecte dans la valeur
-    value_lower = value.lower() if value else ""
-    for pattern_name, pattern in navigation_collection_patterns.items():
-        if re.search(pattern, value_lower, re.IGNORECASE):
-            suspicious_items.append({
-                'category': 'navigation_collection',
-                'type': 'navigation_collection_pattern',
-                'subtype': pattern_name,
-                'cookie_name': cookie_name,
-                'length': len(value) if value else 0,
-                'detected_in': 'value'
-            })
-    
-    # 6. Analyse des patterns de stockage suspects
-    if value:
-        for pattern_name, pattern in storage_patterns.items():
-            matches = re.findall(pattern, value, re.IGNORECASE)
-            if matches:
-                for match in matches[:3]:  # Limite à 3 matches
-                    suspicious_items.append({
-                        'category': 'navigation_collection',
-                        'type': 'suspicious_storage_pattern',
-                        'subtype': pattern_name,
-                        'cookie_name': cookie_name,
-                        'length': len(match),
-                        'detected_in': 'value'
-                    })
-    
-    # 7. Analyse du nom du cookie/clé pour navigation
-    if cookie_name:
-        cookie_lower = cookie_name.lower()
-        for suspicious_key in suspicious_navigation_keys:
-            if suspicious_key in cookie_lower:
-                suspicious_items.append({
-                    'category': 'navigation_collection',
-                    'type': 'suspicious_navigation_key',
-                    'subtype': suspicious_key,
-                    'cookie_name': cookie_name,
-                    'length': len(cookie_name),
-                    'detected_in': 'cookie_name'
-                })
-                break
-    
-    # 8. Détection de données JSON avec informations de navigation
-    if value and len(value) > 10:
-        try:
-            # JSON direct
-            if value.strip().startswith(('{', '[')):
+    combined_storage_re = _get_combined_regex(storage_patterns)
+    for match in combined_storage_re.finditer(value):
+        suspicious_items.append({
+            'category': 'navigation_collection',
+            'type': 'suspicious_storage_pattern',
+            'subtype': match.lastgroup,
+            'cookie_name': cookie_name,
+            'length': len(match.group()),
+            'detected_in': 'value'
+        })
+
+    # 6. Analyse JSON/Base64/URLs/Timestamps/GPS (Logique simplifiée)
+    if len(value) > 10:
+        # JSON
+        if value.strip().startswith(('{', '[')):
+            try:
                 json_data = json.loads(value)
-                navigation_indicators = ['url', 'page', 'visit', 'history', 'navigation', 'referrer', 'timestamp', 'time', 'duration']
-                found_indicators = [key for key in navigation_indicators if key in str(json_data).lower()]
-                
-                if found_indicators:
-                    suspicious_items.append({
-                        'category': 'navigation_collection',
-                        'type': 'json_navigation_data',
-                        'subtype': 'structured_navigation_storage',
-                        'cookie_name': cookie_name,
-                        'navigation_keys': found_indicators,
-                        'length': len(value),
-                        'detected_in': 'value'
-                    })
-        except:
-            pass
-    
-    # 9. Détection de données Base64 avec contenu de navigation
-    if value and len(value) > 20 and '=' in value[-3:]:
-        try:
-            # Vérifier si c'est du Base64 valide
-            if re.match(r'^[A-Za-z0-9+/]+={0,2}$', value.replace(' ', '')):
+                nav_indicators = ['url', 'page', 'visit', 'history', 'navigation', 'referrer', 'timestamp', 'time', 'duration']
+                found = [k for k in nav_indicators if k in str(json_data).lower()]
+                if found:
+                    suspicious_items.append({'category': 'navigation_collection', 'type': 'json_navigation_data', 'subtype': 'structured_navigation_storage', 'cookie_name': cookie_name, 'navigation_keys': found})
+            except: pass
+        
+        # Base64
+        if len(value) > 20 and '=' in value[-3:] and re.match(r'^[A-Za-z0-9+/]+={0,2}$', value.replace(' ', '')):
+            try:
                 decoded = base64.b64decode(value).decode('utf-8', errors='ignore')
                 if len(decoded) > 10:
-                    navigation_keywords = ['http', 'url', 'page', 'visit', 'history', 'referrer', 'navigation']
-                    found_keywords = [kw for kw in navigation_keywords if kw in decoded.lower()]
-                    
-                    if found_keywords:
-                        suspicious_items.append({
-                            'category': 'navigation_collection',
-                            'type': 'encoded_navigation_data',
-                            'subtype': 'base64_navigation_storage',
-                            'cookie_name': cookie_name,
-                            'decoded_preview': decoded[:100],
-                            'navigation_keywords': found_keywords,
-                            'length': len(value),
-                            'detected_in': 'value'
-                        })
-        except:
-            pass
-    
-    # 10. Détection d'URLs multiples (historique de navigation)
-    if value:
-        # Recherche d'URLs multiples
+                    found = [kw for kw in ['http', 'url', 'page', 'visit', 'history', 'referrer', 'navigation'] if kw in decoded.lower()]
+                    if found:
+                        suspicious_items.append({'category': 'navigation_collection', 'type': 'encoded_navigation_data', 'subtype': 'base64_navigation_storage', 'cookie_name': cookie_name, 'navigation_keywords': found})
+            except: pass
+
+        # URLs multiples
         urls = re.findall(r'https?://[^\s,;|<>"\']+', value)
         if len(urls) > 1:
-            suspicious_items.append({
-                'category': 'navigation_collection',
-                'type': 'multiple_urls_storage',
-                'subtype': 'navigation_history_urls',
-                'cookie_name': cookie_name,
-                'urls_count': len(urls),
-                'urls_sample': urls[:3],
-                'length': len(value),
-                'detected_in': 'value'
-            })
-    
-    # 11. Détection de timestamps multiples (séquence de navigation)
-    if value:
-        timestamps = re.findall(r'\d{10,13}', value)  # Unix timestamps
+            suspicious_items.append({'category': 'navigation_collection', 'type': 'multiple_urls_storage', 'subtype': 'navigation_history_urls', 'cookie_name': cookie_name, 'urls_count': len(urls)})
+
+        # Timestamps
+        timestamps = re.findall(r'\d{10,13}', value)
         if len(timestamps) > 2:
-            suspicious_items.append({
-                'category': 'navigation_collection',
-                'type': 'navigation_timestamps',
-                'subtype': 'visit_sequence_tracking',
-                'cookie_name': cookie_name,
-                'timestamps_count': len(timestamps),
-                'length': len(value),
-                'detected_in': 'value'
-            })
-    
-    # 12. Détection de coordonnées géographiques
-    if value:
-        # Coordonnées GPS
-        coord_matches = re.findall(r'[-]?\d+\.\d+,[-]?\d+\.\d+', value)
-        if coord_matches:
-            suspicious_items.append({
-                'category': 'navigation_collection',
-                'type': 'geolocation_tracking',
-                'subtype': 'gps_coordinates',
-                'cookie_name': cookie_name,
-                'coordinates_found': len(coord_matches),
-                'length': len(value),
-                'detected_in': 'value'
-            })
-    
+            suspicious_items.append({'category': 'navigation_collection', 'type': 'navigation_timestamps', 'subtype': 'visit_sequence_tracking', 'cookie_name': cookie_name, 'timestamps_count': len(timestamps)})
+
+        # GPS
+        if ',' in value:
+            coords = re.findall(r'[-]?\d+\.\d+,[-]?\d+\.\d+', value)
+            if coords:
+                suspicious_items.append({'category': 'navigation_collection', 'type': 'geolocation_tracking', 'subtype': 'gps_coordinates', 'cookie_name': cookie_name, 'coordinates_found': len(coords)})
+
     return suspicious_items
 
 

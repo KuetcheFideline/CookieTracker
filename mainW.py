@@ -12,7 +12,7 @@ import re
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (update_runtime_file, json_Result, init_runtime_file, load_profile_from_terminal_validated, clean_results, print_summary)
+from treatement.profile_utils import (update_runtime_file, json_Result, init_runtime_file, load_profile_from_terminal_validated, clean_results, print_summary, save_global_stats)
 
 init(autoreset=True)
 
@@ -70,21 +70,19 @@ def search_profile():
     count += 1
     current = int(time.time() * 1e6)
     update_runtime_file("runtime.txt", count, current)
+    
+    print(Fore.CYAN + "Saving raw results..." + Style.RESET_ALL)
     json_Result(results)
     
     # Nettoyer les résultats (ne garder que les valeurs non-nulles)
-    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
-    clean_results('result_dom.json', 'result_cleaned_dom.json')
+    # clean_results('result_cookies.json', 'result_cleaned_cookies.json')
+    # clean_results('result_dom.json', 'result_cleaned_dom.json')
     
-    # Affichage du résumé des statistiques
-    print_summary()
-
-    # Nettoyer les résultats (ne garder que les valeurs non-nulles)
-    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
-    clean_results('result_dom.json', 'result_cleaned_dom.json')
-    
-    # Affichage du résumé des statistiques
-    print_summary()
+    # Affichage du résumé des statistiques et sauvegarde des stats globales
+    print(Fore.CYAN + "Generating summary and global statistics..." + Style.RESET_ALL)
+    stats = print_summary()
+    save_global_stats(stats)
+    print(Fore.GREEN + "Processing complete!" + Style.RESET_ALL)
 
 if __name__ == "__main__":
     search_profile()

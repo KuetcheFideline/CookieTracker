@@ -12,8 +12,7 @@ class Firefox:
     """
 
     def __init__(self, os_name):
-
-        self.os_name = os_name
+        self.os_name = os_name.lower()
 
         # self.data_path = data_path
         self.data = None
@@ -33,11 +32,26 @@ class Firefox:
 
 
 
-        if self.os_name !="Windows": 
-            profile_dir = Path("~/.mozilla/firefox/").expanduser()
-            if not profile_dir.exists():
-                profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
-        else :
+        if "windows" not in self.os_name: 
+            std_path = Path("~/.mozilla/firefox/").expanduser()
+            snap_path = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+            
+            if std_path.exists() and snap_path.exists():
+                # Si les deux existent, on prend celui dont le profiles.ini est le plus récent
+                std_ini = std_path / "profiles.ini"
+                snap_ini = snap_path / "profiles.ini"
+                if std_ini.exists() and snap_ini.exists():
+                    if std_ini.stat().st_mtime > snap_ini.stat().st_mtime:
+                        profile_dir = std_path
+                    else:
+                        profile_dir = snap_path
+                else:
+                    profile_dir = std_path if std_ini.exists() else snap_path
+            elif std_path.exists():
+                profile_dir = std_path
+            else:
+                profile_dir = snap_path
+        else:
             profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
 
         
@@ -92,7 +106,7 @@ class Firefox:
                         raise Exception("No profiles found at {}".format(profile_dir))
 
             # Adjust the profile path for Windows
-            if self.os_name == "Windows":
+            if "windows" in self.os_name:
                 if profile.startswith("Profiles/"):
                     profile = profile.split("/", 1)[1]
 
@@ -110,10 +124,24 @@ class Firefox:
     def get_domstorage_file_path(self):
             profile_dir = None
 
-            if self.os_name != "Windows":
-                profile_dir = Path("~/.mozilla/firefox/").expanduser()
-                if not profile_dir.exists():
-                    profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+            if "windows" not in self.os_name:
+                std_path = Path("~/.mozilla/firefox/").expanduser()
+                snap_path = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
+                
+                if std_path.exists() and snap_path.exists():
+                    std_ini = std_path / "profiles.ini"
+                    snap_ini = snap_path / "profiles.ini"
+                    if std_ini.exists() and snap_ini.exists():
+                        if std_ini.stat().st_mtime > snap_ini.stat().st_mtime:
+                            profile_dir = std_path
+                        else:
+                            profile_dir = snap_path
+                    else:
+                        profile_dir = std_path if std_ini.exists() else snap_path
+                elif std_path.exists():
+                    profile_dir = std_path
+                else:
+                    profile_dir = snap_path
             else:
                 profile_dir = Path("~/AppData/Roaming/Mozilla/Firefox/").expanduser()
 
@@ -140,7 +168,7 @@ class Firefox:
                          return
 
                 # Only try snap fallback if NOT on Windows
-                if self.os_name != "Windows":
+                if "windows" not in self.os_name:
                     profile_dir = Path("~/snap/firefox/common/.mozilla/firefox/").expanduser()
                     profile_ini = profile_dir / "profiles.ini"
                     if not profile_ini.exists():
@@ -167,7 +195,7 @@ class Firefox:
                         raise Exception("No profiles found at {}".format(profile_dir))
 
             # Ajustement pour Windows
-            if self.os_name == "Windows":
+            if "windows" in self.os_name:
                  profile = Path("Profiles") / Path(profile.split("/", 1)[1])
             profile_path = profile_dir /profile
 

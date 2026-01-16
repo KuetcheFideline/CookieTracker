@@ -13,7 +13,7 @@ from colorama import Fore, Style, init
 
 from Firefox.__main__ import main_firefox
 from Firefox.utils.utils import get_os_info
-from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary, clean_results)
+from treatement.profile_utils import (json_Result, load_profile_from_terminal_validated, print_summary, clean_results, save_global_stats)
 from chrome.chrome_linux import main_linux
 
 
@@ -73,14 +73,17 @@ def search_profile():
                 except Exception as e:
                         print(f"Erreur lors du traitement des sites de chrome  : {e}")
 
+    print(Fore.CYAN + "Saving raw results..." + Style.RESET_ALL)
     json_Result(results)
     
     # Nettoyer les résultats (ne garder que les valeurs non-nulles)
-    clean_results('result_cookies.json', 'result_cleaned_cookies.json')
-    clean_results('result_dom.json', 'result_cleaned_dom.json')
+    # clean_results('result_cookies.json', 'result_cleaned_cookies.json')
     
-    # Affichage du résumé des statistiques
-    print_summary()
+    # Affichage du résumé des statistiques et sauvegarde des stats globales
+    print(Fore.CYAN + "Generating summary and global statistics..." + Style.RESET_ALL)
+    stats = print_summary()
+    save_global_stats(stats)
+    print(Fore.GREEN + "Processing complete!" + Style.RESET_ALL)
 
 
 if __name__ == "__main__":

@@ -10,9 +10,9 @@ def main_firefox(last_run,user) -> None:
     system_info = platform.uname()
 
    
-   
     try:
-        os_name = f"{system_info.system}/{distro.id()}"
+        distro_id = distro.id()
+        os_name = f"{system_info.system}/{distro_id}" if distro_id else system_info.system
     except Exception:
         os_name = system_info.system
 
@@ -20,7 +20,6 @@ def main_firefox(last_run,user) -> None:
 
     browser = Firefox(os_name=os_name)
     browser.print_os()
-   
     cookies = PersonalCookies(browser.cookies_path,last_run)
     cookies_data = cookies.filter_data_by_date(user)
     stats = search_personal_info_robust(cookies_data,user)
@@ -28,7 +27,6 @@ def main_firefox(last_run,user) -> None:
 
     dom_data = dom.filter_data_by_date(user=user)
     stats_dom = search_personal_info_in_dict(dom_data,user)
-
 
     return {"firefox": {"cookies": stats, "dom": stats_dom}}
 
