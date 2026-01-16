@@ -1,0 +1,98 @@
+{
+    "META:http://blog.cloudtechtiq.com": [
+        {
+            "key": "META:http://blog.cloudtechtiq.com",
+            "value": "\bЫ\u0017\u0010\u001f"
+        }
+    ],
+    "META:https://anaconda.com": [
+        {
+            "key": "META:https://anaconda.com",
+            "value": "\b\u0017\u0010\u0004"
+        }
+    ],
+    "META:https://challenges.cloudflare.com": [
+        {
+            "key": "META:https://challenges.cloudflare.com",
+            "value": "\b\u0017\u0010\u0001"
+        }
+    ],
+    "META:https://chatgpt.com": [
+        {
+            "key": "META:https://chatgpt.com",
+            "value": "\b\u0017\u0010\u000b"
+        }
+    ],
+    "META:https://docs.conda.io": [
+        {
+            "key": "META:https://docs.conda.io",
+            "value": "\b\u0017\u0010\u0016"
+        }
+    ],
+    "META:https://github.com": [
+        {
+            "key": "META:https://github.com",
+            "value": "\b\u0017\u0010\u0001"
+        }
+    ],
+    "META:https://grok.com": [
+        {
+            "key": "META:https://grok.com",
+            "value": "\b􄗍\u0017\u0010\u0001"
+        }
+    ],
+    "META:https://learning.anaconda.com": [
+        {
+            "key": "META:https://learning.anaconda.com",
+            "value": "\b᩾\u0017\u0010\u0001"
+        }
+    ],
+    "META:https://ntp.msn.com": [
+        {
+            "key": "META:https://ntp.msn.com",
+            "value": "\b͒\u0017\u0010\u0001"
+        }
+    ],
+    "META:https://sqvvxmkr4r26.statuspage.io": [
+        {
+            "key": "META:https://sqvvxmkr4r26.statuspage.io",
+            "value": "\b\u0017\u0010("
+        }
+    ],
+    "META:https://www.anaconda.com": [
+        {
+            "key": "META:https://www.anaconda.com",
+            "value": "\b\u0017\u0010\u0004"
+        }
+    ],
+    "META:https://www.bing.com": [
+        {
+            "key": "META:https://www.bing.com",
+            "value": "\b\u0017\u0010Z"
+        }
+    ],
+    "META:https://www.geeksforgeeks.org": [
+        {
+            "key": "META:https://www.geeksforgeeks.org",
+            "value": "\b\u0017\u00104"
+        }
+    ],
+    "META:https://www.google.com": [
+        {
+            "key": "META:https://www.google.com",
+            "value": "\b\u0017\u0010/"
+        }
+    ],
+    "VERSION": [
+        {
+            "key": "VERSION",
+            "value": "1"
+        }
+    ],
+    "": [
+        {
+            "key": "_http://blog.cloudtechtiq.com\u0000\u0001google_auto_fc_cmp_setting",
+            "value": "\u0001[1]"
+        }
+    ]
+}

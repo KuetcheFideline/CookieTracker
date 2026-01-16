@@ -200,7 +200,7 @@ class Firefox:
             profile_path = profile_dir /profile
 
               
-            # 📌 Dossier du DOM Storage moderne
+            #  Dossier du DOM Storage moderne
             domstorage_dir = profile_path / "storage" / "default"
 
             if not domstorage_dir.exists():
