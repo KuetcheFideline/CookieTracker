@@ -66,10 +66,11 @@ Le script genere 4 fichiers JSON:
 ### Fichiers Complets (verification locale)
 - `result_cookies.json` - Toutes les donnees des cookies
 - `result_dom.json` - Toutes les donnees du DOM
+- result_cleaned_cookies.json` - Statistiques anonymisees des cookies
+
 
 ### Fichiers Nettoyes (a partager)
-- `result_cleaned_cookies.json` - Statistiques anonymisees des cookies
-- `result_global_stats.json` - Statistiques anonymisees du storage complet 
+- `- `result_global_stats.json` - Statistiques anonymisees du storage complet 
 
 **Note**: Les fichiers nettoyes contiennent uniquement des compteurs et statistiques, sans les valeurs personnelles.
 
@@ -241,10 +242,11 @@ The script generates 4 JSON files:
 ### Complete Files (local verification)
 - `result_cookies.json` - All cookie data
 - `result_dom.json` - All DOM data
+- - `result_cleaned_cookies.json` - Anonymized cookie statistics
 
 ### Cleaned Files (to share)
-- `result_cleaned_cookies.json` - Anonymized cookie statistics
-- `result_cleaned_dom.json` - Anonymized DOM statistics
+
+ - `result_global_stats.json` - Anonymized  Data storage statistics
 
 **Note**: Cleaned files contain only counters and statistics, without personal values.
 
