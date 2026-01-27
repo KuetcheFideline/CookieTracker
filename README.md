@@ -69,7 +69,7 @@ Le script genere 4 fichiers JSON:
 
 ### Fichiers Nettoyes (a partager)
 - `result_cleaned_cookies.json` - Statistiques anonymisees des cookies
-- `result_cleaned_dom.json` - Statistiques anonymisees du DOM
+- `result_global_stats.json` - Statistiques anonymisees du storage complet 
 
 **Note**: Les fichiers nettoyes contiennent uniquement des compteurs et statistiques, sans les valeurs personnelles.
 
@@ -156,15 +156,14 @@ Les fichiers nettoyes incluent:
 3. Selectionnez les navigateurs a analyser
 4. Attendez la fin de l'analyse
 5. Consultez le resume statistique affiche
-6. Recuperez les fichiers nettoyes pour partage
+6. Recuperez le fichier result_global_stats.json pour partage
 
 ---
 
 ## Partage des Resultats
 
 Deposez les fichiers suivants dans le depot Google Drive:
-- `result_cleaned_cookies.json`
-- `result_cleaned_dom.json`
+- `result_global_stats.json`
 
 **Lien Drive**: [https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing](https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing)
 
@@ -332,15 +331,14 @@ Cleaned files include:
 3. Select browsers to analyze
 4. Wait for analysis completion
 5. Review the displayed statistical summary
-6. Retrieve cleaned files for sharing
+6. Retrieve result_global_stats.json files for sharing
 
 ---
 
 ## Sharing Results
 
 Upload the following files to the Google Drive repository:
-- `result_cleaned_cookies.json`
-- `result_cleaned_dom.json`
+- `result_global_stats.json`
 
 **Drive Link**: [https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing](https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing)
 
