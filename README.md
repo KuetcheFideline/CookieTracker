@@ -166,7 +166,7 @@ Les fichiers nettoyes incluent:
 Deposez les fichiers suivants dans le depot Google Drive:
 - `result_global_stats.json`
 
-**Lien Drive**: [https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing](https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing)
+**Lien Drive**: [https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing)
 
 **Ne partagez pas** les fichiers complets (`result_cookies.json` et `result_dom.json`). Ils sont uniquement pour verification locale.
 
