@@ -60,7 +60,7 @@ Le script genere 4 fichiers JSON:
 - result_cleaned_cookies.json` - Statistiques anonymisees des cookies
 
 
-### Fichiers Nettoyes (a partager)
+### Fichiers a partager
 - `- `result_global_stats.json` - Statistiques anonymisees du storage complet 
 
 **Note**: Les fichiers nettoyes contiennent uniquement des compteurs et statistiques, sans les valeurs personnelles.
