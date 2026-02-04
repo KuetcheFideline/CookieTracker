@@ -10,7 +10,6 @@ Outil d'analyse des donnees stockees par les navigateurs (cookies et DOM) pour d
 - [Description](#description)
 - [Fichiers Generes](#fichiers-generes)
 - [Fonctionnalites](#fonctionnalites)
-- [Installation Normale](#installation-normale)
 - [Utilisation](#utilisation)
 - [Partage des Resultats](#partage-des-resultats)
 
@@ -23,7 +22,7 @@ Outil d'analyse des donnees stockees par les navigateurs (cookies et DOM) pour d
 1. Telechargez le fichier `main` depuis le dossier `dist`
 2. Donnez les droits d'execution:
    ```bash
- chmod +x main
+       chmod +x main
    ```
 3. Lancez le programme:
    ```bash
@@ -38,13 +37,13 @@ Outil d'analyse des donnees stockees par les navigateurs (cookies et DOM) pour d
 ## Description
 
 Cet outil analyse les donnees stockees par les navigateurs web pour identifier:
-- Les informations personnelles (nom, email, adresse, etc.)
+- Les informations personnelles (nom, email, adresse,villes ,date de naissance  etc.)
 - Les tokens decodes (JWT, Base64)
 - Les tokens suspects (session IDs, API keys, UUIDs, etc.)
 - Les emails detectes dans les cookies et le DOM
 
 Le script:
-1. Demande un profil utilisateur via un formulaire interactif
+1. Collecte le profil utilisateur via la ligne de commande
 2. Analyse les navigateurs selectionnes (Firefox, Chrome, etc.)
 3. Genere des fichiers JSON avec les resultats
 4. Affiche un resume statistique detaille
