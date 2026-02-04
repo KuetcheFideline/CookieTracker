@@ -93,43 +93,6 @@ Les fichiers nettoyes incluent:
 - Aucune donnee personnelle brute
 
 ---
-
-## Installation Normale
-
-### Linux
-
-1. Creez un environnement virtuel:
-   ```bash
-   python3 -m venv env
-   ```
-
-2. Activez l'environnement:
-   ```bash
-   source env/bin/activate
-   ```
-
-3. Installez les dependances:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Lancez le programme:
-   ```bash
-   python main.py
-   ```
-
-
-## Utilisation
-
-1. Lancez le script
-2. Remplissez le formulaire de profil utilisateur
-3. Selectionnez les navigateurs a analyser
-4. Attendez la fin de l'analyse
-5. Consultez le resume statistique affiche
-6. Recuperez le fichier result_global_stats.json pour partage
-
----
-
 ## Partage des Resultats
 
 Deposez les fichiers suivants dans le depot Google Drive:
@@ -222,15 +185,9 @@ At the end of analysis, a detailed summary displays:
 - Detected emails
 - Suspicious tokens by type (session_id, api_key, uuid, etc.)
 
-### Advanced Detection
-- Detection of all emails (not just profile ones)
-- User-Agent detection
-- Decoded token detection (JWT/Base64) with personal information
-- Automatic exclusion of navigation patterns from total
 
-### Cleaned Files
+### Files sended
 Cleaned files include:
-- Statistics per domain
 - Count by information type
 - Breakdown of suspicious tokens by type
 - Personal information found in decoded tokens
@@ -238,50 +195,13 @@ Cleaned files include:
 
 ---
 
-## Normal Installation
-
-### Linux
-
-1. Create a virtual environment:
-   ```bash
-   python3 -m venv env
-   ```
-
-2. Activate the environment:
-   ```bash
-   source env/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run the program:
-   ```bash
-   python main.py
-   ```
 
 
 
----
-
-## Usage
-
-1. Run the script
-2. Fill in the user profile form
-3. Select browsers to analyze
-4. Wait for analysis completion
-5. Review the displayed statistical summary
-6. Retrieve result_global_stats.json files for sharing
-
----
 
 ## Sharing Results
 
 Upload the following files to the Google Drive repository:
 - `result_global_stats.json`
-
-**Drive Link**: [https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing](https://drive.google.com/drive/folders/1q0xpeikKirlZ5dfc8Q0O23MA2EgA2I-U?usp=sharing)
 
 **Do not share** the complete files (`result_cookies.json` and `result_dom.json`). They are for local verification only.
