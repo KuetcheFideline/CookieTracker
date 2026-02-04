@@ -23,7 +23,7 @@ Outil d'analyse des donnees stockees par les navigateurs (cookies et DOM) pour d
 1. Telechargez le fichier `main` depuis le dossier `dist`
 2. Donnez les droits d'execution:
    ```bash
-   sudo chmod +x main
+ chmod +x main
    ```
 3. Lancez le programme:
    ```bash
