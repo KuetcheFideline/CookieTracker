@@ -30,14 +30,6 @@ Outil d'analyse des donnees stockees par les navigateurs (cookies et DOM) pour d
    ./main
    ```
 
-### Windows
-
-1. Ouvrez le terminal en mode Administrateur
-2. Naviguez vers l'emplacement du fichier
-3. Lancez le programme:
-   ```bash
-   .\mainW.exe
-   ```
 
 **IMPORTANT**: Fermez tous les navigateurs avant de lancer le script.
 
@@ -126,29 +118,6 @@ Les fichiers nettoyes incluent:
    python main.py
    ```
 
-### Windows
-
-1. Creez un environnement virtuel:
-   ```bash
-   python -m venv env
-   ```
-
-2. Activez l'environnement:
-   ```bash
-   .\env\Scripts\activate
-   ```
-
-3. Installez les dependances:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Lancez le programme:
-   ```bash
-   python mainW.py
-   ```
-
----
 
 ## Utilisation
 
@@ -204,15 +173,6 @@ Tool for analyzing data stored by web browsers (cookies and DOM) to detect perso
 3. Run the program:
    ```bash
    ./main
-   ```
-
-### Windows
-
-1. Open terminal as Administrator
-2. Navigate to the file location
-3. Run the program:
-   ```bash
-   .\mainW.exe
    ```
 
 **IMPORTANT**: Close all browsers before running the script.
@@ -302,27 +262,7 @@ Cleaned files include:
    python main.py
    ```
 
-### Windows
 
-1. Create a virtual environment:
-   ```bash
-   python -m venv env
-   ```
-
-2. Activate the environment:
-   ```bash
-   .\env\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run the program:
-   ```bash
-   python mainW.py
-   ```
 
 ---
 
